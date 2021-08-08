@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyuhang-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="图论题技巧整理  最短路径模型 1.建立虚拟源点  虚拟远点的建立可以将点权转化为边权 对于多个起点，一个终点的情况，也可以建立虚拟源点。从源点向每个起点出发连接一条长度为0的边。这样就可以转化为从虚拟源点出发，能到达中点的最短路径  2.记录路径（将dist[] 数组开至二维）  对于按照某一顺序访问多个节点的题目可以先遍历记录路径，再使用DFS()根据全排列求解  3.将边权进行0，1转换">
+<meta property="og:type" content="article">
+<meta property="og:title" content="图论题技巧整理">
+<meta property="og:url" content="https://wangyuhang-cmd.github.io/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="Pipipapi">
+<meta property="og:description" content="图论题技巧整理  最短路径模型 1.建立虚拟源点  虚拟远点的建立可以将点权转化为边权 对于多个起点，一个终点的情况，也可以建立虚拟源点。从源点向每个起点出发连接一条长度为0的边。这样就可以转化为从虚拟源点出发，能到达中点的最短路径  2.记录路径（将dist[] 数组开至二维）  对于按照某一顺序访问多个节点的题目可以先遍历记录路径，再使用DFS()根据全排列求解  3.将边权进行0，1转换">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-08-08T11:38:08.000Z">
+<meta property="article:modified_time" content="2021-08-08T11:48:26.633Z">
+<meta property="article:author" content="Pipipapi">
+<meta property="article:tag" content="OI">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyuhang-cmd.github.io/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://wangyuhang-cmd.github.io/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/","path":"2021/08/08/图论题技巧整理/","title":"图论题技巧整理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>图论题技巧整理 | Pipipapi</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c67264c02b274042c3bbaefae8f36c81"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Pipipapi" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Pipipapi</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule" rel="section">日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86"><span class="nav-number">1.</span> <span class="nav-text"> 图论题技巧整理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.0.1.</span> <span class="nav-text"> 最短路径模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.0.0.2.</span> <span class="nav-text"> 最小生成树模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8Espfa%E6%B1%82%E8%B4%9F%E7%8E%AF"><span class="nav-number">1.0.0.3.</span> <span class="nav-text"> 基于SPFA求负环</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#01%E5%88%86%E6%95%B0%E8%A7%84%E5%88%92"><span class="nav-number">1.0.0.4.</span> <span class="nav-text"> 01分数规划</span></a></li></ol></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pipipapi"
+      src="/images/wyh.jpg">
+  <p class="site-author-name" itemprop="name">Pipipapi</p>
+  <div class="site-description" itemprop="description">临溪羡鱼，不如退而结网</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WangYuHang-cmd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;WangYuHang-cmd" rel="noopener" target="_blank"></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/WangYuHang-cmd" title="https:&#x2F;&#x2F;github.com&#x2F;WangYuHang-cmd" rel="noopener" target="_blank">GitHub</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://codeforces.com/profile/pipippapi" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;pipippapi" rel="noopener" target="_blank">Codeforces</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/m0_51780913?spm=1001.2101.3001.5343" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51780913?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://www.luogu.com.cn/user/466624" title="https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;user&#x2F;466624" rel="noopener" target="_blank">洛谷</a>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/wyh.jpg">
+      <meta itemprop="name" content="Pipipapi">
+      <meta itemprop="description" content="临溪羡鱼，不如退而结网">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pipipapi">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          图论题技巧整理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-08-08 19:38:08 / 修改时间：19:48:26" itemprop="dateCreated datePublished" datetime="2021-08-08T19:38:08+08:00">2021-08-08</time>
+    </span>
+
+  
+    <span id="/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="图论题技巧整理" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/08/08/图论题技巧整理/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="图论题技巧整理"><a class="markdownIt-Anchor" href="#图论题技巧整理"></a> 图论题技巧整理</h2>
+<h5 id="最短路径模型"><a class="markdownIt-Anchor" href="#最短路径模型"></a> 最短路径模型</h5>
+<p>1.建立虚拟源点</p>
+<ul>
+<li>虚拟远点的建立可以将点权转化为边权</li>
+<li>对于多个起点，一个终点的情况，也可以建立虚拟源点。从源点向每个起点出发连接一条长度为0的边。这样就可以转化为从虚拟源点出发，能到达中点的最短路径</li>
+</ul>
+<p>2.记录路径（将dist[] 数组开至二维）</p>
+<ul>
+<li>对于按照某一顺序访问多个节点的题目可以先遍历记录路径，再使用DFS()根据全排列求解</li>
+</ul>
+<p>3.将边权进行0，1转换</p>
+<ul>
+<li>对于求第k+1大的路径或者求最大的路径使得某某条件最小时，可以配合二分，将所有边权分类为1和0来进行求解(分类)</li>
+</ul>
+<p>4.对于不同连通块，内部只有正权边，外部由负权边构成的图</p>
+<ul>
+<li>按照拓扑序做堆优化的Dijkstra算法。由于按照拓扑序列，因此保证了到每一点的距离都为最小</li>
+</ul>
+<p>5.考虑建立反向边</p>
+<ul>
+<li>当起点有多个而只有一个确定的终点时，应当考虑建立反向边</li>
+</ul>
+<p>6.正反各进行遍历</p>
+<ul>
+<li>对于在途中买卖一次商品的题目，考虑正反都进行遍历，然后最后使用DP的思想来划分集合，然后求解</li>
+</ul>
+<p>7.拆点</p>
+<p>将dist数组扩展至二维，来存储点的不同性质（类似于DP）。例如寻找最短路径和次短路径的时候可以选择拆点</p>
+<p>8.有负权边，求在最短路径条数：</p>
+<ul>
+<li>
+<p>先使用SPFA求出所有最短路径，枚举所有t-&gt;j的边w[i]，判断每个边是否满足:</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mo>=</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>t</mi><mo stretchy="false">]</mo><mo>+</mo><mi>w</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dist[j]==dist[t]+w[i]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">t</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span></span></p>
+</li>
+<li></li>
+</ul>
+<p>9.求最短路径条数：</p>
+<ul>
+<li>使用Dijkstra算法或者BFS能够保证拓扑序。在更新最短距离的时候顺便记录一下条数即可</li>
+</ul>
+<p>10.恰好经过k条路的最短路径</p>
+<ul>
+<li>1.快速幂+类Floyd算法</li>
+</ul>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">[</mo><mi>a</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">]</mo><mo>+</mo><mi>d</mi><mo stretchy="false">[</mo><mi>b</mi><mo separator="true">,</mo><mi>k</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d[a+b,i,j]=min(d[a+b,i,j],d[a,i,k]+d[b,k,j])
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li>2.bellman_ford算法</li>
+</ul>
+<h5 id="最小生成树模型"><a class="markdownIt-Anchor" href="#最小生成树模型"></a> 最小生成树模型</h5>
+<p>1.建立超级源点</p>
+<p>便于将点权转化为边权</p>
+<p>2.次小生成树</p>
+<p>定义：给一个带权图，把图中所有生成树按权值从小到大排序，第二小的成为次小生成树</p>
+<ul>
+<li>有两种定义方式，一种是按照排列定义的第二小，因此可能数值与最小生成树一样。第二种是严格次小生成树，即严格小于最小生成树</li>
+</ul>
+<p><strong>方法1</strong>：先求最小生成树，再枚举删除最小生成树的边求解,时间复杂度为：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>m</mi><mo>+</mo><mi>n</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(mlogm+nm)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span></p>
+<p>劣势：不容易求严格最小生成树</p>
+<p><em>证明</em> 设T为图G的一颗生成树，对于非树边a和非树边b，插入边a，并删除边b的操作记为(+a,-b)</p>
+<p>如果T+a-b之后仍然是一颗生成树，称(+a,-b)是T的一个可行交换</p>
+<p>称由T进行依次可行变换所得到的新的生成树集合为T的邻集，次小生成树一定在最小生成树的邻集当中。</p>
+<p><strong>方法2</strong>：先求最小生成树，然后依次枚举非树边，然后将改边加入树中，同时从树中去掉一条边，使得最终的图仍是一棵树</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+n^2+mlogm)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.9474379999999999em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span></p>
+<p>可用树上倍增LCA优化至</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>+</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q(m+mlogn+mlogm)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">Q</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span></p>
+<h5 id="基于spfa求负环"><a class="markdownIt-Anchor" href="#基于spfa求负环"></a> 基于SPFA求负环</h5>
+<p>1.统计每个点入队的次数，如果某个点入队n次说明存在负环</p>
+<p>2.统计每个点的最短路中所包含的边数，如果某个点的最短路所包含的边数大于等于n，则也说明存在负环</p>
+<p>但是由于SPFA判断负环的时间复杂度比较高，约O(nm)，因此有一种较为取巧的方式：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">当</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">点</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">被</mi><mi mathvariant="normal">更</mi><mi mathvariant="normal">新</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">迭</mi><mi mathvariant="normal">代</mi><mi mathvariant="normal">次</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">超</mi><mi mathvariant="normal">过</mi><mn>2</mn><mi>n</mi><mo stretchy="false">(</mo><mi mathvariant="normal">尽</mi><mi mathvariant="normal">量</mi><mi mathvariant="normal">开</mi><mi mathvariant="normal">大</mi><mo stretchy="false">)</mo><mi mathvariant="normal">时</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">我</mi><mi mathvariant="normal">们</mi><mi mathvariant="normal">就</mi><mi mathvariant="normal">认</mi><mi mathvariant="normal">为</mi><mi mathvariant="normal">大</mi><mi mathvariant="normal">概</mi><mi mathvariant="normal">率</mi><mi mathvariant="normal">图</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">负</mi><mi mathvariant="normal">环</mi></mrow><annotation encoding="application/x-tex">当所有点的被更新的迭代次数超过2n(尽量开大)时，我们就认为大概率图中有负环
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">被</span><span class="mord cjk_fallback">更</span><span class="mord cjk_fallback">新</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">迭</span><span class="mord cjk_fallback">代</span><span class="mord cjk_fallback">次</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">超</span><span class="mord cjk_fallback">过</span><span class="mord">2</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord cjk_fallback">尽</span><span class="mord cjk_fallback">量</span><span class="mord cjk_fallback">开</span><span class="mord cjk_fallback">大</span><span class="mclose">)</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">我</span><span class="mord cjk_fallback">们</span><span class="mord cjk_fallback">就</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">大</span><span class="mord cjk_fallback">概</span><span class="mord cjk_fallback">率</span><span class="mord cjk_fallback">图</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">负</span><span class="mord cjk_fallback">环</span></span></span></span></span></p>
+<h5 id="01分数规划"><a class="markdownIt-Anchor" href="#01分数规划"></a> 01分数规划</h5>
+<p>图论问题形如求</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi mathvariant="normal">Σ</mi><msub><mi>f</mi><mi>i</mi></msub></mrow><mrow><mi mathvariant="normal">Σ</mi><msub><mi>t</mi><mi>i</mi></msub></mrow></mfrac><mi mathvariant="normal">的</mi><mi mathvariant="normal">最</mi><mi mathvariant="normal">大</mi><mi mathvariant="normal">值</mi></mrow><annotation encoding="application/x-tex">\frac{\Sigma{f_i}}{\Sigma{t_i}}的最大值
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.20744em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">大</span><span class="mord cjk_fallback">值</span></span></span></span></span></p>
+<p>为01分数规划，一般思路：<strong>二分</strong>比值,然后判断图中是否存在正环</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的鼓励就是作者创造的动力！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Pipipapi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Pipipapi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/OI/" rel="tag"># OI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/08/08/%E6%A8%A1%E6%8B%9F%E9%80%80%E7%81%AB%E6%A8%A1%E6%9D%BF-c/" rel="prev" title="模拟退火模板_c++">
+                  <i class="fa fa-chevron-left"></i> 模拟退火模板_c++
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pipipapi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"5km7mC19CqMC81leGWvSFqO8-9Nh9j0Va","app_key":"P0OndA0Oa0E85pyvMOY6L2dq","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wangyuhang-cmd.github.io/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvB2wuVP","appkey":"581fa306a60a3f8d982e8d99f42f76cc"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
