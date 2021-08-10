@@ -27,13 +27,12 @@
 <meta property="og:description" content="图论进阶  差分约束 1.可以用来求一个不等式组的可行解 2.可以求最大值或者最小值 方程形如xi&lt;xj+ck:方程形如x_i \lt x_j+c_k: 方程形如xi​&lt;xj​+ck​: {x1&lt;x2+c1x2&lt;x3+c2x3&lt;x4+c3...xn&lt;xn+1+cnc1,c2...cn为常量\begin{cases}         x_1 \lt x_2 +c">
 <meta property="og:locale">
 <meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805114952904.png">
-<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805114952904.png">
-<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805115215096.png">
-<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805150806951.png">
-<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805171657805.png">
-<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210806112911233.png">
+<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805115215096.png">
+<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805150806951.png">
+<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805171657805.png">
+<meta property="og:image" content="https://wangyuhang-cmd.github.io/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210806112911233.png">
 <meta property="article:published_time" content="2021-08-10T07:56:50.000Z">
-<meta property="article:modified_time" content="2021-08-10T08:36:15.830Z">
+<meta property="article:modified_time" content="2021-08-10T08:46:54.189Z">
 <meta property="article:author" content="Pipipapi">
 <meta property="article:tag" content="图论">
 <meta name="twitter:card" content="summary">
@@ -268,7 +267,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2021-08-10 15:56:50 / 修改时间：16:36:15" itemprop="dateCreated datePublished" datetime="2021-08-10T15:56:50+08:00">2021-08-10</time>
+      <time title="创建时间：2021-08-10 15:56:50 / 修改时间：16:46:54" itemprop="dateCreated datePublished" datetime="2021-08-10T15:56:50+08:00">2021-08-10</time>
     </span>
 
   
@@ -356,10 +355,9 @@ x_0=0
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">每</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">与</span><span class="mord cjk_fallback">其</span><span class="mord cjk_fallback">根</span><span class="mord cjk_fallback">节</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">被</span><span class="mord cjk_fallback">称</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">这</span><span class="mord cjk_fallback">个</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">祖</span><span class="mord cjk_fallback">先</span></span></span></span></span></p>
 <p><strong>绿色的点都是⭐的祖先</strong></p>
 <p><strong><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805114952904.png" class title="This is an test image"></strong></p>
-<p><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805114952904.png" alt="image-20210805114952904"></p>
 <p>当一个点同时是另外两个点的祖先时，成为这两点的公共祖先</p>
 <p><strong>紫色点是绿色与红色点的公共祖先</strong></p>
-<p><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805115215096.png" alt="image-20210805115215096"></p>
+<p><strong><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805115215096.png" class title="This is an test image"></strong></p>
 <h4 id="求法"><a class="markdownIt-Anchor" href="#求法"></a> 求法：</h4>
 <h5 id="1向上标记法"><a class="markdownIt-Anchor" href="#1向上标记法"></a> <strong>1.向上标记法</strong></h5>
 <p>从某一个点向上遍历并标记。再从另外一个点开始标记，标记到的第一个已经被标记到的点便是最近公共祖先</p>
@@ -387,14 +385,14 @@ x_0=0
 <h4 id="tarjan缩点离线求lca-onm"><a class="markdownIt-Anchor" href="#tarjan缩点离线求lca-onm"></a> Tarjan缩点———离线求LCA  O(n+m)</h4>
 <p><em>对向上标记法的优化，基于DFS</em></p>
 <p>DFS的过程中将点分成三类：</p>
-<p><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805150806951.png" alt="image-20210805150806951"></p>
+<p><strong><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805150806951.png" class title="This is an test image"></strong></p>
 <p>其中，绿色部分为已经被遍历且回溯的2类点，红色为正在遍历的1号点。对于每一个1号点与2号点的组合，他们的最近公共祖先一定在1号点的父辈节点上，因此可以考虑使用并查集将2类点压缩到1类点的路径上。</p>
 <p>如果求2区域内的点与x的最近公共祖先，可以将绿颜色部分（已经遍历且回溯过的点）合并到1区域的根节点上（使用并查集维护）</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">tarjan缩点step:</span><br><span class="line">	[<span class="number">1</span>]预处理步骤，存储所有询问，保存数组中时应该保存并双向，dfs出所有的点距</span><br><span class="line">tarjan:</span><br><span class="line">	[<span class="number">2</span>]类似于深度搜索，标记当前点为第<span class="number">1</span>类点（如上图红）</span><br><span class="line">    遍历所有以当前点为根节点的点，如果未被标记则搜索，然后并查集合并</span><br><span class="line">	[<span class="number">3</span>]对于与当前点有关的询问，如果另外一个点被标记为图上绿（已遍历且回溯）</span><br><span class="line">    则计算出距离并记录答案。</span><br><span class="line">    [<span class="number">4</span>]当前点已经被遍历且回溯，应当标记为第二类点</span><br></pre></td></tr></table></figure>
 <p>附上板子：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> father)</span></span>&#123; <span class="comment">//算出每个点到根节点的距离</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=h[u];~i;i=ne[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> j=e[i];</span><br><span class="line">        <span class="keyword">if</span>(j==father) <span class="keyword">continue</span>;</span><br><span class="line">        dist[j]=dist[u]+w[i];</span><br><span class="line">        <span class="built_in">dfs</span>(j,u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    st[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=h[u];~i;i=ne[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> j=e[i];</span><br><span class="line">        <span class="keyword">if</span>(!st[j])&#123;</span><br><span class="line">            <span class="built_in">tarjan</span>(j);</span><br><span class="line">            fa[j]=u;</span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;query[u].<span class="built_in">size</span>();i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> ver=query[u][i].x,id=query[u][i].y;</span><br><span class="line">        <span class="keyword">if</span>(st[ver]==<span class="number">2</span>)&#123; <span class="comment">//如果已经被划分到了左边被遍历过的子树中</span></span><br><span class="line">            <span class="keyword">int</span> root=<span class="built_in">find</span>(ver);</span><br><span class="line">            res[id]=dist[u]+dist[ver]<span class="number">-2</span>*dist[root];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    st[u]=<span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="rmqdfs序"><a class="markdownIt-Anchor" href="#rmqdfs序"></a> RMQ+DFS序</h5>
-<p><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210805171657805.png" alt="image-20210805171657805"></p>
+<p><strong><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210805171657805.png" class title="This is an test image"></strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>]深度优先搜索出这一颗树的dfs序（根节点出现多次）</span><br><span class="line">[<span class="number">2</span>]求节点x和节点y之间的最近公共祖先，</span><br><span class="line">   即在dfs序中任意x,y之间找最小值</span><br><span class="line">[<span class="number">3</span>]找区间最小值可以使用RMQ算法</span><br></pre></td></tr></table></figure>
 <h4 id="树上差分"><a class="markdownIt-Anchor" href="#树上差分"></a> 树上差分：</h4>
 <p>最近公共祖先减少2，两个节点各增加1</p>
@@ -407,7 +405,7 @@ x_0=0
 <p><em><strong>定义：对于一个有向图，连通分量中的任意两点u，v；必有可以从u走到v，也可以从v走到u</strong></em></p>
 <p>强连通分量：极大连通分量，即不能再增加点使得其仍然是一个连通分量</p>
 <p>作用：将一个有向图缩点成有向无环图(DAG)</p>
-<p><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6%5Cimage-20210806112911233.png" alt="image-20210806112911233"></p>
+<p><strong><img src="/2021/08/10/%E5%9B%BE%E8%AE%BA%E8%BF%9B%E9%98%B6/image-20210806112911233.png" class title="This is an test image"></strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">将点分为<span class="number">4</span>类：</span><br><span class="line">    [<span class="number">1</span>]树枝边  (x,y)</span><br><span class="line">    [<span class="number">2</span>]前向边  (a,b)</span><br><span class="line">    [<span class="number">3</span>]后向边  (m,n)</span><br><span class="line">    [<span class="number">4</span>]横叉边  (b,y)</span><br></pre></td></tr></table></figure>
 <p>问题：某一点是否在强连通分量中？</p>
 <ul>
