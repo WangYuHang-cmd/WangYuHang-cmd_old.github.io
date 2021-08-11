@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyuhang-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="拓扑排序： DFS实现 12345dfs(int u)&amp;#123;    for u 的所有邻点        seq&lt;-u&amp;#125;&#x2F;&#x2F;seq是拓扑排序的逆序 BFS 12345678910111213141516171819202122232425262728293031323334353637&#x2F;*对于一个序列x...y,对于图中的每一条有向边，x都出现y的前面即所有边都是从前指向后">
+<meta property="og:type" content="article">
+<meta property="og:title" content="初涉图论">
+<meta property="og:url" content="https://wangyuhang-cmd.github.io/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/index.html">
+<meta property="og:site_name" content="Pipipapi">
+<meta property="og:description" content="拓扑排序： DFS实现 12345dfs(int u)&amp;#123;    for u 的所有邻点        seq&lt;-u&amp;#125;&#x2F;&#x2F;seq是拓扑排序的逆序 BFS 12345678910111213141516171819202122232425262728293031323334353637&#x2F;*对于一个序列x...y,对于图中的每一条有向边，x都出现y的前面即所有边都是从前指向后">
+<meta property="og:locale">
+<meta property="article:published_time" content="2021-07-05T10:08:27.000Z">
+<meta property="article:modified_time" content="2021-08-11T14:58:57.269Z">
+<meta property="article:author" content="Pipipapi">
+<meta property="article:tag" content="图论">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://wangyuhang-cmd.github.io/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://wangyuhang-cmd.github.io/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/","path":"2021/07/05/初涉图论/","title":"初涉图论"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>初涉图论 | Pipipapi</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c67264c02b274042c3bbaefae8f36c81"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Pipipapi" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Pipipapi</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类</a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档</a></li>
+        <li class="menu-item menu-item-schedule"><a href="/schedule" rel="section">日程表</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F"><span class="nav-number">1.</span> <span class="nav-text"> 拓扑排序：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%9F%AD%E8%B7%AF%E7%AE%97%E6%B3%95%E7%9F%A5%E8%AF%86%E7%BB%93%E6%9E%84%E5%9B%BE"><span class="nav-number"></span> <span class="nav-text"> 最短路算法知识结构图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0%E7%89%88dijkstra%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text"> 朴素版Dijkstra算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%B4%E7%B4%A0dijstra%E8%A7%A3%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text"> 朴素Dijstra解法：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text"> 代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bellman_ford%E7%AE%97%E6%B3%95-onm"><span class="nav-number"></span> <span class="nav-text"> Bellman_Ford算法 O(n*m)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="nav-number">1.</span> <span class="nav-text"> 代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#spfa%E7%AE%97%E6%B3%95"><span class="nav-number"></span> <span class="nav-text"> SPFA算法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.</span> <span class="nav-text"> 步骤：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-3"><span class="nav-number">2.</span> <span class="nav-text"> 代码：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#floyd%E7%AE%97%E6%B3%95-on3"><span class="nav-number"></span> <span class="nav-text"> Floyd算法 O(n^3)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#floyd%E7%AE%97%E6%B3%95%E7%94%A8%E6%9D%A5%E8%A7%A3%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text"> Floyd算法用来解决的问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%A0%E9%80%92%E9%97%AD%E5%8C%85"><span class="nav-number">1.1.</span> <span class="nav-text"> 传递闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%81%B0%E5%A5%BD%E7%BB%8F%E8%BF%87k%E6%9D%A1%E8%BE%B9%E7%9A%84%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E4%B9%8B%E6%94%B9%E8%BF%9Bfloyd"><span class="nav-number">1.2.</span> <span class="nav-text"> 恰好经过k条边的最短路径之改进Floyd</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Pipipapi"
+      src="/images/wyh.jpg">
+  <p class="site-author-name" itemprop="name">Pipipapi</p>
+  <div class="site-description" itemprop="description">临溪羡鱼，不如退而结网</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WangYuHang-cmd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;WangYuHang-cmd" rel="noopener" target="_blank"></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/WangYuHang-cmd" title="https:&#x2F;&#x2F;github.com&#x2F;WangYuHang-cmd" rel="noopener" target="_blank">GitHub</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://codeforces.com/profile/pipippapi" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;pipippapi" rel="noopener" target="_blank">Codeforces</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/m0_51780913?spm=1001.2101.3001.5343" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51780913?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank">CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://home.cnblogs.com/u/pipipapi" title="https:&#x2F;&#x2F;home.cnblogs.com&#x2F;u&#x2F;pipipapi" rel="noopener" target="_blank">博客园</a>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/wyh.jpg">
+      <meta itemprop="name" content="Pipipapi">
+      <meta itemprop="description" content="临溪羡鱼，不如退而结网">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pipipapi">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          初涉图论
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-05 18:08:27" itemprop="dateCreated datePublished" datetime="2021-07-05T18:08:27+08:00">2021-07-05</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-11 22:58:57" itemprop="dateModified" datetime="2021-08-11T22:58:57+08:00">2021-08-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/" class="post-meta-item leancloud_visitors" data-flag-title="初涉图论" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/07/05/初涉图论/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h4 id="拓扑排序"><a class="markdownIt-Anchor" href="#拓扑排序"></a> 拓扑排序：</h4>
+<p>DFS实现</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dfs</span>(<span class="keyword">int</span> u)&#123;</span><br><span class="line">    <span class="keyword">for</span> u 的所有邻点</span><br><span class="line">        seq&lt;-u</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//seq是拓扑排序的逆序</span></span><br></pre></td></tr></table></figure>
+<p>BFS</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*对于一个序列x...y,对于图中的每一条有向边，x都出现y的前面</span></span><br><span class="line"><span class="comment">即所有边都是从前指向后的</span></span><br><span class="line"><span class="comment">只要有环，必然无拓扑序列</span></span><br><span class="line"><span class="comment">有向无环图必然存在拓扑序列</span></span><br><span class="line"><span class="comment">入度为0的点都可以排在前面</span></span><br><span class="line"><span class="comment">做法：</span></span><br><span class="line"><span class="comment">1.把所有入度为0的点入队</span></span><br><span class="line"><span class="comment">2.bfs()</span></span><br><span class="line"><span class="comment">while(!Q&gt;empty())&#123;</span></span><br><span class="line"><span class="comment">    t.push(队头)</span></span><br><span class="line"><span class="comment">    队头-&gt;t</span></span><br><span class="line"><span class="comment">    枚举t的所有出边&#123;</span></span><br><span class="line"><span class="comment">        删除t-&gt;j,d[j]--;</span></span><br><span class="line"><span class="comment">        if(d[j]==0) j入队</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">topsort</span><span class="params">()</span></span>&#123;</span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; Q;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(d[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            Q.<span class="built_in">push</span>(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!Q.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        <span class="keyword">int</span> t=Q.<span class="built_in">front</span>();ds.<span class="built_in">push_back</span>(Q.<span class="built_in">front</span>());</span><br><span class="line">        Q.<span class="built_in">pop</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=h[t];i!=<span class="number">-1</span>;i=ne[i])&#123;</span><br><span class="line">            <span class="keyword">int</span> j=e[i];</span><br><span class="line">            d[j]--;</span><br><span class="line">            <span class="keyword">if</span>(d[j]==<span class="number">0</span>) Q.<span class="built_in">push</span>(j);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> sz=ds.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">return</span> sz&gt;=n;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="最短路算法知识结构图"><a class="markdownIt-Anchor" href="#最短路算法知识结构图"></a> 最短路算法知识结构图</h3>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">最短路问题&#123;</span></span><br><span class="line"><span class="comment">    单源最短路&#123;</span></span><br><span class="line"><span class="comment">        1.所有边权都是正数&#123;</span></span><br><span class="line"><span class="comment">            1.朴素Dijkstra算法 O(n^2) 适用于稠密图</span></span><br><span class="line"><span class="comment">            </span></span><br><span class="line"><span class="comment">            2.堆优化的Dijkstra O(mlog(n)) 适用于稀疏图</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">        </span></span><br><span class="line"><span class="comment">        2.存在负权边&#123;</span></span><br><span class="line"><span class="comment">            1.Bellman-Ford O(nm)</span></span><br><span class="line"><span class="comment">            </span></span><br><span class="line"><span class="comment">            2.SPFA 一般O(m)最坏O(nm)</span></span><br><span class="line"><span class="comment">        &#125;</span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">    多源汇最短路&#123;</span></span><br><span class="line"><span class="comment">			Floyed算法	        </span></span><br><span class="line"><span class="comment">    &#125;</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>稠密图：一般边数m=n^2</p>
+<p>稀疏图：边数m=n</p>
+<p>Dijkstra基于贪心算法</p>
+<p>Floyed基于动态规划</p>
+<p>Bellman-Ford基于离散数学中的知识</p>
+<hr>
+<h2 id="朴素版dijkstra算法"><a class="markdownIt-Anchor" href="#朴素版dijkstra算法"></a> 朴素版Dijkstra算法</h2>
+<p>s={当前已经确定最短距离的点}</p>
+<p>1.初始化</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dis[<span class="number">1</span>]=<span class="number">0</span>,dis[otherwise]=+∞</span><br></pre></td></tr></table></figure>
+<p>2.循环迭代(贪婪规则：更新当前还没有确定的点中距离最小的点）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i:<span class="number">0</span>~n)迭代循环n次</span><br><span class="line">不在s中的距离最近的点-&gt;t</span><br><span class="line">t-&gt;s <span class="comment">//将t加到s集合内</span></span><br><span class="line">用t来更新其他点的距离(<span class="built_in">check</span>(dis[x]&gt;dis[t])</span><br></pre></td></tr></table></figure>
+<p>3.可确定每一个点到起点的最短距离了</p>
+<p>存法：使用邻接矩阵(因为是稠密图)</p>
+<h4 id="朴素dijstra解法"><a class="markdownIt-Anchor" href="#朴素dijstra解法"></a> 朴素Dijstra解法：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> dis[MAXN],g[MAXN][MAXN];</span><br><span class="line"><span class="keyword">bool</span> st[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f3f3f3f</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(dis));</span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> t=<span class="number">-1</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            <span class="keyword">if</span>(!st[j] &amp;&amp; (t==<span class="number">-1</span>||dis[t]&gt;dis[j]))</span><br><span class="line">                t=j;</span><br><span class="line">		<span class="keyword">if</span>(t==n) <span class="keyword">break</span>;</span><br><span class="line">        st[t]=<span class="literal">true</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">            dis[j]=<span class="built_in">min</span>(dis[j],dis[t]+g[t][j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断一下是否是孤立点</span></span><br><span class="line">    <span class="keyword">if</span>(dis[n]==<span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> dis[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<p>如果是稀疏图的话，对照上面的朴素Dijkstra，我们可以在这一步：</p>
+<p>2.循环迭代(贪婪规则：更新当前还没有确定的点中距离最小的点）</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(i:<span class="number">0</span>~n)迭代循环n次</span><br><span class="line">不在s中的距离最近的点-&gt;<span class="function">t  ****************<span class="title">O</span><span class="params">(n^<span class="number">2</span>)</span></span></span><br><span class="line"><span class="function">t-&gt;s <span class="comment">//将t加到s集合内</span></span></span><br><span class="line"><span class="function">用t来更新其他点的距离<span class="params">(check(dis[x]&gt;dis[t]) ***O(mlogn)</span></span></span><br></pre></td></tr></table></figure>
+<p><em><strong>此处使用堆来进行优化，直接借助于STL中的prority_queue或者手写堆（Python中的set）</strong></em></p>
+<p>bfs的迭代方式</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>先将(<span class="number">0</span>,<span class="number">1</span>)放入优先队列 <span class="comment">//必须是小根堆</span></span><br><span class="line"><span class="number">2.</span><span class="keyword">while</span>！empty:取堆顶元素并弹出,如果此点已经被更新过了则继续迭代。</span><br><span class="line">否则用当前点来更新其他点(遍历邻接表)，记住，一定要将此点放入st[]数组来被标记</span><br><span class="line">如果当前点距离大于从最近元素过来的距离，则更新dis[]并把j点放入优先队列；</span><br><span class="line"><span class="number">3.</span>最后结束的时候需要判断是否是孤立点，即是否为连通图</span><br></pre></td></tr></table></figure>
+<h4 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用邻接表存储稀疏图</span></span><br><span class="line"><span class="keyword">int</span> n,m,idx;</span><br><span class="line"><span class="keyword">int</span> h[MAXN],e[MAXN],ne[MAXN],w[MAXN];<span class="comment">//h[]存储每个邻接表上的头结点；ne[]存的是每个节点的下一个节点，即next；w存储权重</span></span><br><span class="line"><span class="keyword">int</span> dis[MAXN];</span><br><span class="line"><span class="keyword">bool</span> st[MAXN];</span><br><span class="line"><span class="comment">//pair的first存的是距离，second存的是编号</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>&#123;</span><br><span class="line">    e[idx]=b,w[idx]=c;</span><br><span class="line">    ne[idx]=h[a],h[a]=idx++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dijkstra</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(dis));</span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    priority_queue&lt;pii,vector&lt;pii&gt;,greater&lt;pii&gt;&gt; heap; <span class="comment">//存储一个小根堆</span></span><br><span class="line">    heap.<span class="built_in">push</span>(&#123;<span class="number">0</span>,<span class="number">1</span>&#125;);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">while</span>(heap.<span class="built_in">size</span>())&#123;</span><br><span class="line">        <span class="keyword">auto</span> u = heap.<span class="built_in">top</span>();heap.<span class="built_in">pop</span>();</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">int</span> ver = u.second,distance = u.first;  <span class="comment">//ver存储点的序号，distance存储距离</span></span><br><span class="line">        <span class="keyword">if</span>(st[ver]) </span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        st[ver]=<span class="literal">true</span>; <span class="comment">//这nm千万别忘了啊</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=h[ver];i!=<span class="number">-1</span>;i=ne[i])&#123;</span><br><span class="line">            <span class="keyword">int</span> j=e[i];</span><br><span class="line">            <span class="keyword">if</span>(dis[j]&gt;distance+w[i])&#123;</span><br><span class="line">                dis[j]=distance+w[i];</span><br><span class="line">                heap.<span class="built_in">push</span>(&#123;dis[j],j&#125;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dis[n]==<span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> dis[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="bellman_ford算法-onm"><a class="markdownIt-Anchor" href="#bellman_ford算法-onm"></a> Bellman_Ford算法 O(n*m)</h3>
+<p>任意存边方式都可，建议结构体</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(n次)&#123;</span><br><span class="line">	备份（防止用更新过的点更新其他点）</span><br><span class="line">	<span class="keyword">for</span> 所有从a走到b的边，权重是w&#123;</span><br><span class="line">		dis[b]=<span class="built_in">min</span>(dis[b],dis[a]+w);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>循环完，所有边都满足三角不等式dis[b]&lt;=dis[a]+w;迭代k次表示经过不超过k条边的最短路的距离。如果第n次迭代仍然有边更新，根据抽屉原理，说明有负环。因此，Bellman-Ford算法可以用来找负环。</p>
+<p>注意：如果有负权回路，最短路不一定存在</p>
+<h4 id="代码-2"><a class="markdownIt-Anchor" href="#代码-2"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 10010</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> maxn 510</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Edge</span>&#123;</span></span><br><span class="line">    <span class="keyword">int</span> a,b,w;  </span><br><span class="line">&#125; edge[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> dis[MAXN],backup[MAXN];</span><br><span class="line"><span class="keyword">int</span> n,m,k;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">bellman_ford</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(dis));</span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="comment">//n次迭代,又名松弛操作</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=k;i++)&#123;</span><br><span class="line">        <span class="built_in">memcpy</span>(backup,dis,<span class="built_in"><span class="keyword">sizeof</span></span>(dis));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line">            <span class="keyword">int</span> a=edge[j].a,b=edge[j].b,w=edge[j].w;</span><br><span class="line">            dis[b]=<span class="built_in">min</span>(dis[b],backup[a]+w);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dis[n]&gt;<span class="number">0x3f3f3f3f</span>/<span class="number">2</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> dis[n];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;n,&amp;m,&amp;k);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> a,b,w;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d%d&quot;</span>,&amp;a,&amp;b,&amp;w);</span><br><span class="line">        edge[i].a=a,edge[i].b=b,edge[i].w=w;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> t=<span class="built_in">bellman_ford</span>();</span><br><span class="line">    <span class="keyword">if</span>(t==<span class="number">-1</span>) <span class="built_in">puts</span>(<span class="string">&quot;impossible&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,t);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="spfa算法"><a class="markdownIt-Anchor" href="#spfa算法"></a> SPFA算法</h3>
+<h4 id="步骤"><a class="markdownIt-Anchor" href="#步骤"></a> 步骤：</h4>
+<pre><code>0.用邻接表存储1.队头入队，更新st数组2.BFS思路while队列不空,t&lt;-q.front(),p.pop()3.遍历t的邻接表，更新dis[]数组，即t每一出点的最小距离；4.在每一出点判断，如果不在队列里，则加入队列；5.最后迭代完之后的判断
+</code></pre>
+<p>​</p>
+<h4 id="代码-3"><a class="markdownIt-Anchor" href="#代码-3"></a> 代码：</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 160010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用邻接表存储稀疏图</span></span><br><span class="line"><span class="keyword">int</span> n,m,idx;</span><br><span class="line"><span class="keyword">int</span> h[MAXN],e[MAXN],ne[MAXN],w[MAXN];<span class="comment">//h[]存储每个邻接表上的头结点；ne[]存的是每个节点的下一个节点，即next；w存储权重</span></span><br><span class="line"><span class="keyword">int</span> dis[MAXN];</span><br><span class="line"><span class="keyword">bool</span> st[MAXN];</span><br><span class="line"><span class="comment">//pair的first存的是距离，second存的是编号</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">memset</span>(dis,<span class="number">0x3f</span>,<span class="built_in"><span class="keyword">sizeof</span></span>(dis));</span><br><span class="line">    dis[<span class="number">1</span>]=<span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; Q;</span><br><span class="line">    Q.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">    st[<span class="number">1</span>]=<span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">while</span>(Q.<span class="built_in">size</span>())&#123;</span><br><span class="line">        <span class="keyword">int</span> t=Q.<span class="built_in">front</span>();Q.<span class="built_in">pop</span>();</span><br><span class="line">        st[t]=<span class="literal">false</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=h[t];i!=<span class="number">-1</span>;i=ne[i])&#123;</span><br><span class="line">            <span class="keyword">int</span> j=e[i];</span><br><span class="line">            <span class="keyword">if</span>(dis[j]&gt;dis[t]+w[i])&#123;</span><br><span class="line">                dis[j]=dis[t]+w[i];</span><br><span class="line">                <span class="keyword">if</span>(!st[j])&#123;</span><br><span class="line">                    Q.<span class="built_in">push</span>(j);</span><br><span class="line">                    st[j]=<span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dis[n]==<span class="number">0x3f3f3f3f</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">return</span> dis[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>求负环：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">spfa</span><span class="params">()</span></span>&#123;    </span><br><span class="line">    <span class="comment">//memset(dis,0x3f,sizeof(dis));    </span></span><br><span class="line">    <span class="comment">//dis[1]=0;    </span></span><br><span class="line">    queue&lt;<span class="keyword">int</span>&gt; Q;    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;        </span><br><span class="line">        st[i]=<span class="literal">true</span>;        </span><br><span class="line">        Q.<span class="built_in">push</span>(i);    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">while</span>(Q.<span class="built_in">size</span>())&#123;        </span><br><span class="line">        <span class="keyword">int</span> t=Q.<span class="built_in">front</span>();Q.<span class="built_in">pop</span>();        </span><br><span class="line">        st[t]=<span class="literal">false</span>;        </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=h[t];i!=<span class="number">-1</span>;i=ne[i])&#123;            </span><br><span class="line">            <span class="keyword">int</span> j=e[i];            </span><br><span class="line">                                      </span><br><span class="line">            <span class="keyword">if</span>(dis[j]&gt;dis[t]+w[i])&#123;                </span><br><span class="line">                dis[j]=dis[t]+w[i];                </span><br><span class="line">                cnt[j] = cnt[t]+<span class="number">1</span>;                </span><br><span class="line">                <span class="keyword">if</span>(cnt[j]&gt;n) <span class="keyword">return</span> <span class="literal">true</span>;                </span><br><span class="line">                <span class="keyword">if</span>(!st[j])&#123;                    </span><br><span class="line">                    Q.<span class="built_in">push</span>(j);                    </span><br><span class="line">                    st[j]=<span class="literal">true</span>;                </span><br><span class="line">                &#125;            </span><br><span class="line">            &#125;        </span><br><span class="line">        &#125;    </span><br><span class="line">    &#125;    </span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="floyd算法-on3"><a class="markdownIt-Anchor" href="#floyd算法-on3"></a> Floyd算法 O(n^3)</h3>
+<p>1.邻接矩阵 d [ i , j ] 存图中每个点</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(k=<span class="number">1</span>~n)	</span><br><span class="line">   	<span class="keyword">for</span>(i=<span class="number">1</span>~n)		</span><br><span class="line">        <span class="keyword">for</span>(j=<span class="number">1</span>~n)			</span><br><span class="line">            d[i][j]=<span class="built_in">min</span>(d[i][j],d[i][k]+d[k][j];</span><br></pre></td></tr></table></figure>
+<p>d[k,i,j]表示从i点经过1~k中间点到达j的最短距离<br>
+因此基于动态规划的状态转移方程为：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d[k,i,j]=<span class="built_in">min</span>(d[k,i,j],d[k<span class="number">-1</span>,i,k]+d[k<span class="number">-1</span>,k,j])</span><br></pre></td></tr></table></figure>
+<p>从i到j只经过k-1这些点，再从k到j只经过1<sub>k-1这些点，加在一起就是从i</sub>j经过k个点,而k-1可以压缩掉，故状态转移方程为</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">d[i][j]=<span class="built_in">min</span>(d[i][j],d[i][k]+d[k][j];</span><br></pre></td></tr></table></figure>
+<h4 id="floyd算法用来解决的问题"><a class="markdownIt-Anchor" href="#floyd算法用来解决的问题"></a> Floyd算法用来解决的问题：</h4>
+<p>​	1.最短路问题</p>
+<p>​	2.传递闭包</p>
+<p>​	3.找最小环</p>
+<p>​	4.恰好经过k条边的最短路径</p>
+<h5 id="传递闭包"><a class="markdownIt-Anchor" href="#传递闭包"></a> 传递闭包</h5>
+<p>在有向图中，能间接到的点也连一条有向边</p>
+<p>邻接矩阵的表示方式：已知g(i,j),求d(i,j)</p>
+<p>1.初始化 d(i,j)=g(i,j)</p>
+<p>2.对d(i,j)做一遍Floyd</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">g</span>(i,j)=存在i-&gt;j?<span class="number">1</span>:<span class="number">0</span></span><br><span class="line">    <span class="comment">//Floyd</span></span><br><span class="line">    <span class="keyword">for</span> k:n	</span><br><span class="line">        <span class="keyword">for</span> i:n		</span><br><span class="line">            <span class="keyword">for</span> j:n			</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">d</span>(i,k)==<span class="number">1</span>&amp;&amp;<span class="built_in">d</span>(k,j)==<span class="number">1</span>)                					<span class="built_in">d</span>(i,j)=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p>矛盾的判断方式：d(i,i)=1</p>
+<p>能唯一确定的判断方式: i != j 必有 d(i,j) | d(j,i) == 1</p>
+<p>顺序不唯一：处于中间阶段</p>
+<h5 id="恰好经过k条边的最短路径之改进floyd"><a class="markdownIt-Anchor" href="#恰好经过k条边的最短路径之改进floyd"></a> 恰好经过k条边的最短路径之改进Floyd</h5>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Floyd:  d[k,i,j]表示从i到j只经过<span class="number">1</span>-k的最短路径</span><br><span class="line">本思路： d[k,i,j]表示从i到j，恰好经过k条边的最短路径</span><br><span class="line">则状态转移方程为：</span><br><span class="line">    d[a+b,i,j]=<span class="built_in">min</span>(d[a,i,k]+d[b,k,j]) k=<span class="number">1</span>-n</span><br></pre></td></tr></table></figure>
+<p>k指的是第a个点，此算法可以处理有负环的情况</p>
+<p>使用倍增的思想来拼接，用logn的复杂度逼近k</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的鼓励就是作者创造的动力！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Pipipapi 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Pipipapi 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/Touchpoints.png">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"># 图论</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/07/01/STL%E8%AF%A6%E8%A7%A3/" rel="prev" title="STL详解">
+                  <i class="fa fa-chevron-left"></i> STL详解
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/07/15/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" rel="next" title="动态规划">
+                  动态规划 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Pipipapi</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script src="https://embed.widgetpack.com/widget.js" async></script>
+  <script class="next-config" data-name="rating" type="application/json">{"enable":true,"id":null,"color":"#fc6423"}</script>
+  <script src="/js/third-party/rating.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"5km7mC19CqMC81leGWvSFqO8-9Nh9j0Va","app_key":"P0OndA0Oa0E85pyvMOY6L2dq","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/katex.min.css" integrity="sha256-hFAmQt2dGk6G99nu2cEWz8/1JGRnBP/BsGoZwQ7WeLE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/copy-tex.min.css" integrity="sha256-+oItviPaTmqjDhk4y4fLLUIMgRQYDV/ZyrRNvQiebWM=" crossorigin="anonymous">
+  <script class="next-config" data-name="katex" type="application/json">{"copy_tex_js":{"url":"https://cdn.jsdelivr.net/npm/katex@0.13.11/dist/contrib/copy-tex.min.js","integrity":"sha256-etSqbSVF4+Lwe8MGk/Vanc1sR+mWv+qOG73fxWw9p94="}}</script>
+  <script src="/js/third-party/math/katex.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wangyuhang-cmd.github.io/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvB2wuVP","appkey":"581fa306a60a3f8d982e8d99f42f76cc"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
