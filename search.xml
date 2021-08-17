@@ -1533,7 +1533,14 @@ x_0=0
   <entry>
     <title>AC自动机</title>
     <url>/2021/08/17/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="ac自动机"><a class="markdownIt-Anchor" href="#ac自动机"></a> AC自动机</h1>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>AC自动机</tag>
+      </tags>
   </entry>
   <entry>
     <title>Codeforces Round</title>
