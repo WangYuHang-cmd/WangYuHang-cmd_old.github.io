@@ -1329,4 +1329,101 @@ min\{cnt_{出度为0},cnt_{入度为0}\}</script><hr>
         <tag>图论</tag>
       </tags>
   </entry>
+  <entry>
+    <title>矩阵快速幂</title>
+    <url>/2021/08/19/%E7%9F%A9%E9%98%B5%E5%BF%AB%E9%80%9F%E5%B9%82/</url>
+    <content><![CDATA[<h1 id="矩阵快速幂"><a href="#矩阵快速幂" class="headerlink" title="矩阵快速幂"></a>矩阵快速幂</h1><p>预备知识（矩阵乘法）：<a href="http://www.51nod.com/Challenge/Problem.html#problemId=1137">http://www.51nod.com/Challenge/Problem.html#problemId=1137</a></p>
+<h5 id="引子："><a href="#引子：" class="headerlink" title="引子："></a>引子：</h5><ul>
+<li>求斐波那契数列的第n项</li>
+</ul>
+<p>思路：借助于矩阵运算和快速幂：</p>
+<p>设fn表示斐波那契数列的第n项，我们定义运算矩阵第n项Fn：</p>
+<script type="math/tex; mode=display">
+F_n=
+\left [
+\begin{array}{c:c}
+\begin{matrix}
+f_n & f_{n+1}
+\end{matrix}
+\end{array}
+\right ]</script><p>和第n+1项：</p>
+<script type="math/tex; mode=display">
+F_{n+1}=
+\left [
+\begin{array}{c:c}
+\begin{matrix}
+f_{n+1} & f_{n+2}
+\end{matrix}
+\end{array}
+\right ]</script><p>于是乎，我们可以借助矩阵乘法来寻找二者的关系，于是找到斐波那契的基底矩阵A：</p>
+<script type="math/tex; mode=display">
+A = 
+\left [
+\begin{array}{c:c}
+\begin{matrix}
+0 & 1 \\
+1 & 1 \\
+\end{matrix}
+\end{array}
+\right ]</script><p>满足以下变换：</p>
+<script type="math/tex; mode=display">
+F_{n+1}=
+\left [
+\begin{array}{c:c}
+\begin{matrix}
+f_{n+1} & f_{n+2}
+\end{matrix}
+\end{array}
+\right ]
+=\left [
+\begin{array}{c:c}
+\begin{matrix}
+f_n & f_{n+1}
+\end{matrix}
+\end{array}
+\right ]
+\cdot
+\left [
+\begin{array}{c:c}
+\begin{matrix}
+0 & 1 \\
+1 & 1 \\
+\end{matrix}
+\end{array}
+\right ]
+=F_n \cdot A</script><p>因此可以递推得到得到：</p>
+<script type="math/tex; mode=display">
+F_{n}=F_1 \cdot A^{n-1}</script><h5 id="问题二：求斐波那契数列的前n项和？我们只需要将原矩阵改一改即可"><a href="#问题二：求斐波那契数列的前n项和？我们只需要将原矩阵改一改即可" class="headerlink" title="问题二：求斐波那契数列的前n项和？我们只需要将原矩阵改一改即可"></a><strong>问题二：求斐波那契数列的前n项和？我们只需要将原矩阵改一改即可</strong></h5><script type="math/tex; mode=display">
+F_n=
+\left [
+\begin{array}{c:c}
+\begin{matrix}
+f_n & f_{n+1} & S_n
+\end{matrix}
+\end{array}
+\right ]</script><p>A矩阵;</p>
+<script type="math/tex; mode=display">
+A = 
+\left [
+\begin{array}{c:c}
+\begin{matrix}
+0 & 1 & 0 \\
+1 & 1 & 1 \\
+0 & 0 & 1 \\
+\end{matrix}
+\end{array}
+\right ]</script><p>有递推公式：</p>
+<script type="math/tex; mode=display">
+F_{n}=F_1 \cdot A^{n-1}</script><p>完整代码：</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> N 3</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> x first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> y second </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span></span>&#123;x=<span class="number">0</span>;<span class="keyword">int</span> f=<span class="number">1</span>;<span class="keyword">char</span> ch=<span class="built_in">getchar</span>();<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))&#123;<span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>)f=<span class="number">-1</span>;ch=<span class="built_in">getchar</span>();&#125;<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))&#123;x=x*<span class="number">10</span>+(ch^<span class="number">48</span>);ch=<span class="built_in">getchar</span>();&#125;x*=f;<span class="keyword">return</span>;&#125;</span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span></span>&#123;<span class="keyword">if</span>(x&lt;<span class="number">0</span>)&#123;<span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>);x=-x;&#125;<span class="keyword">if</span>(x&gt;<span class="number">9</span>)<span class="built_in">write</span>(x/<span class="number">10</span>);<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">&#x27;0&#x27;</span>);<span class="keyword">return</span>;&#125;      </span><br><span class="line"><span class="comment">//================================= </span></span><br><span class="line">LL n;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> m=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">LL a[N][N] = &#123; &#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">0</span>&#125;,</span><br><span class="line">                &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;,</span><br><span class="line">                &#123;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>&#125; &#125;;</span><br><span class="line">LL start[<span class="number">3</span>]=&#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mul</span><span class="params">(LL res[],LL start[],LL a[][N])</span></span>&#123;</span><br><span class="line">    LL temp[N]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++)&#123;</span><br><span class="line">            temp[i]=(temp[i]+start[j]*a[j][i])%m;</span><br><span class="line">        &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(res,temp,<span class="keyword">sizeof</span> temp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">multy</span><span class="params">(LL a[][N],LL b[][N],LL c[][N])</span></span>&#123;</span><br><span class="line">    LL temp[N][N]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;N;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;N;j++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;N;k++)&#123;</span><br><span class="line">                temp[i][j]=(temp[i][j]+(LL)b[i][k]*c[k][j])%m;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memcpy</span>(a,temp,<span class="keyword">sizeof</span> temp);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//=================================</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(--n;n;n&gt;&gt;=<span class="number">1</span>)&#123;</span><br><span class="line">	    <span class="keyword">if</span>(n&amp;<span class="number">1</span>) <span class="built_in">mul</span>(start,start,a);</span><br><span class="line">	    <span class="built_in">multy</span>(a,a,a);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">write</span>(start[<span class="number">1</span>]);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>牛刀小试：</p>
+<p><a href="http://newoj.acmclub.cn/problems/2088">http://newoj.acmclub.cn/problems/2088</a></p>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>矩阵快速幂</tag>
+      </tags>
+  </entry>
 </search>
