@@ -972,7 +972,7 @@ request head请求头，我们需要在请求头里寻找。<br>
     <url>/2021/08/16/%E5%B9%B3%E8%A1%A1%E6%A0%91/</url>
     <content><![CDATA[<h1 id="平衡树"><a class="markdownIt-Anchor" href="#平衡树"></a> 平衡树</h1>
 <p>欢迎来到二叉搜索树的世界，在这里，你将会见到：treap,红黑树，splay，sbt，AVL…</p>
-<p>对于对二叉搜索树的操作，我们可以将其分成：</p>
+<p>对于对二叉搜索树的操作，我们可以将其分成了：</p>
 <ul>
 <li>有旋转（AVL,Splay,红黑树）</li>
 <li>无旋转（替罪羊树，fhq Treap…）</li>
