@@ -93,7 +93,7 @@
         <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签<span class="badge">26</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类<span class="badge">11</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">32</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -166,7 +166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -236,6 +236,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pipipapi.png">
+      <meta itemprop="name" content="Pipipapi">
+      <meta itemprop="description" content="兴趣使然">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pipipapi">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/01/STL%E8%AF%A6%E8%A7%A3/" class="post-title-link" itemprop="url">STL详解</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-01 22:46:20" itemprop="dateCreated datePublished" datetime="2021-07-01T22:46:20+08:00">2021-07-01</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-19 22:51:19" itemprop="dateModified" datetime="2021-08-19T22:51:19+08:00">2021-08-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/C-%E8%AF%AD%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">C++语法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/07/01/STL%E8%AF%A6%E8%A7%A3/" class="post-meta-item leancloud_visitors" data-flag-title="STL详解" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/07/01/STL%E8%AF%A6%E8%A7%A3/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/" class="cy_cmt_count" data-xid="2021/07/01/STL详解/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*STL笔记部分*/</span></span><br><span class="line"></span><br><span class="line">vector动态数组&#123;</span><br><span class="line">    <span class="built_in">size</span>()</span><br><span class="line">    <span class="built_in">empty</span>()</span><br><span class="line">    <span class="built_in">claer</span>()...</span><br><span class="line">    <span class="comment">//系统位某一程序申请空间的所需时间与空间大小无关，与次数有关,因此需要倍增vector</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>,<span class="number">3</span>)</span></span>; <span class="comment">//定义长度位10的vector每个数初始化为3</span></span><br><span class="line">    遍历方式：</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;::iterator it;<span class="comment">//迭代器遍历</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:a) ... <span class="comment">//C++11特性</span></span><br><span class="line">    支持比较运算，按字典序比较大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pair&#123;</span><br><span class="line">    可以存储一个二元组pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;</span><br><span class="line">    p.first,p.second分别取第一个第二的元素</span><br><span class="line">    支持比较运算，按照字典序，以first为第一关键字，second为第二关键字</span><br><span class="line">    p=<span class="built_in">make_pair</span>(a,b) <span class="comment">//pair的构造</span></span><br><span class="line">    p=&#123;a,b&#125; <span class="comment">//c++11</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">string字符串&#123;</span><br><span class="line">    <span class="built_in">c_str</span>() <span class="comment">//返回string对应的字符数组的头指针</span></span><br><span class="line">    如果使用<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,p.<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">queue 队列</span><br><span class="line"><span class="built_in">priority_queue</span>(优先队列/堆)&#123;</span><br><span class="line">    <span class="comment">//默认是大根堆</span></span><br><span class="line">    改成小根堆：</span><br><span class="line">        <span class="number">1.</span>插入负数</span><br><span class="line">        <span class="number">2.</span>priority_queue&lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; heap;</span><br><span class="line">    <span class="built_in">push</span>(); 插入</span><br><span class="line">    <span class="built_in">top</span>();</span><br><span class="line">    <span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br><span class="line">stack 栈</span><br><span class="line"><span class="built_in">deque</span>(双端队列,效率低)</span><br><span class="line">set,multiset&#123;</span><br><span class="line">    <span class="comment">//set里面不能有重复元素，multiset里面可以有重复元素</span></span><br><span class="line">    set/multiset:</span><br><span class="line">        <span class="built_in">insert</span>()</span><br><span class="line">        <span class="built_in">find</span>() <span class="comment">//不存在返回end迭代器</span></span><br><span class="line">        count返回某个数的个数</span><br><span class="line">        <span class="built_in">erase</span>()</span><br><span class="line">            (<span class="number">1</span>)<span class="built_in">erase</span>(x),删除所有这个数</span><br><span class="line">            (<span class="number">2</span>)<span class="built_in">erase</span>(it)，删除此迭代器</span><br><span class="line">        <span class="built_in">lower_bound</span>(x)返回大于等于x的最小的数</span><br><span class="line">        <span class="built_in">upper_bound</span>(x)返回大于x的最小的数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map,multimap 基于平衡二叉树(红黑树)实现，动态维护有序序列&#123;</span><br><span class="line">    <span class="built_in">insert</span>();   插入的是<span class="function">pair</span></span><br><span class="line"><span class="function">    <span class="title">erase</span><span class="params">()</span></span>;    输入的参数是pair或者迭代器</span><br><span class="line">    [] 映射，<span class="built_in">O</span>(logn)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(哈希表)&#123;</span><br><span class="line">unordered_set</span><br><span class="line">unordered_map</span><br><span class="line">unordered_multiset</span><br><span class="line">unordered_multima</span><br><span class="line">    <span class="comment">//增删改查是O(1);</span></span><br><span class="line">    <span class="comment">//不支持upper_bound和lower_bound</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">bitset</span>(位存储，状态压缩)&#123;</span><br><span class="line">    <span class="keyword">bool</span> a[<span class="number">1024</span>]=<span class="number">1024B</span>,bitset&lt;<span class="number">1024</span>&gt;=<span class="number">128B</span></span><br><span class="line">    <span class="built_in">count</span>() 返回有多少个<span class="number">1</span></span><br><span class="line">    <span class="built_in">any</span>()  判断是否至少有一个<span class="number">1</span></span><br><span class="line">    <span class="built_in">none</span>()  是否全为<span class="number">0</span></span><br><span class="line">    <span class="built_in">set</span>()  把多有位置变成<span class="number">1</span></span><br><span class="line">    <span class="built_in">set</span>(k,v) 把第k位变成v</span><br><span class="line">    <span class="built_in">flip</span>()  等价于~</span><br><span class="line">    <span class="built_in">flip</span>(k) 等价于把第k位取反</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1456,160 +1559,6 @@ request head请求头，我们需要在请求头里寻找。<br>
 </blockquote>
 </blockquote>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrapy shell <span class="literal">-s</span> USER_AGENT=<span class="string">&#x27;&#x27;</span> url</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2020/12/11/%E4%BA%A7%E5%93%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pipipapi.png">
-      <meta itemprop="name" content="Pipipapi">
-      <meta itemprop="description" content="兴趣使然">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pipipapi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/12/11/%E4%BA%A7%E5%93%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-title-link" itemprop="url">产品数据分析</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-12-11 23:59:20" itemprop="dateCreated datePublished" datetime="2020-12-11T23:59:20+08:00">2020-12-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-19 22:50:42" itemprop="dateModified" datetime="2021-08-19T22:50:42+08:00">2021-08-19</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%B8%8D%E6%83%B3%E5%BD%93%E4%BA%A7%E5%93%81%E7%BB%8F%E7%90%86%E7%9A%84%E5%B7%A5%E7%A8%8B%E5%B8%88%E4%B8%8D%E6%98%AF%E5%A5%BD%E7%9A%84%E7%A8%8B%E5%BA%8F%E5%91%98/" itemprop="url" rel="index"><span itemprop="name">不想当产品经理的工程师不是好的程序员</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2020/12/11/%E4%BA%A7%E5%93%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-meta-item leancloud_visitors" data-flag-title="产品数据分析" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2020/12/11/%E4%BA%A7%E5%93%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://wangyuhang-cmd.github.io/2020/12/11/%E4%BA%A7%E5%93%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="cy_cmt_count" data-xid="2020/12/11/产品数据分析/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h4 id="产品的数据分析模型指标和方法论"><a class="markdownIt-Anchor" href="#产品的数据分析模型指标和方法论"></a> 产品的数据分析：模型，指标和方法论</h4>
-<h6 id="产品"><a class="markdownIt-Anchor" href="#产品"></a> 产品</h6>
-<p>产品就是任何可以被推向市场获得关注，被购买、使用、消费的事物，产品包括有形的物品、服务、乃至人员 (A product is anything that can be offered to a market for attention, acquisition, use or consumption. It includes physical objects, services, personal)</p>
-<h4 id="思考框架"><a class="markdownIt-Anchor" href="#思考框架"></a> 思考框架</h4>
-<p>我们需要从待解决的问题核心出发，确定好最关心哪几个方面的因素，这些核心因素，用比较专业的术语来称呼，就叫做维度。确定好维度后，我们再来比较各个方案在每个维度上的表现或者打分。</p>
-<h5 id="市场营销学的经典框架-5c4p"><a class="markdownIt-Anchor" href="#市场营销学的经典框架-5c4p"></a> 市场营销学的经典框架 5C4P</h5>
-<p><strong><img src="/2020/12/11/%E4%BA%A7%E5%93%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/1.png" class title="This is an test image"></strong></p>
-<h5 id="第一层我们要进行市场分析重点分析-5c"><a class="markdownIt-Anchor" href="#第一层我们要进行市场分析重点分析-5c"></a> 第一层，我们要进行市场分析，重点分析 5C：</h5>
-<ul>
-<li>顾客(Customers)：我们想要面向的市场是什么样的，市场由什么样的顾客构成，他们有哪些属性和偏好（年龄、性别、地理位置、生活方式，等等）；</li>
-<li>公司(Company)：我们所处的公司在产品、技术、人才、组织文化方面有哪些优势，哪些劣势；</li>
-<li>竞争对手(Competitors)：相比于我们，竞争对手的优劣势为何；</li>
-<li>合作伙伴(Collaborators)：我们的合作伙伴有哪些，合作伙伴指的是从我们的产品从想法到顾客手上，参与这个过程的上下游外部组织，包括供应商、合作开发、广告代理、渠道…等等，这些合作伙伴的表现如何，和我们的关系稳固吗？</li>
-<li>环境(Context)：国家政策有没有重大变动，原材料有没有涨价，用户的消费习惯或者审美是不是有变动，有没有出现新的技术革命，这些潜在的因素都会影响我们的产品决策。进行好这一层的分析后，我们就要进行 STP，STP 是下面这三步的缩写：</li>
-<li>市场细分(Segmentation)：根据潜在顾客的属性，将一个宽泛的市场切分成很多个更小的市场，然后再看每个细分后市场的需求；</li>
-<li>目标市场(Targeting)：根据对各个细分市场的研究，结合上一层 5C 分析中公司和竞争对手的优劣势，环境和趋势的动态，找到当前最适合去攻占的那个细分市场；</li>
-<li>市场定位(Position)：对目标市场潜在顾客的心理进行产品和营销设计，让产品在目标顾客心智中可以具备鲜明的形象和特征，从而取得竞争优势；譬如一个人宅在家里打游戏想喝点什么，最先想到的就是肥宅快乐水，那么产品上就要让顾客感到快乐，宣传上要让他们想象快乐，快乐就是这个产品的市场定位。接下来就是 4P 的营销组合分析，4P 包括：</li>
-<li>产品(Product)：产品有哪些功能和独特的卖点；</li>
-<li>渠道(Place)： 通过哪些渠道可以触达潜在顾客，向他们进行产品介绍和推广，或者完成销售；</li>
-<li>推广(Promotion)：包括广告和销售，如何让顾客知道产品、理解产品、购买产品；</li>
-<li>定价(Price)： 根据不同的市场定位，制定不同的价格策略，既要能让目标顾客买得起，又要让公司赚到钱。</li>
-</ul>
-<h4 id="打造有竞争力的产品"><a class="markdownIt-Anchor" href="#打造有竞争力的产品"></a> 打造有竞争力的产品：</h4>
-<h4 id="pmf-和-mvppmf-产品市场契合点product-market-fit"><a class="markdownIt-Anchor" href="#pmf-和-mvppmf-产品市场契合点product-market-fit"></a> PMF 和 MVPPMF 产品市场契合点(Product Market Fit)</h4>
-<p>如果我们做一款初期免费的互联网产品，那么最起码要做到顾客愿意用和用了满意。产品每天新增用户数，每天或每周的活跃用户数，用户平均使用时长，以及用户的留存率这几个指标，就能够体现有用户的使用意愿和满意程度。这样的互联网产品早期，不用过于追求新增用户数，相反用户的留存率是最重要的，因为只有用户愿意持续用，产品每天的活跃人数才能够不断增加，否则产品就像有洞的筛子一样，用户来多少走多少，空有新增，无法积累。</p>
-<p>不同类型的互联网产品的平均留存率是不一样的，一般而言，有一个 “40–20–10” 法则，其中的数字分别表示的是次日留存率为 40%、第 7 日留存率为 20%，和第 30 日留存率为 10%，达到这样的标准，一个日均新增小几万的产品才有希望达到日活跃人数过百万。但是有些产品，譬如电商平台，未必那么在意次日留存，因为顾客对购物体验再满意，也不见得第二天还有东西要买。这时应该用复购率，也就是说顾客买了一次东西后还会不会再买东西，更能体现满意度。</p>
-<h5 id="mvp-最小可行化产品minimum-viable-product"><a class="markdownIt-Anchor" href="#mvp-最小可行化产品minimum-viable-product"></a> MVP 最小可行化产品(Minimum Viable Product)</h5>
-<p>产品的研发团队提炼出对市场和用户需求的核心假设，然后将一个成本最低、功能最少的产品推向对目标市场有代表性的用户，获取用户反馈，并基于用户反馈和行为数据持续快速迭代，直到产品到达一个相对稳定的阶段，也就是实现 PMF 的时候，就可以放心的增加投入。</p>
-<h5 id="aarrr漏斗模型"><a class="markdownIt-Anchor" href="#aarrr漏斗模型"></a> AARRR漏斗模型</h5>
-<p>在移动互联网领域，有一个常用的产品迭代和增长的模型，AARRR 漏斗模型，可以指导我们主要检测和分析哪些指标</p>
-<p><strong><img src="/2020/12/11/%E4%BA%A7%E5%93%81%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/2.png" class title="This is an test image"></strong></p>
-<ul>
-<li>
-<p>用户获取(Acquisition)：用户下载或者安装了产品；</p>
-</li>
-<li>
-<p>用户激活(Activation)：用户初次使用产品；</p>
-</li>
-<li>
-<p>用户留存(Retention)：用户再次使用产品；</p>
-</li>
-<li>
-<p>收入(Revenue)：用户为产品付费；</p>
-</li>
-<li>
-<p>自传播(Refer)：用户向其他人推荐产品。</p>
-</li>
-</ul>
-<h4 id="ab测试"><a class="markdownIt-Anchor" href="#ab测试"></a> AB测试</h4>
-<p>如果一个产品有多个版本想要进行比较和取舍，就在同一段时间内，将目标人群随机的分成相等数量的多组，每组使用不同版本的产品，然后比较结果。</p>
-<h4 id="相关性与因果性"><a class="markdownIt-Anchor" href="#相关性与因果性"></a> 相关性与因果性</h4>
-<p>数据科学里有一条非常重要的原则：相关性不代表因果性</p>
 
       
     </div>

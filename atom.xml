@@ -6,7 +6,7 @@
   <link href="https://wangyuhang-cmd.github.io/atom.xml" rel="self"/>
   
   <link href="https://wangyuhang-cmd.github.io/"/>
-  <updated>2021-11-10T14:20:05.968Z</updated>
+  <updated>2021-11-10T14:24:58.733Z</updated>
   <id>https://wangyuhang-cmd.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网络流_2 EK算法与Dinic算法</title>
+    <link href="https://wangyuhang-cmd.github.io/2021/11/10/%E7%BD%91%E7%BB%9C%E6%B5%81-2-EK%E7%AE%97%E6%B3%95%E4%B8%8EDinic%E7%AE%97%E6%B3%95/"/>
+    <id>https://wangyuhang-cmd.github.io/2021/11/10/%E7%BD%91%E7%BB%9C%E6%B5%81-2-EK%E7%AE%97%E6%B3%95%E4%B8%8EDinic%E7%AE%97%E6%B3%95/</id>
+    <published>2021-11-10T14:24:58.000Z</published>
+    <updated>2021-11-10T14:24:58.733Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>网络流_1 网络流基本概念</title>
@@ -499,30 +512,6 @@
     
     
     <category term="图论" scheme="https://wangyuhang-cmd.github.io/tags/%E5%9B%BE%E8%AE%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>STL详解</title>
-    <link href="https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/"/>
-    <id>https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/</id>
-    <published>2021-07-01T14:46:20.000Z</published>
-    <updated>2021-08-19T14:51:19.036Z</updated>
-    
-    <content type="html"><![CDATA[<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*STL笔记部分*/</span></span><br><span class="line"></span><br><span class="line">vector动态数组&#123;</span><br><span class="line">    <span class="built_in">size</span>()</span><br><span class="line">    <span class="built_in">empty</span>()</span><br><span class="line">    <span class="built_in">claer</span>()...</span><br><span class="line">    <span class="comment">//系统位某一程序申请空间的所需时间与空间大小无关，与次数有关,因此需要倍增vector</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>,<span class="number">3</span>)</span></span>; <span class="comment">//定义长度位10的vector每个数初始化为3</span></span><br><span class="line">    遍历方式：</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;::iterator it;<span class="comment">//迭代器遍历</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:a) ... <span class="comment">//C++11特性</span></span><br><span class="line">    支持比较运算，按字典序比较大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pair&#123;</span><br><span class="line">    可以存储一个二元组pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;</span><br><span class="line">    p.first,p.second分别取第一个第二的元素</span><br><span class="line">    支持比较运算，按照字典序，以first为第一关键字，second为第二关键字</span><br><span class="line">    p=<span class="built_in">make_pair</span>(a,b) <span class="comment">//pair的构造</span></span><br><span class="line">    p=&#123;a,b&#125; <span class="comment">//c++11</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">string字符串&#123;</span><br><span class="line">    <span class="built_in">c_str</span>() <span class="comment">//返回string对应的字符数组的头指针</span></span><br><span class="line">    如果使用<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,p.<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">queue 队列</span><br><span class="line"><span class="built_in">priority_queue</span>(优先队列/堆)&#123;</span><br><span class="line">    <span class="comment">//默认是大根堆</span></span><br><span class="line">    改成小根堆：</span><br><span class="line">        <span class="number">1.</span>插入负数</span><br><span class="line">        <span class="number">2.</span>priority_queue&lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; heap;</span><br><span class="line">    <span class="built_in">push</span>(); 插入</span><br><span class="line">    <span class="built_in">top</span>();</span><br><span class="line">    <span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br><span class="line">stack 栈</span><br><span class="line"><span class="built_in">deque</span>(双端队列,效率低)</span><br><span class="line">set,multiset&#123;</span><br><span class="line">    <span class="comment">//set里面不能有重复元素，multiset里面可以有重复元素</span></span><br><span class="line">    set/multiset:</span><br><span class="line">        <span class="built_in">insert</span>()</span><br><span class="line">        <span class="built_in">find</span>() <span class="comment">//不存在返回end迭代器</span></span><br><span class="line">        count返回某个数的个数</span><br><span class="line">        <span class="built_in">erase</span>()</span><br><span class="line">            (<span class="number">1</span>)<span class="built_in">erase</span>(x),删除所有这个数</span><br><span class="line">            (<span class="number">2</span>)<span class="built_in">erase</span>(it)，删除此迭代器</span><br><span class="line">        <span class="built_in">lower_bound</span>(x)返回大于等于x的最小的数</span><br><span class="line">        <span class="built_in">upper_bound</span>(x)返回大于x的最小的数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map,multimap 基于平衡二叉树(红黑树)实现，动态维护有序序列&#123;</span><br><span class="line">    <span class="built_in">insert</span>();   插入的是<span class="function">pair</span></span><br><span class="line"><span class="function">    <span class="title">erase</span><span class="params">()</span></span>;    输入的参数是pair或者迭代器</span><br><span class="line">    [] 映射，<span class="built_in">O</span>(logn)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(哈希表)&#123;</span><br><span class="line">unordered_set</span><br><span class="line">unordered_map</span><br><span class="line">unordered_multiset</span><br><span class="line">unordered_multima</span><br><span class="line">    <span class="comment">//增删改查是O(1);</span></span><br><span class="line">    <span class="comment">//不支持upper_bound和lower_bound</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">bitset</span>(位存储，状态压缩)&#123;</span><br><span class="line">    <span class="keyword">bool</span> a[<span class="number">1024</span>]=<span class="number">1024B</span>,bitset&lt;<span class="number">1024</span>&gt;=<span class="number">128B</span></span><br><span class="line">    <span class="built_in">count</span>() 返回有多少个<span class="number">1</span></span><br><span class="line">    <span class="built_in">any</span>()  判断是否至少有一个<span class="number">1</span></span><br><span class="line">    <span class="built_in">none</span>()  是否全为<span class="number">0</span></span><br><span class="line">    <span class="built_in">set</span>()  把多有位置变成<span class="number">1</span></span><br><span class="line">    <span class="built_in">set</span>(k,v) 把第k位变成v</span><br><span class="line">    <span class="built_in">flip</span>()  等价于~</span><br><span class="line">    <span class="built_in">flip</span>(k) 等价于把第k位取反</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;figure class=&quot;highlight cpp&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;</summary>
-      
-    
-    
-    
-    <category term="C++语法" scheme="https://wangyuhang-cmd.github.io/categories/C-%E8%AF%AD%E6%B3%95/"/>
-    
-    
-    <category term="STL" scheme="https://wangyuhang-cmd.github.io/tags/STL/"/>
     
   </entry>
   
