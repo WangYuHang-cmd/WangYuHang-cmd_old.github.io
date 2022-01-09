@@ -1906,7 +1906,7 @@ x_0=0
     <title>Prufer编码</title>
     <url>/2022/01/09/Prufer%E7%BC%96%E7%A0%81/</url>
     <content><![CDATA[<h2 id="prufer编码"><a class="markdownIt-Anchor" href="#prufer编码"></a> <code>Prufer</code>编码</h2>
-<p><strong><code>Prufer编码转树</code></strong>  <code>O(n)</code></p>
+<p><strong><code>Prufer编码转树</code></strong>  <code>O(n)</code>时间复杂度</p>
 <p>可以把一棵无根树变成一个序列，也可以将一个序列变成一棵无根树。</p>
 <ul>
 <li>每次找到无根树编号最小的度数为1的点</li>
