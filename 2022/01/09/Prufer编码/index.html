@@ -19,28 +19,28 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyuhang-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576&#x2F;*STL笔记部分*&#x2F;vector动态数组&amp;#123;    size()    empty()    claer">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyuhang-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="Prufer编码 Prufer编码转树  O(n) 可以把一棵无根树变成一个序列，也可以将一个序列变成一棵无根树。  每次找到无根树编号最小的度数为1的点 然后将此点的父节点加入序列  O(n)时间求Prufer编码 对于一个有n个节点的树，其prufer编码只有n-2个数。 树转Prufer编码 一个数在prufer编码中出现多少次，就说明其有几个儿子 Step:  void tree2pru">
 <meta property="og:type" content="article">
-<meta property="og:title" content="STL详解">
-<meta property="og:url" content="https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:title" content="Prufer编码">
+<meta property="og:url" content="https://wangyuhang-cmd.github.io/2022/01/09/Prufer%E7%BC%96%E7%A0%81/index.html">
 <meta property="og:site_name" content="Pipipapi">
-<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576&#x2F;*STL笔记部分*&#x2F;vector动态数组&amp;#123;    size()    empty()    claer">
+<meta property="og:description" content="Prufer编码 Prufer编码转树  O(n) 可以把一棵无根树变成一个序列，也可以将一个序列变成一棵无根树。  每次找到无根树编号最小的度数为1的点 然后将此点的父节点加入序列  O(n)时间求Prufer编码 对于一个有n个节点的树，其prufer编码只有n-2个数。 树转Prufer编码 一个数在prufer编码中出现多少次，就说明其有几个儿子 Step:  void tree2pru">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-07-01T14:46:20.000Z">
-<meta property="article:modified_time" content="2021-08-19T14:51:19.036Z">
+<meta property="article:published_time" content="2022-01-09T07:40:49.000Z">
+<meta property="article:modified_time" content="2022-01-09T07:41:45.367Z">
 <meta property="article:author" content="Pipipapi">
-<meta property="article:tag" content="STL">
+<meta property="article:tag" content="图论">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/">
+<link rel="canonical" href="https://wangyuhang-cmd.github.io/2022/01/09/Prufer%E7%BC%96%E7%A0%81/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/","path":"2021/07/01/STL详解/","title":"STL详解"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://wangyuhang-cmd.github.io/2022/01/09/Prufer%E7%BC%96%E7%A0%81/","path":"2022/01/09/Prufer编码/","title":"Prufer编码"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>STL详解 | Pipipapi</title>
+<title>Prufer编码 | Pipipapi</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -140,7 +140,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -153,6 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#prufer%E7%BC%96%E7%A0%81"><span class="nav-number">1.</span> <span class="nav-text"> Prufer编码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">1.0.1.</span> <span class="nav-text"> 应用：</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -249,7 +250,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2022/01/09/Prufer%E7%BC%96%E7%A0%81/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/pipipapi.png">
@@ -262,7 +263,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          STL详解
+          Prufer编码
         </h1>
 
         <div class="post-meta-container">
@@ -272,28 +273,22 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
+      
 
-      <time title="创建时间：2021-07-01 22:46:20" itemprop="dateCreated datePublished" datetime="2021-07-01T22:46:20+08:00">2021-07-01</time>
+      <time title="创建时间：2022-01-09 15:40:49 / 修改时间：15:41:45" itemprop="dateCreated datePublished" datetime="2022-01-09T15:40:49+08:00">2022-01-09</time>
     </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-19 22:51:19" itemprop="dateModified" datetime="2021-08-19T22:51:19+08:00">2021-08-19</time>
-      </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
         <i class="far fa-folder"></i>
       </span>
       <span class="post-meta-item-text">分类于</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/C-%E8%AF%AD%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">C++语法</span></a>
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
         </span>
     </span>
 
   
-    <span id="/2021/07/01/STL%E8%AF%A6%E8%A7%A3/" class="post-meta-item leancloud_visitors" data-flag-title="STL详解" title="阅读次数">
+    <span id="/2022/01/09/Prufer%E7%BC%96%E7%A0%81/" class="post-meta-item leancloud_visitors" data-flag-title="Prufer编码" title="阅读次数">
       <span class="post-meta-item-icon">
         <i class="far fa-eye"></i>
       </span>
@@ -309,8 +304,8 @@
       <span class="post-meta-item-text">Changyan：</span>
     
     
-      <a title="changyan" href="/2021/07/01/STL%E8%AF%A6%E8%A7%A3/#SOHUCS" itemprop="discussionUrl">
-        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2021/07/01/STL详解/" itemprop="commentCount"></span>
+      <a title="changyan" href="/2022/01/09/Prufer%E7%BC%96%E7%A0%81/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/01/09/Prufer编码/" itemprop="commentCount"></span>
       </a>
     
   </span>
@@ -325,7 +320,30 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*STL笔记部分*/</span></span><br><span class="line"></span><br><span class="line">vector动态数组&#123;</span><br><span class="line">    <span class="built_in">size</span>()</span><br><span class="line">    <span class="built_in">empty</span>()</span><br><span class="line">    <span class="built_in">claer</span>()...</span><br><span class="line">    <span class="comment">//系统位某一程序申请空间的所需时间与空间大小无关，与次数有关,因此需要倍增vector</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>,<span class="number">3</span>)</span></span>; <span class="comment">//定义长度位10的vector每个数初始化为3</span></span><br><span class="line">    遍历方式：</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;::iterator it;<span class="comment">//迭代器遍历</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:a) ... <span class="comment">//C++11特性</span></span><br><span class="line">    支持比较运算，按字典序比较大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pair&#123;</span><br><span class="line">    可以存储一个二元组pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;</span><br><span class="line">    p.first,p.second分别取第一个第二的元素</span><br><span class="line">    支持比较运算，按照字典序，以first为第一关键字，second为第二关键字</span><br><span class="line">    p=<span class="built_in">make_pair</span>(a,b) <span class="comment">//pair的构造</span></span><br><span class="line">    p=&#123;a,b&#125; <span class="comment">//c++11</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">string字符串&#123;</span><br><span class="line">    <span class="built_in">c_str</span>() <span class="comment">//返回string对应的字符数组的头指针</span></span><br><span class="line">    如果使用<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,p.<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">queue 队列</span><br><span class="line"><span class="built_in">priority_queue</span>(优先队列/堆)&#123;</span><br><span class="line">    <span class="comment">//默认是大根堆</span></span><br><span class="line">    改成小根堆：</span><br><span class="line">        <span class="number">1.</span>插入负数</span><br><span class="line">        <span class="number">2.</span>priority_queue&lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; heap;</span><br><span class="line">    <span class="built_in">push</span>(); 插入</span><br><span class="line">    <span class="built_in">top</span>();</span><br><span class="line">    <span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br><span class="line">stack 栈</span><br><span class="line"><span class="built_in">deque</span>(双端队列,效率低)</span><br><span class="line">set,multiset&#123;</span><br><span class="line">    <span class="comment">//set里面不能有重复元素，multiset里面可以有重复元素</span></span><br><span class="line">    set/multiset:</span><br><span class="line">        <span class="built_in">insert</span>()</span><br><span class="line">        <span class="built_in">find</span>() <span class="comment">//不存在返回end迭代器</span></span><br><span class="line">        count返回某个数的个数</span><br><span class="line">        <span class="built_in">erase</span>()</span><br><span class="line">            (<span class="number">1</span>)<span class="built_in">erase</span>(x),删除所有这个数</span><br><span class="line">            (<span class="number">2</span>)<span class="built_in">erase</span>(it)，删除此迭代器</span><br><span class="line">        <span class="built_in">lower_bound</span>(x)返回大于等于x的最小的数</span><br><span class="line">        <span class="built_in">upper_bound</span>(x)返回大于x的最小的数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map,multimap 基于平衡二叉树(红黑树)实现，动态维护有序序列&#123;</span><br><span class="line">    <span class="built_in">insert</span>();   插入的是<span class="function">pair</span></span><br><span class="line"><span class="function">    <span class="title">erase</span><span class="params">()</span></span>;    输入的参数是pair或者迭代器</span><br><span class="line">    [] 映射，<span class="built_in">O</span>(logn)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(哈希表)&#123;</span><br><span class="line">unordered_set</span><br><span class="line">unordered_map</span><br><span class="line">unordered_multiset</span><br><span class="line">unordered_multima</span><br><span class="line">    <span class="comment">//增删改查是O(1);</span></span><br><span class="line">    <span class="comment">//不支持upper_bound和lower_bound</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">bitset</span>(位存储，状态压缩)&#123;</span><br><span class="line">    <span class="keyword">bool</span> a[<span class="number">1024</span>]=<span class="number">1024B</span>,bitset&lt;<span class="number">1024</span>&gt;=<span class="number">128B</span></span><br><span class="line">    <span class="built_in">count</span>() 返回有多少个<span class="number">1</span></span><br><span class="line">    <span class="built_in">any</span>()  判断是否至少有一个<span class="number">1</span></span><br><span class="line">    <span class="built_in">none</span>()  是否全为<span class="number">0</span></span><br><span class="line">    <span class="built_in">set</span>()  把多有位置变成<span class="number">1</span></span><br><span class="line">    <span class="built_in">set</span>(k,v) 把第k位变成v</span><br><span class="line">    <span class="built_in">flip</span>()  等价于~</span><br><span class="line">    <span class="built_in">flip</span>(k) 等价于把第k位取反</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="prufer编码"><a class="markdownIt-Anchor" href="#prufer编码"></a> <code>Prufer</code>编码</h2>
+<p><strong><code>Prufer编码转树</code></strong>  <code>O(n)</code></p>
+<p>可以把一棵无根树变成一个序列，也可以将一个序列变成一棵无根树。</p>
+<ul>
+<li>每次找到无根树编号最小的度数为1的点</li>
+<li>然后将此点的父节点加入序列</li>
+</ul>
+<p><code>O(n)</code>时间求<code>Prufer</code>编码</p>
+<p>对于一个有<code>n</code>个节点的树，其<code>prufer</code>编码只有<code>n-2</code>个数。</p>
+<p><strong>树转<code>Prufer编码</code></strong></p>
+<p>一个数在<code>prufer</code>编码中出现多少次，就说明其有几个儿子</p>
+<p><code>Step:</code></p>
+<blockquote>
+<p><code>void tree2prufer()</code>的操作是顺序遍历，然后从1开始遍历，当找到出度为0的点时，将其父节点加入<code>prufer</code>序列，然后递归其父节点，如果其父节点的出度为0且父节点小于当亲遍历到的j的值，父节点的父节点也加入<code>prufer</code>序列。</p>
+<p><code>void pruffer2tree()</code>的操作是顺序遍历<code>prufer</code>序列的同时遍历1<sub>n，如果1</sub>n遍历的时候有出度为0的点，则其父亲就是当前遍历到的<code>prufer</code>序列，然后<code>prufer</code>序列当前数的出度–，如果为0且小于当前遍历的树，则其父亲节点为下一个<code>prufer</code>序列中的树。</p>
+</blockquote>
+<p>一道板子，如果m=1，给出给定树的prufer编码，否则给出给定prufer编码的树</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> fa[N],p[N],d[N],idx=<span class="number">0</span>; <span class="comment">//d表示出度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree2prufer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) fa[i]=<span class="built_in">read</span>(),d[fa[i]]++;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;i&lt;n<span class="number">-2</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        p[i++]=fa[j];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-2</span>&amp;&amp;--d[p[i<span class="number">-1</span>]]==<span class="number">0</span>&amp;&amp;p[i<span class="number">-1</span>]&lt;j) p[i++]=fa[p[i<span class="number">-1</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-3</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]); <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prufer2tree</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-2</span>) p[i]=<span class="built_in">read</span>(),d[p[i]]++;</span><br><span class="line">    p[n<span class="number">-1</span>]=n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;n;++i,j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        fa[j]=p[i];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-1</span>&amp;&amp;--d[p[i]]==<span class="number">0</span>&amp;&amp;p[i]&lt;j) fa[p[i]]=p[i+<span class="number">1</span>],i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,fa[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">if</span>(m==<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">tree2prufer</span>();</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">prufer2tree</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="应用"><a class="markdownIt-Anchor" href="#应用"></a> 应用：</h4>
+<p><strong>Cayley定理</strong></p>
+<ul>
+<li>对于一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个点的无向完全图，其生成树的个数为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">n^{n-2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></li>
+</ul>
+<p>证明：由<code>prufer</code>编码一共n-2位，每一位有n个选择，因此为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>n</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msup></mrow><annotation encoding="application/x-tex">n^{n-2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">−</span><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
 
     </div>
 
@@ -370,7 +388,7 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/STL/" rel="tag"># STL</a>
+              <a href="/tags/%E5%9B%BE%E8%AE%BA/" rel="tag"># 图论</a>
           </div>
 
         
@@ -382,14 +400,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/06/05/ST-RMQ/" rel="prev" title="ST_RMQ">
-                  <i class="fa fa-chevron-left"></i> ST_RMQ
+                <a href="/2021/12/31/2-SAT/" rel="prev" title="2-SAT">
+                  <i class="fa fa-chevron-left"></i> 2-SAT
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/07/05/%E5%88%9D%E6%B6%89%E5%9B%BE%E8%AE%BA/" rel="next" title="初涉图论">
-                  初涉图论 <i class="fa fa-chevron-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -450,7 +465,7 @@
 
 
   <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wangyuhang-cmd.github.io/2021/07/01/STL%E8%AF%A6%E8%A7%A3/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wangyuhang-cmd.github.io/2022/01/09/Prufer%E7%BC%96%E7%A0%81/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 <script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvB2wuVP","appkey":"581fa306a60a3f8d982e8d99f42f76cc"}</script>
 <script src="/js/third-party/comments/changyan.js"></script>
