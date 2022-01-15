@@ -1163,7 +1163,7 @@ request head请求头，我们需要在请求头里寻找。<br>
 <p>预备知识（矩阵乘法）：<a href="http://www.51nod.com/Challenge/Problem.html#problemId=1137">http://www.51nod.com/Challenge/Problem.html#problemId=1137</a></p>
 <h5 id="引子"><a class="markdownIt-Anchor" href="#引子"></a> 引子：</h5>
 <ul>
-<li>求斐波那契数列的第n项</li>
+<li>求<code>斐波那契数列</code>的第<code>n</code>项</li>
 </ul>
 <p>思路：借助于矩阵运算和快速幂：</p>
 <p>设fn表示斐波那契数列的第n项，我们定义运算矩阵第n项Fn：</p>
