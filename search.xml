@@ -515,7 +515,7 @@ request head请求头，我们需要在请求头里寻找。<br>
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">网络通信</span><br><span class="line">网线一共八根，白绿白蓝白橙白棕，目前只使用四根，<span class="number">1246</span>根</span><br><span class="line"><span class="number">568</span>A/B线序</span><br><span class="line">ISP:网络服务运营商</span><br><span class="line">IP地址</span><br><span class="line"><span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span><span class="number">-255.255</span><span class="number">.255</span><span class="number">.255</span></span><br></pre></td></tr></table></figure>
 <p>我的IP地址：222.94.33.63（动态，每次上网会改变）</p>
 <p><strong><img src="/2021/03/13/python-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/1.png" class title="This is an test image"></strong></p>
-<p>不同电脑不同软件之间通信用端口区分，同一电脑用PID区分</p>
+<p>不同电脑不同软件之间通信用端口区分，同一电脑用PID区分。</p>
 <h4 id="socket简介"><a class="markdownIt-Anchor" href="#socket简介"></a> SOCKET简介</h4>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> socket</span><br><span class="line">socket.socket(AddressFamily,<span class="type">Type</span>)</span><br><span class="line"><span class="comment">#AF 可选： AF_INET（不同主机）    AF_UNIX（同一主机）</span></span><br><span class="line"><span class="comment">#Type 套接字    SOCK_STREAM（TCP）    SOCK_DGRAM（UDP）</span></span><br></pre></td></tr></table></figure>
 <p>步骤：</p>
