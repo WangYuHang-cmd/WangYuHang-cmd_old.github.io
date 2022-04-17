@@ -93,7 +93,7 @@
         <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签<span class="badge">29</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类<span class="badge">12</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">38</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">39</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -166,7 +166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -236,6 +236,191 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pipipapi.png">
+      <meta itemprop="name" content="Pipipapi">
+      <meta itemprop="description" content="兴趣使然">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Pipipapi">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/" class="post-title-link" itemprop="url">图论题技巧整理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-08-08 19:38:08" itemprop="dateCreated datePublished" datetime="2021-08-08T19:38:08+08:00">2021-08-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-08-19 22:52:08" itemprop="dateModified" datetime="2021-08-19T22:52:08+08:00">2021-08-19</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="图论题技巧整理" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://wangyuhang-cmd.github.io/2021/08/08/%E5%9B%BE%E8%AE%BA%E9%A2%98%E6%8A%80%E5%B7%A7%E6%95%B4%E7%90%86/" class="cy_cmt_count" data-xid="2021/08/08/图论题技巧整理/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="图论题技巧整理"><a class="markdownIt-Anchor" href="#图论题技巧整理"></a> 图论题技巧整理</h2>
+<h5 id="最短路径模型"><a class="markdownIt-Anchor" href="#最短路径模型"></a> 最短路径模型</h5>
+<p>1.建立虚拟源点</p>
+<ul>
+<li>虚拟远点的建立可以将点权转化为边权</li>
+<li>对于多个起点，一个终点的情况，也可以建立虚拟源点。从源点向每个起点出发连接一条长度为0的边。这样就可以转化为从虚拟源点出发，能到达中点的最短路径</li>
+</ul>
+<p>2.记录路径（将dist[] 数组开至二维）</p>
+<ul>
+<li>对于按照某一顺序访问多个节点的题目可以先遍历记录路径，再使用DFS()根据全排列求解</li>
+</ul>
+<p>3.将边权进行0，1转换</p>
+<ul>
+<li>对于求第k+1大的路径或者求最大的路径使得某某条件最小时，可以配合二分，将所有边权分类为1和0来进行求解(分类)</li>
+</ul>
+<p>4.对于不同连通块，内部只有正权边，外部由负权边构成的图</p>
+<ul>
+<li>按照拓扑序做堆优化的Dijkstra算法。由于按照拓扑序列，因此保证了到每一点的距离都为最小</li>
+</ul>
+<p>5.考虑建立反向边</p>
+<ul>
+<li>当起点有多个而只有一个确定的终点时，应当考虑建立反向边</li>
+</ul>
+<p>6.正反各进行遍历</p>
+<ul>
+<li>对于在途中买卖一次商品的题目，考虑正反都进行遍历，然后最后使用DP的思想来划分集合，然后求解</li>
+</ul>
+<p>7.拆点</p>
+<p>将dist数组扩展至二维，来存储点的不同性质（类似于DP）。例如寻找最短路径和次短路径的时候可以选择拆点</p>
+<p>8.有负权边，求在最短路径条数：</p>
+<ul>
+<li>
+<p>先使用SPFA求出所有最短路径，枚举所有t-&gt;j的边w[i]，判断每个边是否满足:</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mo>=</mo><mi>d</mi><mi>i</mi><mi>s</mi><mi>t</mi><mo stretchy="false">[</mo><mi>t</mi><mo stretchy="false">]</mo><mo>+</mo><mi>w</mi><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow><annotation encoding="application/x-tex">dist[j]==dist[t]+w[i]
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mopen">[</span><span class="mord mathdefault">t</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mopen">[</span><span class="mord mathdefault">i</span><span class="mclose">]</span></span></span></span></span></p>
+</li>
+<li></li>
+</ul>
+<p>9.求最短路径条数：</p>
+<ul>
+<li>使用Dijkstra算法或者BFS能够保证拓扑序。在更新最短距离的时候顺便记录一下条数即可</li>
+</ul>
+<p>10.恰好经过k条路的最短路径</p>
+<ul>
+<li>1.快速幂+类Floyd算法</li>
+</ul>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mo stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo><mo>=</mo><mi>m</mi><mi>i</mi><mi>n</mi><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">[</mo><mi>a</mi><mo>+</mo><mi>b</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo><mo separator="true">,</mo><mi>d</mi><mo stretchy="false">[</mo><mi>a</mi><mo separator="true">,</mo><mi>i</mi><mo separator="true">,</mo><mi>k</mi><mo stretchy="false">]</mo><mo>+</mo><mi>d</mi><mo stretchy="false">[</mo><mi>b</mi><mo separator="true">,</mo><mi>k</mi><mo separator="true">,</mo><mi>j</mi><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">d[a+b,i,j]=min(d[a+b,i,j],d[a,i,k]+d[b,k,j])
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">i</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">d</span><span class="mopen">[</span><span class="mord mathdefault">b</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.05724em;">j</span><span class="mclose">]</span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li>2.bellman_ford算法</li>
+</ul>
+<h5 id="最小生成树模型"><a class="markdownIt-Anchor" href="#最小生成树模型"></a> 最小生成树模型</h5>
+<p>1.建立超级源点</p>
+<p>便于将点权转化为边权</p>
+<p>2.次小生成树</p>
+<p>定义：给一个带权图，把图中所有生成树按权值从小到大排序，第二小的成为次小生成树</p>
+<ul>
+<li>有两种定义方式，一种是按照排列定义的第二小，因此可能数值与最小生成树一样。第二种是严格次小生成树，即严格小于最小生成树</li>
+</ul>
+<p><strong>方法1</strong>：先求最小生成树，再枚举删除最小生成树的边求解,时间复杂度为：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>m</mi><mo>+</mo><mi>n</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(mlogm+nm)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span></p>
+<p>劣势：不容易求严格最小生成树</p>
+<p><em>证明</em> 设T为图G的一颗生成树，对于非树边a和非树边b，插入边a，并删除边b的操作记为(+a,-b)</p>
+<p>如果T+a-b之后仍然是一颗生成树，称(+a,-b)是T的一个可行交换</p>
+<p>称由T进行依次可行变换所得到的新的生成树集合为T的邻集，次小生成树一定在最小生成树的邻集当中。</p>
+<p><strong>方法2</strong>：先求最小生成树，然后依次枚举非树边，然后将改边加入树中，同时从树中去掉一条边，使得最终的图仍是一棵树</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><msup><mi>n</mi><mn>2</mn></msup><mo>+</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(m+n^2+mlogm)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.9474379999999999em;vertical-align:-0.08333em;"></span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span></p>
+<p>可用树上倍增LCA优化至</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo stretchy="false">(</mo><mi>m</mi><mo>+</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo>+</mo><mi>m</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Q(m+mlogn+mlogm)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">Q</span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span></span></p>
+<h5 id="基于spfa求负环"><a class="markdownIt-Anchor" href="#基于spfa求负环"></a> 基于SPFA求负环</h5>
+<p>1.统计每个点入队的次数，如果某个点入队n次说明存在负环</p>
+<p>2.统计每个点的最短路中所包含的边数，如果某个点的最短路所包含的边数大于等于n，则也说明存在负环</p>
+<p>但是由于SPFA判断负环的时间复杂度比较高，约O(nm)，因此有一种较为取巧的方式：</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">当</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">点</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">被</mi><mi mathvariant="normal">更</mi><mi mathvariant="normal">新</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">迭</mi><mi mathvariant="normal">代</mi><mi mathvariant="normal">次</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">超</mi><mi mathvariant="normal">过</mi><mn>2</mn><mi>n</mi><mo stretchy="false">(</mo><mi mathvariant="normal">尽</mi><mi mathvariant="normal">量</mi><mi mathvariant="normal">开</mi><mi mathvariant="normal">大</mi><mo stretchy="false">)</mo><mi mathvariant="normal">时</mi><mi mathvariant="normal">，</mi><mi mathvariant="normal">我</mi><mi mathvariant="normal">们</mi><mi mathvariant="normal">就</mi><mi mathvariant="normal">认</mi><mi mathvariant="normal">为</mi><mi mathvariant="normal">大</mi><mi mathvariant="normal">概</mi><mi mathvariant="normal">率</mi><mi mathvariant="normal">图</mi><mi mathvariant="normal">中</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">负</mi><mi mathvariant="normal">环</mi></mrow><annotation encoding="application/x-tex">当所有点的被更新的迭代次数超过2n(尽量开大)时，我们就认为大概率图中有负环
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord cjk_fallback">当</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">点</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">被</span><span class="mord cjk_fallback">更</span><span class="mord cjk_fallback">新</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">迭</span><span class="mord cjk_fallback">代</span><span class="mord cjk_fallback">次</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">超</span><span class="mord cjk_fallback">过</span><span class="mord">2</span><span class="mord mathdefault">n</span><span class="mopen">(</span><span class="mord cjk_fallback">尽</span><span class="mord cjk_fallback">量</span><span class="mord cjk_fallback">开</span><span class="mord cjk_fallback">大</span><span class="mclose">)</span><span class="mord cjk_fallback">时</span><span class="mord cjk_fallback">，</span><span class="mord cjk_fallback">我</span><span class="mord cjk_fallback">们</span><span class="mord cjk_fallback">就</span><span class="mord cjk_fallback">认</span><span class="mord cjk_fallback">为</span><span class="mord cjk_fallback">大</span><span class="mord cjk_fallback">概</span><span class="mord cjk_fallback">率</span><span class="mord cjk_fallback">图</span><span class="mord cjk_fallback">中</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">负</span><span class="mord cjk_fallback">环</span></span></span></span></span></p>
+<h5 id="01分数规划"><a class="markdownIt-Anchor" href="#01分数规划"></a> 01分数规划</h5>
+<p>图论问题形如求</p>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mfrac><mrow><mi mathvariant="normal">Σ</mi><msub><mi>f</mi><mi>i</mi></msub></mrow><mrow><mi mathvariant="normal">Σ</mi><msub><mi>t</mi><mi>i</mi></msub></mrow></mfrac><mi mathvariant="normal">的</mi><mi mathvariant="normal">最</mi><mi mathvariant="normal">大</mi><mi mathvariant="normal">值</mi></mrow><annotation encoding="application/x-tex">\frac{\Sigma{f_i}}{\Sigma{t_i}}的最大值
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.20744em;vertical-align:-0.8360000000000001em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3714399999999998em;"><span style="top:-2.3139999999999996em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mord"><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">Σ</span><span class="mord"><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.8360000000000001em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">大</span><span class="mord cjk_fallback">值</span></span></span></span></span></p>
+<p>为01分数规划，一般思路：<strong>二分</strong>比值,然后判断图中是否存在正环</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1407,148 +1592,6 @@ b_{n}\\
     <div class="post-body" itemprop="articleBody">
           <h3 id="模拟退火算法"><a class="markdownIt-Anchor" href="#模拟退火算法"></a> 模拟退火算法</h3>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">double</span> T=<span class="number">100</span>; <span class="comment">//初始温度</span></span><br><span class="line">	<span class="keyword">double</span> delta = <span class="number">0.98</span>; <span class="comment">//降温系数</span></span><br><span class="line">	<span class="keyword">double</span> x=<span class="number">50.0</span>;  <span class="comment">//x的初始温度</span></span><br><span class="line">	<span class="keyword">double</span> now=<span class="built_in">func</span>(x);  <span class="comment">//计算初始函数值</span></span><br><span class="line">	<span class="keyword">double</span> ans=now;  <span class="comment">//返回值</span></span><br><span class="line">	<span class="keyword">while</span>(T&gt;eps)&#123;     <span class="comment">//eps是终止温度</span></span><br><span class="line">		<span class="keyword">int</span> f[<span class="number">2</span>]=&#123;<span class="number">1</span>,<span class="number">-1</span>&#125;;</span><br><span class="line">		<span class="keyword">double</span> newx = x+f[<span class="built_in">rand</span>()%<span class="number">2</span>]*T; <span class="comment">//按概率改变x，随T的降温而减少</span></span><br><span class="line">		<span class="keyword">if</span>(newx &gt;= <span class="number">0</span> &amp;&amp; newx&lt;=<span class="number">100</span>)&#123;</span><br><span class="line">			<span class="keyword">double</span> next = <span class="built_in">func</span>(newx);</span><br><span class="line">			ans=<span class="built_in">min</span>(ans,next);</span><br><span class="line">			<span class="keyword">if</span>(now-next&gt;eps)&#123;x=newx;now=next;&#125;			</span><br><span class="line">		&#125;</span><br><span class="line">		T*=delta;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/04/11/R%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pipipapi.png">
-      <meta itemprop="name" content="Pipipapi">
-      <meta itemprop="description" content="兴趣使然">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Pipipapi">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/04/11/R%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-title-link" itemprop="url">R语言之数据可视化</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-04-11 23:30:44" itemprop="dateCreated datePublished" datetime="2021-04-11T23:30:44+08:00">2021-04-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-19 22:51:04" itemprop="dateModified" datetime="2021-08-19T22:51:04+08:00">2021-08-19</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%A7%91%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数据科学</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/04/11/R%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-meta-item leancloud_visitors" data-flag-title="R语言之数据可视化" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2021/04/11/R%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://wangyuhang-cmd.github.io/2021/04/11/R%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="cy_cmt_count" data-xid="2021/04/11/R语言之数据可视化/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="数据可视化"><a class="markdownIt-Anchor" href="#数据可视化"></a> 数据可视化</h2>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#demo可以生成演示图像</span></span><br><span class="line"></span><br><span class="line">demo(graphics)</span><br><span class="line">demo(Hershey)</span><br><span class="line">demo(persp)</span><br><span class="line">demo(image)</span><br><span class="line">demo()</span><br></pre></td></tr></table></figure>
-<h2 id="简单绘图"><a class="markdownIt-Anchor" href="#简单绘图"></a> 简单绘图</h2>
-<h4 id="散点图"><a class="markdownIt-Anchor" href="#散点图"></a> 散点图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(x,y，main,xlab,ylab,xlim,ylim,axes)</span><br></pre></td></tr></table></figure>
-<p>x,y是水平数值坐标的数据集		main要是图形的图块</p>
-<p>xlab，ylab是水平轴,竖直轴的标签</p>
-<p>xlim,ylim是绘图用的		x,y值的极限</p>
-<p>axes只是是否要绘制两个轴</p>
-<h4 id="折线图"><a class="markdownIt-Anchor" href="#折线图"></a> 折线图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(v,type,col,xlab,ylab)</span><br></pre></td></tr></table></figure>
-<p>v是包含数值的向量	type有 ”p“仅绘制点 ”i“仅绘制线 ”o“绘制点和线</p>
-<h4 id="条形图"><a class="markdownIt-Anchor" href="#条形图"></a> 条形图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">barplot(H,xlab,ylab,main,names.arg,col)</span><br><span class="line">H &lt;- <span class="built_in">c</span>(<span class="number">7</span>,<span class="number">12</span>,<span class="number">28</span>,<span class="number">3</span>,<span class="number">41</span>)</span><br><span class="line">barplot(H)</span><br></pre></td></tr></table></figure>
-<h4 id="饼图"><a class="markdownIt-Anchor" href="#饼图"></a> 饼图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pie(x,labels,radius,main,col,clockwise)</span><br></pre></td></tr></table></figure>
-<p>x包含饼图使用数值的向量		labels用于给出切片的描述</p>
-<p>radius表示饼图圆的半径		main表示图表的标题</p>
-<p>col表示调色板		clockwise是指示片段是顺时针还是逆时针的逻辑值</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;r&#125;x &lt;- <span class="built_in">c</span>(<span class="number">21</span>,<span class="number">62</span>,<span class="number">10</span>,<span class="number">53</span>)</span><br><span class="line">labels &lt;- <span class="built_in">c</span>(<span class="string">&quot;London&quot;</span>,<span class="string">&quot;New York&quot;</span>,<span class="string">&quot;Singapore&quot;</span>,<span class="string">&quot;Mumbai&quot;</span>)</span><br><span class="line">pie(x,labels)</span><br></pre></td></tr></table></figure>
-<h4 id="直方图"><a class="markdownIt-Anchor" href="#直方图"></a> 直方图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hist(v,main,col,<span class="keyword">break</span>)</span><br></pre></td></tr></table></figure>
-<p>v数据	mian标题	col颜色	break条宽度</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v &lt;- <span class="built_in">c</span>(<span class="number">9</span>,<span class="number">13</span>,<span class="number">21</span>,<span class="number">8</span>,<span class="number">36</span>,<span class="number">22</span>,<span class="number">12</span>,<span class="number">41</span>,<span class="number">31</span>,<span class="number">33</span>,<span class="number">19</span>)</span><br><span class="line">hist(v,xlab = <span class="string">&quot;Weight&quot;</span>,col = <span class="string">&quot;green&quot;</span>,boarder = <span class="string">&quot;red&quot;</span>,xlim = <span class="built_in">c</span>(<span class="number">0</span>,<span class="number">40</span>),yli = <span class="built_in">c</span>(<span class="number">0</span>,<span class="number">5</span>),breaks = <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="核密度图"><a class="markdownIt-Anchor" href="#核密度图"></a> 核密度图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plot(density(x))</span><br></pre></td></tr></table></figure>
-<h4 id="箱线图"><a class="markdownIt-Anchor" href="#箱线图"></a> 箱线图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">boxplot(x,data,notch)</span><br></pre></td></tr></table></figure>
-<p>notch是逻辑值。设置TRUE来绘制凹口</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">input &lt;- mtcars[,<span class="built_in">c</span>(<span class="string">&#x27;mpg&#x27;</span>,<span class="string">&#x27;cyl&#x27;</span>)]</span><br><span class="line">boxplot(mpg ~ cyl,data = mtcars,xlab = <span class="string">&quot;Number of Cylinders&quot;</span>,ylab = <span class="string">&quot;Miles Per Gallon&quot;</span>,main = <span class="string">&quot;Mileage Data&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="点图"><a class="markdownIt-Anchor" href="#点图"></a> 点图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dotplot()</span><br></pre></td></tr></table></figure>
-<p>矩阵或者数据框各列之间的二元图</p>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pairs()</span><br></pre></td></tr></table></figure>
-<h4 id="正态分布图"><a class="markdownIt-Anchor" href="#正态分布图"></a> 正态分布图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qqnorm(ques3$month+ques3$variety,ques3$number)</span><br><span class="line">qqPlot()</span><br></pre></td></tr></table></figure>
-<h4 id="茎叶图"><a class="markdownIt-Anchor" href="#茎叶图"></a> 茎叶图</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stem()</span><br></pre></td></tr></table></figure>
-<h4 id="布局"><a class="markdownIt-Anchor" href="#布局"></a> 布局</h4>
-<figure class="highlight r"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">par()</span><br></pre></td></tr></table></figure>
 
       
     </div>
