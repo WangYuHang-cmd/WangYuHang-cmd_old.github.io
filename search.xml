@@ -1936,7 +1936,7 @@ x_0=0
     <title>朱刘算法</title>
     <url>/2022/01/18/%E6%9C%B1%E5%88%98%E7%AE%97%E6%B3%95/</url>
     <content><![CDATA[<h2 id="朱刘算法"><a class="markdownIt-Anchor" href="#朱刘算法"></a> 朱刘算法</h2>
-<p>有向图的类Prim算法，找有向图的最小生成树</p>
+<p>有向图的类Prim算法，找有向图的最小生成树。</p>
 <h3 id="最小树形图"><a class="markdownIt-Anchor" href="#最小树形图"></a> 最小树形图</h3>
 <p>树形图：</p>
 <ul>
