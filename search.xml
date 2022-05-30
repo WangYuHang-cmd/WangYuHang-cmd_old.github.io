@@ -401,16 +401,13 @@ B/S架构    browser-server</p>
   <entry>
     <title>Scrapy_shell</title>
     <url>/2021/01/13/Scrapy-shell/</url>
-    <content><![CDATA[<h4 id="windows命令之令符中输入指令自动进入scarpy_shell"><a class="markdownIt-Anchor" href="#windows命令之令符中输入指令自动进入scarpy_shell"></a> Windows命令之令符中输入指令自动进入Scarpy_shell</h4>
-<figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">-<span class="literal">-scrapy</span> shell</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h4 id="Windows命令之令符中输入指令自动进入Scarpy-shell"><a href="#Windows命令之令符中输入指令自动进入Scarpy-shell" class="headerlink" title="Windows命令之令符中输入指令自动进入Scarpy_shell"></a>Windows命令之令符中输入指令自动进入Scarpy_shell</h4><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">--scrapy shell</span><br></pre></td></tr></table></figure>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scrapy shell url <span class="comment">#进入网站</span></span><br><span class="line"><span class="comment">#在网页检查中找到目标之后copy所在html超文本语言的copy xpath</span></span><br><span class="line">response.xpath(<span class="string">&#x27;&#x27;</span><span class="string">&#x27;copy xpath&#x27;</span><span class="string">&#x27;&#x27;</span>).extract()  <span class="comment">#extract()方法用于输出列表形式的数据</span></span><br><span class="line"><span class="comment">#python在Windows命令指令符中的换行先输入\再敲回车</span></span><br><span class="line"><span class="comment">#复制先用光标拖动，然后ctrl+insert</span></span><br><span class="line"></span><br><span class="line">/html/body/div[<span class="number">5</span>]/div/div/div[<span class="number">1</span>]/div[<span class="number">1</span>]/section[<span class="number">1</span>]/div[<span class="number">2</span>]/h2/a/</span><br><span class="line"><span class="comment">#这是复制的某一个xpath，如果要获取文本格式，只需要</span></span><br><span class="line">/html/body/div[<span class="number">5</span>]/div/div/div[<span class="number">1</span>]/div[<span class="number">1</span>]/section[<span class="number">1</span>]/div[<span class="number">2</span>]/h2/a/text()</span><br><span class="line"><span class="comment">#如果要获取该页面多所有文本标题，需要</span></span><br><span class="line">/html/body/div[<span class="number">5</span>]/div/div/div[<span class="number">1</span>]/div[<span class="number">1</span>]/section/div[<span class="number">2</span>]/h2/a/text()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如果通过xpath无法找到爬取的内容，说明403禁止访问</p>
 <p>需要用scrapy模拟浏览器，模拟登陆，要在network中找到</p>
 <blockquote>
-<p>response head响应头<br>
-request head请求头，我们需要在请求头里寻找。<br>
-首先没有登陆的页面，cookie一般是没有用的。经过测试，大多数是user-agent，拷贝user-agent</p>
+<p>response head响应头<br>request head请求头，我们需要在请求头里寻找。<br>首先没有登陆的页面，cookie一般是没有用的。经过测试，大多数是user-agent，拷贝user-agent</p>
 </blockquote>
 </blockquote>
 <figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line">scrapy shell <span class="literal">-s</span> USER_AGENT=<span class="string">&#x27;&#x27;</span> url</span><br></pre></td></tr></table></figure>
