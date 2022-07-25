@@ -93,7 +93,7 @@
         <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签<span class="badge">31</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">44</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">45</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -166,7 +166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-count">45</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -236,6 +236,122 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/07/13/%E7%BB%84%E5%90%88%E6%95%B0%E4%B8%8E%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pipipapi.png">
+      <meta itemprop="name" content="Perf">
+      <meta itemprop="description" content="兴趣使然">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perf">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/07/13/%E7%BB%84%E5%90%88%E6%95%B0%E4%B8%8E%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/" class="post-title-link" itemprop="url">组合数与卢卡斯定理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-07-13 16:18:25" itemprop="dateCreated datePublished" datetime="2021-07-13T16:18:25+08:00">2021-07-13</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-01-05 20:29:31" itemprop="dateModified" datetime="2022-01-05T20:29:31+08:00">2022-01-05</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2021/07/13/%E7%BB%84%E5%90%88%E6%95%B0%E4%B8%8E%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="组合数与卢卡斯定理" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2021/07/13/%E7%BB%84%E5%90%88%E6%95%B0%E4%B8%8E%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://wangyuhang-cmd.github.io/2021/07/13/%E7%BB%84%E5%90%88%E6%95%B0%E4%B8%8E%E5%8D%A2%E5%8D%A1%E6%96%AF%E5%AE%9A%E7%90%86/" class="cy_cmt_count" data-xid="2021/07/13/组合数与卢卡斯定理/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="组合数"><a class="markdownIt-Anchor" href="#组合数"></a> 组合数</h2>
+<h4 id="定义法"><a class="markdownIt-Anchor" href="#定义法"></a> 定义法：</h4>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>a</mi><mi>b</mi></msubsup><mo>=</mo><mfrac><mrow><mi>a</mi><mo stretchy="false">!</mo></mrow><mrow><mi>b</mi><mo stretchy="false">!</mo><mo>⋅</mo><mo stretchy="false">(</mo><mi>a</mi><mo>−</mo><mi>b</mi><mo stretchy="false">)</mo><mo stretchy="false">!</mo></mrow></mfrac></mrow><annotation encoding="application/x-tex">C_{a}^{b}=\frac{a!}{b! \cdot (a-b)!}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.146108em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.30744em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.37144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mopen">(</span><span class="mord mathdefault">a</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mclose">!</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="mclose">!</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span></p>
+<h4 id="迭代公式法"><a class="markdownIt-Anchor" href="#迭代公式法"></a> 迭代公式法：</h4>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>a</mi><mi>b</mi></msubsup><mo>=</mo><msubsup><mi>C</mi><mrow><mi>a</mi><mo>−</mo><mn>1</mn></mrow><mi>b</mi></msubsup><mo>+</mo><msubsup><mi>C</mi><mrow><mi>a</mi><mo>−</mo><mn>1</mn></mrow><mrow><mi>b</mi><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><annotation encoding="application/x-tex">C_{a}^{b}=C_{a-1}^{b}+C_{a-1}^{b-1}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.146108em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.204439em;vertical-align:-0.305331em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.899108em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.1130000000000004em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.305331em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.2138779999999998em;vertical-align:-0.31477em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999999em;"><span style="top:-2.443561em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mbin mtight">−</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.31477em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="卢卡斯定理"><a class="markdownIt-Anchor" href="#卢卡斯定理"></a> 卢卡斯定理：</h4>
+<p class="katex-block"><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><msubsup><mi>C</mi><mi>a</mi><mi>b</mi></msubsup><mo>≡</mo><msubsup><mi>C</mi><mrow><mi>a</mi><mtext> </mtext><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>p</mi></mrow><mrow><mi>b</mi><mtext> </mtext><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>p</mi></mrow></msubsup><mo>⋅</mo><mtext> </mtext><msubsup><mi>C</mi><mfrac><mi>a</mi><mi>p</mi></mfrac><mfrac><mi>b</mi><mi>p</mi></mfrac></msubsup><mo stretchy="false">(</mo><mi>m</mi><mi>o</mi><mi>d</mi><mtext> </mtext><mi>p</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">C_{a}^{b} \equiv C_{a\ mod \ p}^{b\ mod \ p} \cdot \ C_{\frac{a}{p}}^{\frac{b}{p}} (mod\ p)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.146108em;vertical-align:-0.247em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8991079999999998em;"><span style="top:-2.4530000000000003em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span></span></span></span><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.247em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≡</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.404432em;vertical-align:-0.4374159999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9670159999999999em;"><span style="top:-2.3986920000000005em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">d</span><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord mathdefault mtight">p</span></span></span></span><span style="top:-3.1809080000000005em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord mathdefault mtight">m</span><span class="mord mathdefault mtight">o</span><span class="mord mathdefault mtight">d</span><span class="mspace mtight"><span class="mtight"> </span></span><span class="mord mathdefault mtight">p</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.4374159999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">⋅</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mspace"> </span></span><span class="base"><span class="strut" style="height:1.9361399999999998em;vertical-align:-0.6373em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.07153em;">C</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2988399999999998em;"><span style="top:-2.70072em;margin-left:-0.07153em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.6915428571428572em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">a</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.48288571428571425em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span><span style="top:-3.68282em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8800285714285714em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">p</span></span></span></span><span style="top:-3.2255000000000003em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.48288571428571425em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.6373em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">m</span><span class="mord mathdefault">o</span><span class="mord mathdefault">d</span><span class="mspace"> </span><span class="mord mathdefault">p</span><span class="mclose">)</span></span></span></span></span></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">lucas</span><span class="params">(ll a,ll b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a&lt;p&amp;&amp;b&lt;p) <span class="keyword">return</span> <span class="built_in">C</span>(a,b);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> res= (ll)<span class="built_in">C</span>(a%p,b%p)*<span class="built_in">lucas</span>(a/p,b/p)%p;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//C(a,b)即以a为底取b的组合数</span></span><br></pre></td></tr></table></figure>
+<h4 id="组合数高精度"><a class="markdownIt-Anchor" href="#组合数高精度"></a> 组合数高精度</h4>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 5010 </span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="keyword">bool</span> numlist[MAXN];</span><br><span class="line"><span class="keyword">int</span> prime[MAXN],cnt=<span class="number">0</span>,num[MAXN];</span><br><span class="line"><span class="keyword">int</span> a,b;</span><br><span class="line">vector&lt;<span class="keyword">int</span>&gt; res;</span><br><span class="line"><span class="comment">//欧拉筛筛出所有质数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Eular</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=<span class="number">5001</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(numlist[i]==<span class="number">0</span>)&#123;</span><br><span class="line">            prime[++cnt]=i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=cnt&amp;&amp;prime[j]&lt;=<span class="number">5001</span>/i;j++)&#123;</span><br><span class="line">            numlist[i*prime[j]]=<span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//高精度</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">mult</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;res.<span class="built_in">size</span>();i++)</span><br><span class="line">        res[i]*=a;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;res.<span class="built_in">size</span>()<span class="number">-1</span>;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(res[i]&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">            res[i+<span class="number">1</span>]+=res[i]/<span class="number">10</span>;</span><br><span class="line">            res[i]%=<span class="number">10</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(res[res.<span class="built_in">size</span>()<span class="number">-1</span>]&gt;=<span class="number">10</span>)&#123;</span><br><span class="line">        <span class="keyword">int</span> u=res.<span class="built_in">size</span>()<span class="number">-1</span>;</span><br><span class="line">        res.<span class="built_in">push_back</span>(res[u]/<span class="number">10</span>);</span><br><span class="line">        res[u]%=<span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">Eular</span>();</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;a,&amp;b);</span><br><span class="line">    <span class="comment">//处理出所有的公约数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> u=a;</span><br><span class="line">        <span class="keyword">while</span>(u)&#123;</span><br><span class="line">            num[i]+=u/prime[i];</span><br><span class="line">            u/=prime[i];</span><br><span class="line">        &#125;</span><br><span class="line">        u=b;</span><br><span class="line">        <span class="keyword">while</span>(u)&#123;</span><br><span class="line">            num[i]-=u/prime[i];</span><br><span class="line">            u/=prime[i];</span><br><span class="line">        &#125;</span><br><span class="line">        u=a-b;</span><br><span class="line">        <span class="keyword">while</span>(u)&#123;</span><br><span class="line">            num[i]-=u/prime[i];</span><br><span class="line">            u/=prime[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    res.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">    <span class="comment">//高精度乘法</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num[i]!=<span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=num[i];j++)&#123;</span><br><span class="line">                <span class="built_in">mult</span>(prime[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=res.<span class="built_in">size</span>()<span class="number">-1</span>;i&gt;=<span class="number">0</span>;i--)</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,res[i]);</span><br><span class="line">    <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>卢卡斯定理的证明利用了循环节的知识。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1504,126 +1620,6 @@ B/S架构    browser-server</p>
 <h4 id="最终文件也是下载成功了~"><a class="markdownIt-Anchor" href="#最终文件也是下载成功了~"></a> 最终文件也是下载成功了~</h4>
 <p><strong><img src="/2021/03/13/python-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/9.png" class title="This is an test image"></strong></p>
 <p><strong><img src="/2021/03/13/python-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/10.png" class title="This is an test image"></strong></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/03/11/Git%E6%95%99%E7%A8%8B-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pipipapi.png">
-      <meta itemprop="name" content="Perf">
-      <meta itemprop="description" content="兴趣使然">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Perf">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/03/11/Git%E6%95%99%E7%A8%8B-1/" class="post-title-link" itemprop="url">Git教程_1</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-03-11 23:40:20" itemprop="dateCreated datePublished" datetime="2021-03-11T23:40:20+08:00">2021-03-11</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-19 22:50:52" itemprop="dateModified" datetime="2021-08-19T22:50:52+08:00">2021-08-19</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8/" itemprop="url" rel="index"><span itemprop="name">操作系统使用</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/03/11/Git%E6%95%99%E7%A8%8B-1/" class="post-meta-item leancloud_visitors" data-flag-title="Git教程_1" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2021/03/11/Git%E6%95%99%E7%A8%8B-1/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://wangyuhang-cmd.github.io/2021/03/11/Git%E6%95%99%E7%A8%8B-1/" class="cy_cmt_count" data-xid="2021/03/11/Git教程-1/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="git快速上手"><a class="markdownIt-Anchor" href="#git快速上手"></a> Git快速上手</h2>
-<h6 id="git是一个分布式的版本控制系统类似于多人可共同修改文件的一个平台"><a class="markdownIt-Anchor" href="#git是一个分布式的版本控制系统类似于多人可共同修改文件的一个平台"></a> Git是一个分布式的版本控制系统，类似于多人可共同修改文件的一个平台</h6>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Centos上下载源文件后解压，进入文件夹</span></span><br><span class="line">sudo su</span><br><span class="line">./config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
-<p>即安装成功</p>
-<h4 id="配置git"><a class="markdownIt-Anchor" href="#配置git"></a> 配置Git</h4>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建一个文件夹来作为Git仓库</span></span><br><span class="line">mkdir my_git</span><br><span class="line"><span class="built_in">cd</span> my_git</span><br><span class="line"><span class="comment">#将此目录变成一个Git仓库</span></span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
-<h4 id="使用git"><a class="markdownIt-Anchor" href="#使用git"></a> 使用Git</h4>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#将在创建好的git目录下的文件添加至仓库</span></span><br><span class="line">git add &lt;filename1&gt; </span><br><span class="line">git add &lt;filename2&gt;</span><br><span class="line">...</span><br><span class="line"><span class="comment">#将此文件提交至仓库</span></span><br><span class="line">git commit <span class="literal">-m</span> “&lt;remarks&gt;”</span><br><span class="line"><span class="comment">#再次对已提交仓库的文件进行修改后提交命令：</span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>$ git status<br>
-On branch master<br>
-Changes not staged for commit:<br>
-(use “git add <file>…” to update what will be committed)<br>
-(use “git checkout – <file>…” to discard changes in working directory)</file></file></p>
-<p>modified: readme.txt</p>
-<p>no changes added to commit (use “git add” and/or “git commit -a”)</p>
-</blockquote>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看修改内容</span></span><br><span class="line">git <span class="built_in">diff</span> &lt;filename&gt;</span><br><span class="line"><span class="comment">#确认好了要提交后重复一开始的添加提交步骤</span></span><br><span class="line"><span class="comment">#添加 git add #提交 git commit</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#每一次commit就相当于保存了一张快照</span></span><br><span class="line"><span class="comment">#查看之间所有修改的快照片</span></span><br><span class="line">git log -[<span class="type">pretty</span>]</span><br></pre></td></tr></table></figure>
 
       
     </div>
