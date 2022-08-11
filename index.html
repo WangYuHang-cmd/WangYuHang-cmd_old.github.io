@@ -93,7 +93,7 @@
         <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签<span class="badge">31</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类<span class="badge">13</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">47</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">48</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -166,7 +166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -236,6 +236,111 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pipipapi.png">
+      <meta itemprop="name" content="Perf">
+      <meta itemprop="description" content="兴趣使然">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perf">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/" class="post-title-link" itemprop="url">Codecherf START51 Div4 Chef & Cook Game</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-08-11 11:45:48 / 修改时间：11:46:26" itemprop="dateCreated datePublished" datetime="2022-08-11T11:45:48+08:00">2022-08-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/" class="post-meta-item leancloud_visitors" data-flag-title="Codecherf START51 Div4 Chef & Cook Game" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://wangyuhang-cmd.github.io/2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/" class="cy_cmt_count" data-xid="2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Codecherf-START51-Div4-Chef-amp-Cook-Game"><a href="#Codecherf-START51-Div4-Chef-amp-Cook-Game" class="headerlink" title="Codecherf  START51 Div4 Chef &amp; Cook Game"></a>Codecherf  START51 Div4 Chef &amp; Cook Game</h2><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>There is a non-negative integer array A<em>A</em> of length N<em>N</em>. Chef and Cook will play a game on the array with Chef starting first.</p>
+<p>In one turn the player will perform the following operation:</p>
+<ul>
+<li>Choose two indices i,j such that $1 \le i \lt j \le N$ and $A_i \gt 0$.</li>
+<li>Set $A_i \gets A_i-1$ and $A_j \gets A_j+1$,subtract 1 from $A_i$ and add 1 to $A_j$</li>
+</ul>
+<p>The player who is unable to perform the operation loses. If both Chef and Cook play optimally, who will win?</p>
+<h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>首先，对于a[i]是偶数的位置，我们很容易想出来对照操作:只要你选了这个位置，我也选，因此对于偶数的位置我们不需要考虑。因此单独考虑a[i]为奇数的位置，我们可以将其转化为Nim游戏，对于i位置，可以移动到大于i的任意位置，因此可以看作可以取1~N-i个石子,所以我们把奇数位置的所有N-i异或起来，如果异或和不为0，则为先手必胜，否则先手必败。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	cin&gt;&gt;n;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n) cin&gt;&gt;a[i];</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">		cout &lt;&lt; <span class="string">&quot;Cook\n&quot;</span>;</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	LL sum=<span class="number">0</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,n)&#123;</span><br><span class="line">		<span class="keyword">if</span>(a[i]&amp;<span class="number">1</span>) sum^=(n-i);</span><br><span class="line">	&#125;</span><br><span class="line">	cout &lt;&lt; (sum?<span class="string">&quot;Chef&quot;</span>:<span class="string">&quot;Cook&quot;</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1245,132 +1350,6 @@
 <p><strong><img src="/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/2.jpg" class title="This is an test image"></strong></p>
 <p>本来是没有机会打这一次昆明的，还是要感谢我的队友wzy，他们队打完Jscpc之后有一个队员走了，他就叫上了我。确实打昆明是额外到来的机会，没有抓住机会，一方面赖我的机会把握能力的同时一方面也算是给我积累了一次参赛经历。十分的可惜，太可惜了，不过睡一觉起来感觉也好多了，毕竟人要向前看啊…</p>
 <p>虽然是一次失败的参赛经历，不过还是感谢队友的付出。菜是原罪，下一步只能加练。</p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2022/03/06/%E8%AE%A1%E6%95%B0%E4%B8%93%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pipipapi.png">
-      <meta itemprop="name" content="Perf">
-      <meta itemprop="description" content="兴趣使然">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Perf">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2022/03/06/%E8%AE%A1%E6%95%B0%E4%B8%93%E9%A2%98/" class="post-title-link" itemprop="url">计数专题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2022-03-06 16:00:30" itemprop="dateCreated datePublished" datetime="2022-03-06T16:00:30+08:00">2022-03-06</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2022-05-30 12:29:34" itemprop="dateModified" datetime="2022-05-30T12:29:34+08:00">2022-05-30</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2022/03/06/%E8%AE%A1%E6%95%B0%E4%B8%93%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="计数专题" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2022/03/06/%E8%AE%A1%E6%95%B0%E4%B8%93%E9%A2%98/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://wangyuhang-cmd.github.io/2022/03/06/%E8%AE%A1%E6%95%B0%E4%B8%93%E9%A2%98/" class="cy_cmt_count" data-xid="2022/03/06/计数专题/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>计数问题一直是让我头疼的问题啊…最近开始整理相关的问题。</p>
-<h2 id="namocamp每日一题"><a class="markdownIt-Anchor" href="#namocamp每日一题"></a> <code>NamoCamp</code>每日一题</h2>
-<h3 id="467-路径计数2"><a class="markdownIt-Anchor" href="#467-路径计数2"></a> #467. 路径计数2</h3>
-<ul>
-<li><a target="_blank" rel="noopener" href="http://oj.daimayuan.top/problem/467#tab-statement"> 描述</a></li>
-<li><a target="_blank" rel="noopener" href="http://oj.daimayuan.top/problem/467#tab-submit-answer"> 提交</a></li>
-</ul>
-<p>有一个 n∗n 的网格，有些格子是可以通行的，还有 m 个格子是障碍。</p>
-<p>一开始你在左上角的位置，你可以每一步往下或者往右走，问有多少种走到右下角的方案。</p>
-<p>由于答案很大，输出对 1e9+7取模的结果。</p>
-<h4 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式</h4>
-<p>第一行两个数字 n, m。</p>
-<p>接下来 m 行，每行 2 个整数 <code>xi,yi</code>，代表第 i 个障碍的坐标。</p>
-<h4 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式</h4>
-<p>一个数，表示答案。</p>
-<h4 id="样例输入"><a class="markdownIt-Anchor" href="#样例输入"></a> 样例输入</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">2 1</span><br><span class="line">2 1</span><br></pre></td></tr></table></figure>
-<h4 id="样例输出"><a class="markdownIt-Anchor" href="#样例输出"></a> 样例输出</h4>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure>
-<h4 id="数据规模"><a class="markdownIt-Anchor" href="#数据规模"></a> 数据规模</h4>
-<p>所有数据保证 <code>1≤n≤106,1≤m≤3000,1≤xi,yi≤n</code></p>
-<p>首先我们观察到数据范围不适合做n*n的DP，因此我们寻找突破口m=3000，设状态<code>DP[i]</code>表示从(1,1)到第i个障碍，其中不经过其他任何障碍的方案数.因此对于第i个障碍的转移需要其他所有状态中横纵坐标都小于第i个障碍的点来进行转移。</p>
-<p>我们可以用BFS或者记忆化搜索来完成状态的转移：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">6010</span>,M=<span class="number">2000010</span>,mod=<span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pos[N];</span><br><span class="line"><span class="keyword">int</span> f[N],fact[M],inv[M],n,m;<span class="comment">//C[N][N];</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">C</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;m) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span>(n==m||m==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> (LL)fact[n]*inv[n-m]%mod*inv[m]%mod;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">	fact[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,M<span class="number">-10</span>) fact[i]=(LL)fact[i<span class="number">-1</span>]*i%mod;</span><br><span class="line">	inv[M<span class="number">-10</span>]=<span class="built_in">fpower</span>(fact[M<span class="number">-10</span>], mod<span class="number">-2</span>,mod);</span><br><span class="line">	<span class="built_in">per</span>(i,M<span class="number">-11</span>,<span class="number">1</span>) inv[i]=(LL)inv[i+<span class="number">1</span>]*(i+<span class="number">1</span>)%mod;</span><br><span class="line">	inv[<span class="number">0</span>]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(f[u]!=<span class="number">-1</span>) <span class="keyword">return</span> f[u];</span><br><span class="line">	<span class="keyword">int</span> res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;++i)&#123;</span><br><span class="line">		<span class="keyword">if</span>(pos[i].x&lt;=pos[u].x&amp;&amp;pos[i].y&lt;=pos[u].y&amp;&amp;i!=u)</span><br><span class="line">			res=(res+(LL)<span class="built_in">dfs</span>(i)*<span class="built_in">C</span>(pos[u].x-pos[i].x+pos[u].y-pos[i].y,pos[u].x-pos[i].x)%mod)%mod;</span><br><span class="line">	&#125;</span><br><span class="line">	res=(((LL)<span class="built_in">C</span>(pos[u].x<span class="number">-1</span>+pos[u].y<span class="number">-1</span>,pos[u].x<span class="number">-1</span>)-res)%mod+mod)%mod;</span><br><span class="line">	<span class="keyword">return</span> f[u]=res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">	n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">	<span class="built_in">rep</span>(i,<span class="number">1</span>,m) pos[i].x=<span class="built_in">read</span>(),pos[i].y=<span class="built_in">read</span>();</span><br><span class="line">	pos[++m].x=n,pos[m].y=n;</span><br><span class="line">	<span class="built_in">memset</span>(f,<span class="number">-1</span>,<span class="keyword">sizeof</span> f);</span><br><span class="line">	<span class="built_in">print</span>(<span class="built_in">dfs</span>(m));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

@@ -6,7 +6,7 @@
   <link href="https://wangyuhang-cmd.github.io/atom.xml" rel="self"/>
   
   <link href="https://wangyuhang-cmd.github.io/"/>
-  <updated>2022-07-27T18:30:49.687Z</updated>
+  <updated>2022-08-11T03:46:26.566Z</updated>
   <id>https://wangyuhang-cmd.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Codecherf START51 Div4 Chef &amp; Cook Game</title>
+    <link href="https://wangyuhang-cmd.github.io/2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/"/>
+    <id>https://wangyuhang-cmd.github.io/2022/08/11/Codecherf-START51-Div4-Chef-Cook-Game/</id>
+    <published>2022-08-11T03:45:48.000Z</published>
+    <updated>2022-08-11T03:46:26.566Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Codecherf-START51-Div4-Chef-amp-Cook-Game"><a href="#Codecherf-START51-Div4-Chef-amp-Cook-Game" class="headerlink" title="Codecherf  START51 Div4 Chef &amp; Cook Game"></a>Codecherf  START51 Div4 Chef &amp; Cook Game</h2><h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><p>There is a non-negative integer array A<em>A</em> of length N<em>N</em>. Chef and Cook will play a game on the array with Chef starting first.</p><p>In one turn the player will perform the following operation:</p><ul><li>Choose two indices i,j such that $1 \le i \lt j \le N$ and $A_i \gt 0$.</li><li>Set $A_i \gets A_i-1$ and $A_j \gets A_j+1$,subtract 1 from $A_i$ and add 1 to $A_j$</li></ul><p>The player who is unable to perform the operation loses. If both Chef and Cook play optimally, who will win?</p><h3 id="解法："><a href="#解法：" class="headerlink" title="解法："></a>解法：</h3><p>首先，对于a[i]是偶数的位置，我们很容易想出来对照操作:只要你选了这个位置，我也选，因此对于偶数的位置我们不需要考虑。因此单独考虑a[i]为奇数的位置，我们可以将其转化为Nim游戏，对于i位置，可以移动到大于i的任意位置，因此可以看作可以取1~N-i个石子,所以我们把奇数位置的所有N-i异或起来，如果异或和不为0，则为先手必胜，否则先手必败。</p><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n) cin&gt;&gt;a[i];</span><br><span class="line"><span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</span><br><span class="line">cout &lt;&lt; <span class="string">&quot;Cook\n&quot;</span>;</span><br><span class="line"><span class="keyword">return</span> ;</span><br><span class="line">&#125;</span><br><span class="line">LL sum=<span class="number">0</span>;</span><br><span class="line"><span class="built_in">rep</span>(i,<span class="number">1</span>,n)&#123;</span><br><span class="line"><span class="keyword">if</span>(a[i]&amp;<span class="number">1</span>) sum^=(n-i);</span><br><span class="line">&#125;</span><br><span class="line">cout &lt;&lt; (sum?<span class="string">&quot;Chef&quot;</span>:<span class="string">&quot;Cook&quot;</span>) &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;Codecherf-START51-Div4-Chef-amp-Cook-Game&quot;&gt;&lt;a href=&quot;#Codecherf-START51-Div4-Chef-amp-Cook-Game&quot; class=&quot;headerlink&quot; title=&quot;Codecherf </summary>
+      
+    
+    
+    
+    <category term="数据结构与算法" scheme="https://wangyuhang-cmd.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="题解" scheme="https://wangyuhang-cmd.github.io/tags/%E9%A2%98%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构维护序列_插入首部与维护位置</title>
@@ -472,31 +496,6 @@
     
     
     <category term="AC自动机" scheme="https://wangyuhang-cmd.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>感悟_1_</title>
-    <link href="https://wangyuhang-cmd.github.io/2021/08/17/%E6%84%9F%E6%82%9F/"/>
-    <id>https://wangyuhang-cmd.github.io/2021/08/17/%E6%84%9F%E6%82%9F/</id>
-    <published>2021-08-17T11:17:37.000Z</published>
-    <updated>2021-08-17T11:18:20.256Z</updated>
-    
-    <content type="html"><![CDATA[<p>欲动天下者，当动天下之心，而不徒在显见之迹。动其心者，当具有大本大源。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;欲动天下者，当动天下之心，而不徒在显见之迹。动其心者，当具有大本大源。&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    <category term="随笔感悟" scheme="https://wangyuhang-cmd.github.io/categories/%E9%9A%8F%E7%AC%94%E6%84%9F%E6%82%9F/"/>
-    
-    
-    <category term="感悟" scheme="https://wangyuhang-cmd.github.io/tags/%E6%84%9F%E6%82%9F/"/>
     
   </entry>
   
