@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic%7CRoboto+Slab:300,300italic,400,400italic,700,700italic%7CPT+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyuhang-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="XCPC ​	   作为一名大二才接触算法竞赛，打了一年就退役的选手，我的XCPC生涯是如此短暂… ​		由于一开始是大数据专业的，首先掌握的语言也是Python而不是C语言。因此在大一下学期我萌生了转专业的想法之后，我开始去自学C语言，看的是北大郭炜老师的课程： 程序设计与算法（一）C语言程序设计 程序设计与算法（二）算法基础 程序设计与算法（三）C++面向对象程序设计 同时,他配套的POJ(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xcpc生涯总结">
+<meta property="og:url" content="https://wangyuhang-cmd.github.io/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Perf">
+<meta property="og:description" content="XCPC ​	   作为一名大二才接触算法竞赛，打了一年就退役的选手，我的XCPC生涯是如此短暂… ​		由于一开始是大数据专业的，首先掌握的语言也是Python而不是C语言。因此在大一下学期我萌生了转专业的想法之后，我开始去自学C语言，看的是北大郭炜老师的课程： 程序设计与算法（一）C语言程序设计 程序设计与算法（二）算法基础 程序设计与算法（三）C++面向对象程序设计 同时,他配套的POJ(">
+<meta property="og:locale">
+<meta property="og:image" content="https://wangyuhang-cmd.github.io/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/1.png">
+<meta property="article:published_time" content="2022-12-03T09:27:46.000Z">
+<meta property="article:modified_time" content="2022-12-03T09:30:10.395Z">
+<meta property="article:author" content="Perf">
+<meta property="article:tag" content="xcpclife">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://wangyuhang-cmd.github.io/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/1.png">
+
+
+<link rel="canonical" href="https://wangyuhang-cmd.github.io/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-Hans","comments":true,"permalink":"https://wangyuhang-cmd.github.io/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/","path":"2022/12/03/xcpc生涯总结/","title":"xcpc生涯总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>xcpc生涯总结 | Perf</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?c67264c02b274042c3bbaefae8f36c81"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><link rel="alternate" href="/atom.xml" title="Perf" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Perf</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section">首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签<span class="badge">35</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">52</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#xcpc"><span class="nav-number">1.</span> <span class="nav-text"> XCPC</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Perf"
+      src="/images/pipipapi.png">
+  <p class="site-author-name" itemprop="name">Perf</p>
+  <div class="site-description" itemprop="description">兴趣使然</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+        
+          <span class="site-state-item-count">52</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories">
+          
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/WangYuHang-cmd" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;WangYuHang-cmd" rel="noopener" target="_blank"></a>
+      </span>
+  </div>
+
+
+  <div class="links-of-blogroll site-overview-item animated">
+    <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+      一些links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.csdn.net/m0_51780913?spm=1001.2101.3001.5343" title="https:&#x2F;&#x2F;blog.csdn.net&#x2F;m0_51780913?spm&#x3D;1001.2101.3001.5343" rel="noopener" target="_blank">My_CSDN</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://codeforces.com/profile/wyh" title="https:&#x2F;&#x2F;codeforces.com&#x2F;profile&#x2F;wyh" rel="noopener" target="_blank">My_Codeforces</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://home.cnblogs.com/u/pipipapi" title="https:&#x2F;&#x2F;home.cnblogs.com&#x2F;u&#x2F;pipipapi" rel="noopener" target="_blank">My_博客园</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://github.com/WangYuHang-cmd" title="https:&#x2F;&#x2F;github.com&#x2F;WangYuHang-cmd" rel="noopener" target="_blank">My_GitHub</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="http://www.nuistshare.cn/" title="http:&#x2F;&#x2F;www.nuistshare.cn&#x2F;" rel="noopener" target="_blank">友情链接_超赞资源分享_by_WZQ</a>
+        </li>
+    </ul>
+  </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pipipapi.png">
+      <meta itemprop="name" content="Perf">
+      <meta itemprop="description" content="兴趣使然">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perf">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          xcpc生涯总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-12-03 17:27:46 / 修改时间：17:30:10" itemprop="dateCreated datePublished" datetime="2022-12-03T17:27:46+08:00">2022-12-03</time>
+    </span>
+
+  
+    <span id="/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="xcpc生涯总结" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/#SOHUCS" itemprop="discussionUrl">
+        <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2022/12/03/xcpc生涯总结/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="xcpc"><a class="markdownIt-Anchor" href="#xcpc"></a> XCPC</h2>
+<p>​	   作为一名大二才接触算法竞赛，打了一年就退役的选手，我的XCPC生涯是如此短暂…</p>
+<p>​		由于一开始是大数据专业的，首先掌握的语言也是Python而不是C语言。因此在大一下学期我萌生了转专业的想法之后，我开始去自学C语言，看的是北大郭炜老师的课程：</p>
+<p><a target="_blank" rel="noopener" href="https://www.icourse163.org/course/PKU-1001553023">程序设计与算法（一）C语言程序设计</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/PKU-1001894005?tid=1463180448">程序设计与算法（二）算法基础</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.icourse163.org/learn/PKU-1002029030?tid=1463187446#/learn/announce">程序设计与算法（三）C++面向对象程序设计</a></p>
+<p>同时,他配套的POJ(Peking University Online Judge)上面的习题我也带着写完了，同时我也上了郭炜老师的Python的相关课程。这也使得我从一位编程小白变成了一位会写简单分支循环语句的新生，同时也以优秀的等级通过了计算机二级考试。</p>
+<p>然后就到了五月，我感觉这个写编程题还蛮有意思的，我就去洛谷上买了一本《深入浅出程序设计竞赛》平时带着写一写，恰好五月底我校正好举办了NUISTCPC(校程序设计竞赛)，我当时报着刚学完C语言和刷完深基搜索后的去试一试的心态，结果在迅速签完到之后三个小时罚坐后搞出来了一道贪心题，打了一个二十多的好成绩，这也让身为菜鸟的我感到惊奇。也正好在之后一次偶然的讲座中我听到了来自SYF学长关于ACM-ICPC的介绍后，产生了浓厚的兴趣。</p>
+<p>在经历过一个多月的期末月，即2021.7.12考完最后一门后，我发现我已经把GPA刷到了足以使我成功转专业的分数，我尝试开始在网上找ACM-ICPC的入门路线。当然这过程中也走了很多弯弯绕绕的路，知道我在学习基础动态规划模型时在搜“背包九讲”时在Bilibili上面搜到了北大闫学灿老师的视频，我了解到了Acwing，并一口气报名了算法基础课和算法提高课。那个暑假我也留校开始学习。由于之前刷完过一本洛谷的《深基》,所以我很快就刷完了基础课(没记错的话好像是两周不到)，然后感觉蛮简单的，我就开始刷提高课了。</p>
+<p>刷提高课的收获还是非常多的，各种之前并没有真正掌握的算法随着刷题的进行，开始逐渐熟悉了起来。大概是刷了一个半月我把提高可百分之九十的算法都掌握了。刷提高课的同时，我还进入了Acwing比较有名的提高二群，在里面认识了来自各个学校的Acmer,有：</p>
+<blockquote>
+<p>现在在重邮的<a href="736237881@qq.com">光头哥</a>，<a href="979451229">Bsqaq</a>，安徽工程的<a href="736237881@qq.com">啾啾</a>，武昌理工的银牌佬<a href="1293391499@qq.com">Duck_沙烬</a>，新疆大学的<a href="1293391499@qq.com">临渊</a>，来自哥大，打进WF的<a href="979451229@qq.com">然然</a>，齐鲁工业大学的<a href="942845546@qq.com">L神</a>，来自广西的OI爷<a href="3342880042@qq.com">爽gai</a>，山东理工的那个队名巨长的队伍的ACMer<a href="3342880042@qq.com">凌乱之风</a>，还有<a href="766703001@qq.com">酸菜鱼佬</a>，湖南理工<a href="766703001@qq.com">长途</a>，深圳大学<a href="766703001@qq.com">喵喵子</a>，湖南科技<a href="766703001@qq.com">黄宇轩</a>，南昌理工的<a href="766703001@qq.com">lqgg</a>，<a href="766703001@qq.com">lqmm</a>，吉林大学的<a href="1062708758@qq.com">速RitszZ</a>…</p>
+</blockquote>
+<p>虽然大家刚进群都是菜菜的(除了个别佬)，但是经过了一年的训练也都拿到了牌子。</p>
+<p>也是在暑假里我开始接触到了<a href="atcoder.com">Atcoder</a>和<a href="codeforces.com">Codeforces</a>这两个竞争性编程训练平台，加上之后接触到的出题偏构造和DP的<a href="codechef.com">Codechef</a>，我主要的线上比赛网站就是这些。</p>
+<p>我有一个非常不好的习惯，那就是喜欢开小号。一旦感觉自己状态有点不太对(比如有点困)，我就会去打小号，但事实证明这样子并不好，不仅严重拖慢了上分速度(以至于我现在只有紫名)，也会拖慢比赛适应能力。</p>
+<p><a target="_blank" rel="noopener" href="https://codeforces.com/ratings/organization/35633">我的所有CF号</a></p>
+<p><strong><img src="/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/1.png" class title="This is an test image"></strong></p>
+<p>总之，对于掌握了知识点后如何快速得提升自己的代码运用水平并提升自己得思维能力，多多刷Atcoder和Codeforces是一个非常高效得做法。</p>
+<p>在大一升大二暑假之后，我发现常常自己CF只能做到C题，D难出。学的算法也并不足够满足所有的XCPC知识，于是九月份我接触到了牛客算法平台以及牛客的课程。因此大二上学期，还没有进队，没有比赛打的我的主要任务就是刷完牛客竞赛的课程和配套习题。这一段时间对于我处理常见模型，常规算法题的能力提升是最明显的，也多亏了雨巨的清晰的讲述，对于小白来说非常的友好。在这之后我就基本告别Acwing这个入门级平台，开始使用牛客这个更加专业的竞赛平台了。刷题量也随着陡增，大概是两个月600+的题目。主要集中在中档题。<a target="_blank" rel="noopener" href="https://ac.nowcoder.com/acm/contest/profile/156290750">MyNowcoder</a>.在处理完这些常见算法模型之后我的CF到了蓝名1700左右的水平，能保证我在30~50分钟内快速出完CF的ABC题，偶尔能写出来CF的D题。紧接着就是寒假的CF训练，那段时间我也找到了我的队友<a target="_blank" rel="noopener" href="https://codeforces.com/profile/Nuist_wzy">WZY</a>和<a target="_blank" rel="noopener" href="https://codeforces.com/profile/Bamboowind">GRD</a>，寒假结束之后我们也开始逐渐合练区域赛。此时的我CF大概是1700-1800左右徘徊。反思了一下应该是我学习不够深入导致的。因为比别人晚一年接触XCPC，所以相应的知识点的学习我给自己设置的时间要短很多，这样才能保证快速覆盖一定量的面，但是深度还是不够的。因此大二下学期，在尽量满足课内需求的同时我还需要加深各个算法的应用——VP区域赛就是一个很好的方法，同时我也开始Virtual Participate CF之前的场次。终于到了快要放暑假的啥时候我的CF成功到达了紫名。紧接着就是更多紫名的小号了…（非常不建议开小号）</p>
+<p>大二下学期我也开始有比赛打了。一个是昆明区域赛，这个在我之前的<a href="https://wangyuhang-cmd.github.io/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/">博客中有提到</a>，也是之前多出来的名额，但是我打的并不好，最后我们队的模拟题没写出来也导致铁首。这让我感觉到之后的重重困难。紧接着就是JSCPC(CCPC 江苏省省赛)。江苏省省赛是我认为的全中国各个赛区难度相对最大的省赛了.还好上一场打铁并没有怎么影响我们，省赛打了一个银首，差一点金，也结束了这个赛季。</p>
+<p>紧接着就是期末月后的多校联赛。多校我们打的一般般，排名也在200左右。大致是保铜争银的定位。我暑假出现的一个失误点在于我去学习了一些字符串进阶算法和计算几何算法，但是实际上这些知识点对我们队伍来说用处并不大。不过就当作知识点学习了。</p>
+<p>2022-2023新赛季的时间特别短暂，我们队伍一共有三场比赛任务，队长特地选在了比较靠前，三周连续的，以便我们能够快速打完后准备期末。所以11.26号我就打完了所有比赛，比赛后的小作文我一律没写，因为大部分比赛都是差强人意，仅仅比预估的最坏结果要好一点。由于CCPC广州的卡题，到了三个小时我才把博弈论给想出来，因为我们又铁了。不过此时倒也没有什么心理压力了，因此紧接着下一周的ICPC合肥站我们还是比较轻松的，最终由于J题奇幻的错误勘误卡了我们半个多小时，最后没有调出来J，导致我们距离银牌线只有几名，遗憾拿铜。ICPC济南站也是同样的，做出来五题，但是因为罚时不占优势，在铜首区拿了一块铜牌。</p>
+<p>我觉得如果我大一就接触ACM的话应该通过两年的时间拿到银牌不成问题。但是也最后两场比赛没有抓住机会+运气不好只拿到了铜牌。不过也算是我曾经参加算法竞赛的凭证了吧！</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>您的鼓励就是作者创造的动力！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechatpay.jpg" alt="Perf 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Perf 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/Touchpoints.png">
+          <span class="icon">
+            <i class=""></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/xcpclife/" rel="tag"># xcpclife</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/11/29/%E9%9A%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E5%AE%9E%E9%AA%8C%E4%BA%8C-%E5%93%88%E5%B8%8C%E8%A1%A8%E7%9A%84%E8%AE%BE%E8%AE%A1/" rel="prev" title="随机算法实验二_哈希表的设计">
+                  <i class="fa fa-chevron-left"></i> 随机算法实验二_哈希表的设计
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments" id="SOHUCS"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Perf</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script src="https://embed.widgetpack.com/widget.js" async></script>
+  <script class="next-config" data-name="rating" type="application/json">{"enable":true,"id":null,"color":"#fc6423"}</script>
+  <script src="/js/third-party/rating.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"5km7mC19CqMC81leGWvSFqO8-9Nh9j0Va","app_key":"P0OndA0Oa0E85pyvMOY6L2dq","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/quicklink@2.2.0/dist/quicklink.umd.js" integrity="sha256-4kQf9z5ntdQrzsBC3YSHnEz02Z9C1UeW/E9OgnvlzSY=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://wangyuhang-cmd.github.io/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+<script class="next-config" data-name="changyan" type="application/json">{"enable":true,"appid":"cyvB2wuVP","appkey":"581fa306a60a3f8d982e8d99f42f76cc"}</script>
+<script src="/js/third-party/comments/changyan.js"></script>
+
+</body>
+</html>
