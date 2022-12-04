@@ -19,12 +19,12 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css" integrity="sha256-2H3fkXt6FEmrReK448mDVGKb3WW2ZZw35gI7vqHOE4Y=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyuhang-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="珂朵莉树ODT可以较快地实现：  区间加 区间赋值 求区间第k大值 求区间n次方和   珂朵莉树的思想在于随机数据下的区间赋值操作很可能让大量元素变为同一个数。所以我们以三元组的形式保存数据（区间 [l,r] 中的元素的值都是v）  存储形式： 1234567struct Node&amp;#123;	int l,r;    mutable int c;    node(int l,int r,int v">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"wangyuhang-cmd.github.io","root":"/","images":"/images","scheme":"Gemini","version":"8.6.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script><meta name="description" content="珂朵莉树ODT 可以较快地实现：  区间加 区间赋值 求区间第k大值 求区间n次方和   珂朵莉树的思想在于随机数据下的区间赋值操作很可能让大量元素变为同一个数。所以我们以三元组&lt;l,r,v&gt;的形式保存数据（区间 [l,r] 中的元素的值都是v）  存储形式： 1234567struct Node&amp;#123;	int l,r;    mutable int c;    node(in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ODT浅学">
 <meta property="og:url" content="https://wangyuhang-cmd.github.io/2022/11/08/ODT%E6%B5%85%E5%AD%A6/index.html">
 <meta property="og:site_name" content="Perf">
-<meta property="og:description" content="珂朵莉树ODT可以较快地实现：  区间加 区间赋值 求区间第k大值 求区间n次方和   珂朵莉树的思想在于随机数据下的区间赋值操作很可能让大量元素变为同一个数。所以我们以三元组的形式保存数据（区间 [l,r] 中的元素的值都是v）  存储形式： 1234567struct Node&amp;#123;	int l,r;    mutable int c;    node(int l,int r,int v">
+<meta property="og:description" content="珂朵莉树ODT 可以较快地实现：  区间加 区间赋值 求区间第k大值 求区间n次方和   珂朵莉树的思想在于随机数据下的区间赋值操作很可能让大量元素变为同一个数。所以我们以三元组&lt;l,r,v&gt;的形式保存数据（区间 [l,r] 中的元素的值都是v）  存储形式： 1234567struct Node&amp;#123;	int l,r;    mutable int c;    node(in">
 <meta property="og:locale">
 <meta property="article:published_time" content="2022-11-08T11:33:33.000Z">
 <meta property="article:modified_time" content="2022-11-08T11:35:48.393Z">
@@ -153,7 +153,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8F%82%E6%9C%B5%E8%8E%89%E6%A0%91ODT"><span class="nav-number">1.</span> <span class="nav-text">珂朵莉树ODT</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8F%82%E6%9C%B5%E8%8E%89%E6%A0%91odt"><span class="nav-number">1.</span> <span class="nav-text"> 珂朵莉树ODT</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -320,7 +320,8 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h2 id="珂朵莉树ODT"><a href="#珂朵莉树ODT" class="headerlink" title="珂朵莉树ODT"></a>珂朵莉树ODT</h2><p>可以较快地实现：</p>
+        <h2 id="珂朵莉树odt"><a class="markdownIt-Anchor" href="#珂朵莉树odt"></a> 珂朵莉树ODT</h2>
+<p>可以较快地实现：</p>
 <ul>
 <li>区间加</li>
 <li>区间赋值</li>
@@ -328,7 +329,7 @@
 <li>求区间n次方和</li>
 </ul>
 <blockquote>
-<p>珂朵莉树的思想在于随机数据下的区间赋值操作很可能让大量元素变为同一个数。所以我们以三元组<l,r,v>的形式保存数据（区间 [l,r] 中的元素的值都是v）</l,r,v></p>
+<p>珂朵莉树的思想在于随机数据下的区间赋值操作很可能让大量元素变为同一个数。所以我们以三元组&lt;l,r,v&gt;的形式保存数据（区间 [l,r] 中的元素的值都是v）</p>
 </blockquote>
 <p>存储形式：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">    <span class="keyword">mutable</span> <span class="keyword">int</span> c;</span><br><span class="line">    <span class="built_in">node</span>(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> v):<span class="built_in">l</span>(l),<span class="built_in">r</span>(r),<span class="built_in">v</span>(v)&#123;&#125;;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span>&lt;(<span class="keyword">const</span> Node&amp; W)<span class="keyword">const</span>&#123;<span class="keyword">return</span> l&lt;W.l;&#125;</span><br><span class="line">&#125;;</span><br><span class="line">set&lt;Node&gt; ds;</span><br></pre></td></tr></table></figure>
@@ -338,7 +339,9 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span><span class="params">(LL l,LL r,LL v)</span></span>&#123; <span class="comment">//将[l,r]赋值为v</span></span><br><span class="line">    <span class="keyword">auto</span> end=<span class="built_in">split</span>(r+<span class="number">1</span>),begin=<span class="built_in">split</span>(l);</span><br><span class="line">	ds.<span class="built_in">erase</span>(begin, end);</span><br><span class="line">    ds.<span class="built_in">insert</span>(<span class="built_in">Node</span>(l,r,v));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>例题：<a target="_blank" rel="noopener" href="https://codeforces.com/problemset/problem/915/E">https://codeforces.com/problemset/problem/915/E</a></p>
 <blockquote>
-<p>从现在到学期结束还有 n 天(从 1 到 n 编号)，他们一开始都是工作日。接下来学校的工作人员会<strong>依次</strong>发出 q 个指令，每个指令可以用三个参数 l,r,k 描述：<br>如果 k=1 ，那么从 l 到 r （包含端点）的所有日子都变成<strong>非</strong>工作日。<br>如果 k=2 ，那么从 l 到 r （包含端点）的所有日子都变成<strong>工作日</strong>。</p>
+<p>从现在到学期结束还有 n 天(从 1 到 n 编号)，他们一开始都是工作日。接下来学校的工作人员会<strong>依次</strong>发出 q 个指令，每个指令可以用三个参数 l,r,k 描述：<br>
+如果 k=1 ，那么从 l 到 r （包含端点）的所有日子都变成<strong>非</strong>工作日。<br>
+如果 k=2 ，那么从 l 到 r （包含端点）的所有日子都变成<strong>工作日</strong>。</p>
 </blockquote>
 <p>将assign()修改一下，暴力统计即可</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">assign</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> v)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> tot = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">auto</span> end=<span class="built_in">split</span>(r+<span class="number">1</span>),begin=<span class="built_in">split</span>(l),now=begin;</span><br><span class="line">	<span class="keyword">for</span>(;now!=end;now++)&#123;</span><br><span class="line">		tot += (now-&gt;v)*(now-&gt;r-now-&gt;l+<span class="number">1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	ds.<span class="built_in">erase</span>(begin, end);</span><br><span class="line">    ds.<span class="built_in">insert</span>(<span class="built_in">Node</span>(l,r,v));</span><br><span class="line">	sum -= tot;</span><br><span class="line">	sum += (r - l + <span class="number">1</span>) * v;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
