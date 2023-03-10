@@ -42,32 +42,6 @@
       </tags>
   </entry>
   <entry>
-    <title>2-SAT</title>
-    <url>/2021/12/31/2-SAT/</url>
-    <content><![CDATA[<h2 id="2-SAT"><a href="#2-SAT" class="headerlink" title="2-SAT"></a>2-SAT</h2><h4 id="一般SAT问题-NP问题"><a href="#一般SAT问题-NP问题" class="headerlink" title="一般SAT问题 (NP问题)"></a>一般SAT问题 (NP问题)</h4><blockquote>
-<p>给定n个命题$x_1,x_2…x_n$</p>
-<p>给出n个形式的条件，形如$x_1 \or \neg x_2 …. \or x_n $ 表示如图形式中至少有一个为真</p>
-<p>求给出$x_1,x_2…x_n$的一组取值使得所有上述条件都为真。</p>
-</blockquote>
-<p>做法：</p>
-<p>首先将每个数$x_i$看作两个点$x_1$为真和$\neg x_i$ 为真，即拆成要么正变量成立要么取反后成立</p>
-<p>然后根据数理逻辑的原理，有推论</p>
-<p>$a \or b $等价于$\neg b \to a$和$\neg a \to b$ (a或者b成立等价于a不成立时b必然成立且b不成立时a必然成立)。因此我们从$\neg a$向$b$连边<code>add(2*a,2*b+1)</code>,从$\neg b$向$a$连边<code>add(2*b+1,2*a)</code>，这表征$\neg b$与$a$在同一逻辑域(同时成立)。按照此形式建立出来的图中，如果$a$和$\neg a$在同一个连通分量中，说明存在矛盾。否则，其中一可行解为：先对原图进行<code>tarjan</code>缩点，之后对于变量$a$和$\neg a$谁的拓扑序在更后面，我们就选取那一个变量对应的值。</p>
-<blockquote>
-<p>但是，由于我们之前使用了<code>tarjan</code>缩点，根据结论<code>tarjan</code>缩点后每个点的便后就是每个点的拓扑序的逆序，因此又对于每个点</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(id[i*<span class="number">2</span>]&lt;id[i*<span class="number">2</span>+<span class="number">1</span>]) cout &lt;&lt; <span class="number">0</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"><span class="keyword">else</span> cout &lt;&lt; <span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>板子没什么特别的，就是建图+tarjan,关键还是第一步</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    dfn[u]=low[u]=++timestamp;</span><br><span class="line">    ins[u]=<span class="literal">true</span>; stk[++top]=u;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=h[u];~i;i=ne[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> j=e[i];</span><br><span class="line">        <span class="keyword">if</span>(!dfn[j])&#123;</span><br><span class="line">            <span class="built_in">tarjan</span>(j);</span><br><span class="line">            low[u]=<span class="built_in">min</span>(low[u],low[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ins[j]) low[u]=<span class="built_in">min</span>(low[u],dfn[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(low[u]==dfn[u])&#123;</span><br><span class="line">        <span class="keyword">int</span> y;</span><br><span class="line">        scc_cnt ++;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            y=stk[top --];</span><br><span class="line">            ins[y]=<span class="literal">false</span>;</span><br><span class="line">            id[y]=scc_cnt;</span><br><span class="line">        &#125;<span class="keyword">while</span>(y!=u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,m)&#123;</span><br><span class="line">        <span class="keyword">int</span> x,a,y,b;</span><br><span class="line">        x=<span class="built_in">read</span>(),a=<span class="built_in">read</span>(),y=<span class="built_in">read</span>(),b=<span class="built_in">read</span>();</span><br><span class="line">        x--,y--;</span><br><span class="line">        <span class="built_in">add</span>(<span class="number">2</span>*x+!a,<span class="number">2</span>*y+b); <span class="built_in">add</span>(<span class="number">2</span>*y+!b,<span class="number">2</span>*x+a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">2</span>*n<span class="number">-1</span>) <span class="keyword">if</span>(!dfn[i]) <span class="built_in">tarjan</span>(i);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">bool</span> ok=<span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(id[i*<span class="number">2</span>]==id[<span class="number">2</span>*i+<span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="comment">// debug(i);</span></span><br><span class="line">            ok=<span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!ok) <span class="built_in">puts</span>(<span class="string">&quot;IMPOSSIBLE&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;POSSIBLE&quot;</span>);</span><br><span class="line">        <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(id[<span class="number">2</span>*i]&lt;id[<span class="number">2</span>*i+<span class="number">1</span>]) <span class="built_in">printf</span>(<span class="string">&quot;0 &quot;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;1 &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>2022jscpc题解</title>
     <url>/2022/05/30/2022jscpc%E9%A2%98%E8%A7%A3/</url>
     <content><![CDATA[<h3 id="A-PENTA-KILL"><a href="#A-PENTA-KILL" class="headerlink" title="A. PENTA KILL!"></a>A. PENTA KILL!</h3><p>签到题，直接O($n^2$)遍历每一个五杀的开始点然后计算是否符合规则即可。规则就是一个人必须连续杀死五个不同的敌人，这个五杀者可在此过程中死亡。</p>
@@ -123,6 +97,32 @@
       </categories>
       <tags>
         <tag>题解</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2-SAT</title>
+    <url>/2021/12/31/2-SAT/</url>
+    <content><![CDATA[<h2 id="2-SAT"><a href="#2-SAT" class="headerlink" title="2-SAT"></a>2-SAT</h2><h4 id="一般SAT问题-NP问题"><a href="#一般SAT问题-NP问题" class="headerlink" title="一般SAT问题 (NP问题)"></a>一般SAT问题 (NP问题)</h4><blockquote>
+<p>给定n个命题$x_1,x_2…x_n$</p>
+<p>给出n个形式的条件，形如$x_1 \or \neg x_2 …. \or x_n $ 表示如图形式中至少有一个为真</p>
+<p>求给出$x_1,x_2…x_n$的一组取值使得所有上述条件都为真。</p>
+</blockquote>
+<p>做法：</p>
+<p>首先将每个数$x_i$看作两个点$x_1$为真和$\neg x_i$ 为真，即拆成要么正变量成立要么取反后成立</p>
+<p>然后根据数理逻辑的原理，有推论</p>
+<p>$a \or b $等价于$\neg b \to a$和$\neg a \to b$ (a或者b成立等价于a不成立时b必然成立且b不成立时a必然成立)。因此我们从$\neg a$向$b$连边<code>add(2*a,2*b+1)</code>,从$\neg b$向$a$连边<code>add(2*b+1,2*a)</code>，这表征$\neg b$与$a$在同一逻辑域(同时成立)。按照此形式建立出来的图中，如果$a$和$\neg a$在同一个连通分量中，说明存在矛盾。否则，其中一可行解为：先对原图进行<code>tarjan</code>缩点，之后对于变量$a$和$\neg a$谁的拓扑序在更后面，我们就选取那一个变量对应的值。</p>
+<blockquote>
+<p>但是，由于我们之前使用了<code>tarjan</code>缩点，根据结论<code>tarjan</code>缩点后每个点的便后就是每个点的拓扑序的逆序，因此又对于每个点</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span>(id[i*<span class="number">2</span>]&lt;id[i*<span class="number">2</span>+<span class="number">1</span>]) cout &lt;&lt; <span class="number">0</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line"><span class="keyword">else</span> cout &lt;&lt; <span class="number">1</span> &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>板子没什么特别的，就是建图+tarjan,关键还是第一步</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    dfn[u]=low[u]=++timestamp;</span><br><span class="line">    ins[u]=<span class="literal">true</span>; stk[++top]=u;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=h[u];~i;i=ne[i])&#123;</span><br><span class="line">        <span class="keyword">int</span> j=e[i];</span><br><span class="line">        <span class="keyword">if</span>(!dfn[j])&#123;</span><br><span class="line">            <span class="built_in">tarjan</span>(j);</span><br><span class="line">            low[u]=<span class="built_in">min</span>(low[u],low[j]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(ins[j]) low[u]=<span class="built_in">min</span>(low[u],dfn[j]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(low[u]==dfn[u])&#123;</span><br><span class="line">        <span class="keyword">int</span> y;</span><br><span class="line">        scc_cnt ++;</span><br><span class="line">        <span class="keyword">do</span>&#123;</span><br><span class="line">            y=stk[top --];</span><br><span class="line">            ins[y]=<span class="literal">false</span>;</span><br><span class="line">            id[y]=scc_cnt;</span><br><span class="line">        &#125;<span class="keyword">while</span>(y!=u);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,m)&#123;</span><br><span class="line">        <span class="keyword">int</span> x,a,y,b;</span><br><span class="line">        x=<span class="built_in">read</span>(),a=<span class="built_in">read</span>(),y=<span class="built_in">read</span>(),b=<span class="built_in">read</span>();</span><br><span class="line">        x--,y--;</span><br><span class="line">        <span class="built_in">add</span>(<span class="number">2</span>*x+!a,<span class="number">2</span>*y+b); <span class="built_in">add</span>(<span class="number">2</span>*y+!b,<span class="number">2</span>*x+a);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,<span class="number">2</span>*n<span class="number">-1</span>) <span class="keyword">if</span>(!dfn[i]) <span class="built_in">tarjan</span>(i);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">bool</span> ok=<span class="literal">true</span>;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">        <span class="keyword">if</span>(id[i*<span class="number">2</span>]==id[<span class="number">2</span>*i+<span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="comment">// debug(i);</span></span><br><span class="line">            ok=<span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!ok) <span class="built_in">puts</span>(<span class="string">&quot;IMPOSSIBLE&quot;</span>);</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">puts</span>(<span class="string">&quot;POSSIBLE&quot;</span>);</span><br><span class="line">        <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(id[<span class="number">2</span>*i]&lt;id[<span class="number">2</span>*i+<span class="number">1</span>]) <span class="built_in">printf</span>(<span class="string">&quot;0 &quot;</span>);</span><br><span class="line">            <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">&quot;1 &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -322,6 +322,24 @@ f(j)=(S+T_i)C_j+f(i)-T_iC_i-SC_n</script><p>因为要最小化f(i),对于本题�
       </tags>
   </entry>
   <entry>
+    <title>Kunming 打铁总结</title>
+    <url>/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<p>昨晚过于emo九点就睡了，今天早上爬起来做一个阶段性的小总结：</p>
+<p>额，昨天昆明区域赛打铁了，意料之外的事情，毕竟我对我们队的定位是保铜争银的，但是铁了就是铁了，现在说什么也只能是事后口胡。</p>
+<p>刚开局，我开始看D，然后两个队友分别看其他几题。负责数学的grd觉得C可以写，于是他就专门负责推导C。然后十分钟左右看了一眼榜单，发现K有人过了，我就去看K，然后十分钟左右我推出来了一个式子，代码就一行，然后花了十分钟左右证明了一下发现是对的，因此在30min左右的时候1发A了K，然后我们就开始看其他题目。然后之后键盘交给了写C的grd，我和wzy又去看了其他题目，这段时间榜有点歪，可惜看了一题F没看出来是签到，然后看了瓶子概率那道题，题目还读错了，就这样晃了一个小时，看到D过的人变多了之后我们就开始看D，很快二十分钟左右我就想出来了一个思路，正好这个时候键盘没人用我就上去写C，大概十分钟就码好了，交了第一发，wa了，开始想什么原因，二十多分钟后发现0的情况有解，交了一发还是wa，以为是超过了365，就写了个程序跑了一下1e8，还是发现不了哪里错了。然后和两个队友说了一下，一个队友听懂了想重构一下，然后重构到一半发现思路断了，不过我立刻有了思路开始重写。重写完又一发wa，当时心态直接炸裂啊…因为我交了三发罚时，最终在前前后后折磨了两个小时左右才发现2的情况要特判，不然按照我的构造方式会出锅。于是又交了一发过了，大概是三个多小时左右。此时我感觉不妙….然后最后队友两个去写A，我看了看瓶子那题。最后可惜A没出，铁首出局…..</p>
+<p>昨天晚上我就躺在床上思考，到底是什么原因导致的。大概就是，策略分配问题+训练不饱和。</p>
+<p>确实这个突如其来的铁打乱了很多安排。</p>
+<p>不过转念想想，或许还是要一定的参赛经验积累才行。由于我一开始不是计算机学院的，打ACM也是半路出家。去年五月份听说了有ACM这个比赛，然后自己学习了一下C语言和C++，然后去打了一下校赛，感觉还行就准备参加ACM训练。经过了期末周，大概是7月十几号的样子我买了一本洛谷的算法书自己开始写，很快就写完了，然后紧接着就是在往上找课，刷题，八月份开始打CF，几场就青了，但是后面晃了一两个月才上了蓝，现在两个号都是1800左右。感觉还是学习时间较短导致的知识点和经验积累不够，因为这个导致什么事情都有可能发生.毕竟我才学了大半年，再来一段时间的学习，一定会有提升的。</p>
+<p><strong><img src="/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/1.jpg" class title="This is an test image"></strong></p>
+<p><strong><img src="/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/2.jpg" class title="This is an test image"></strong></p>
+<p>本来是没有机会打这一次昆明的，还是要感谢我的队友wzy，他们队打完Jscpc之后有一个队员走了，他就叫上了我。确实打昆明是额外到来的机会，没有抓住机会，一方面赖我的机会把握能力的同时一方面也算是给我积累了一次参赛经历。十分的可惜，太可惜了，不过睡一觉起来感觉也好多了，毕竟人要向前看啊…</p>
+<p>虽然是一次失败的参赛经历，不过还是感谢队友的付出。菜是原罪，下一步只能加练。</p>
+]]></content>
+      <tags>
+        <tag>感悟</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Git教程_1</title>
     <url>/2021/03/11/Git%E6%95%99%E7%A8%8B-1/</url>
     <content><![CDATA[<h2 id="Git快速上手"><a href="#Git快速上手" class="headerlink" title="Git快速上手"></a>Git快速上手</h2><h6 id="Git是一个分布式的版本控制系统，类似于多人可共同修改文件的一个平台"><a href="#Git是一个分布式的版本控制系统，类似于多人可共同修改文件的一个平台" class="headerlink" title="Git是一个分布式的版本控制系统，类似于多人可共同修改文件的一个平台"></a>Git是一个分布式的版本控制系统，类似于多人可共同修改文件的一个平台</h6><figure class="highlight powershell"><table><tr><td class="code"><pre><span class="line"><span class="comment">#Centos上下载源文件后解压，进入文件夹</span></span><br><span class="line">sudo su</span><br><span class="line">./config</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
@@ -422,57 +440,6 @@ f(j)=(S+T_i)C_j+f(i)-T_iC_i-SC_n</script><p>因为要最小化f(i),对于本题�
       </tags>
   </entry>
   <entry>
-    <title>Kunming 打铁总结</title>
-    <url>/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<p>昨晚过于emo九点就睡了，今天早上爬起来做一个阶段性的小总结：</p>
-<p>额，昨天昆明区域赛打铁了，意料之外的事情，毕竟我对我们队的定位是保铜争银的，但是铁了就是铁了，现在说什么也只能是事后口胡。</p>
-<p>刚开局，我开始看D，然后两个队友分别看其他几题。负责数学的grd觉得C可以写，于是他就专门负责推导C。然后十分钟左右看了一眼榜单，发现K有人过了，我就去看K，然后十分钟左右我推出来了一个式子，代码就一行，然后花了十分钟左右证明了一下发现是对的，因此在30min左右的时候1发A了K，然后我们就开始看其他题目。然后之后键盘交给了写C的grd，我和wzy又去看了其他题目，这段时间榜有点歪，可惜看了一题F没看出来是签到，然后看了瓶子概率那道题，题目还读错了，就这样晃了一个小时，看到D过的人变多了之后我们就开始看D，很快二十分钟左右我就想出来了一个思路，正好这个时候键盘没人用我就上去写C，大概十分钟就码好了，交了第一发，wa了，开始想什么原因，二十多分钟后发现0的情况有解，交了一发还是wa，以为是超过了365，就写了个程序跑了一下1e8，还是发现不了哪里错了。然后和两个队友说了一下，一个队友听懂了想重构一下，然后重构到一半发现思路断了，不过我立刻有了思路开始重写。重写完又一发wa，当时心态直接炸裂啊…因为我交了三发罚时，最终在前前后后折磨了两个小时左右才发现2的情况要特判，不然按照我的构造方式会出锅。于是又交了一发过了，大概是三个多小时左右。此时我感觉不妙….然后最后队友两个去写A，我看了看瓶子那题。最后可惜A没出，铁首出局…..</p>
-<p>昨天晚上我就躺在床上思考，到底是什么原因导致的。大概就是，策略分配问题+训练不饱和。</p>
-<p>确实这个突如其来的铁打乱了很多安排。</p>
-<p>不过转念想想，或许还是要一定的参赛经验积累才行。由于我一开始不是计算机学院的，打ACM也是半路出家。去年五月份听说了有ACM这个比赛，然后自己学习了一下C语言和C++，然后去打了一下校赛，感觉还行就准备参加ACM训练。经过了期末周，大概是7月十几号的样子我买了一本洛谷的算法书自己开始写，很快就写完了，然后紧接着就是在往上找课，刷题，八月份开始打CF，几场就青了，但是后面晃了一两个月才上了蓝，现在两个号都是1800左右。感觉还是学习时间较短导致的知识点和经验积累不够，因为这个导致什么事情都有可能发生.毕竟我才学了大半年，再来一段时间的学习，一定会有提升的。</p>
-<p><strong><img src="/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/1.jpg" class title="This is an test image"></strong></p>
-<p><strong><img src="/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/2.jpg" class title="This is an test image"></strong></p>
-<p>本来是没有机会打这一次昆明的，还是要感谢我的队友wzy，他们队打完Jscpc之后有一个队员走了，他就叫上了我。确实打昆明是额外到来的机会，没有抓住机会，一方面赖我的机会把握能力的同时一方面也算是给我积累了一次参赛经历。十分的可惜，太可惜了，不过睡一觉起来感觉也好多了，毕竟人要向前看啊…</p>
-<p>虽然是一次失败的参赛经历，不过还是感谢队友的付出。菜是原罪，下一步只能加练。</p>
-]]></content>
-      <tags>
-        <tag>感悟</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prufer编码</title>
-    <url>/2022/01/09/Prufer%E7%BC%96%E7%A0%81/</url>
-    <content><![CDATA[<h2 id="Prufer编码"><a href="#Prufer编码" class="headerlink" title="Prufer编码"></a><code>Prufer</code>编码</h2><p><strong><code>Prufer编码转树</code></strong>  <code>O(n)</code>时间复杂度</p>
-<p>可以把一棵无根树变成一个序列，也可以将一个序列变成一棵无根树。</p>
-<ul>
-<li>每次找到无根树编号最小的度数为1的点</li>
-<li>然后将此点的父节点加入序列</li>
-</ul>
-<p><code>O(n)</code>时间求<code>Prufer</code>编码</p>
-<p>对于一个有<code>n</code>个节点的树，其<code>prufer</code>编码只有<code>n-2</code>个数。</p>
-<p><strong>树转<code>Prufer编码</code></strong></p>
-<p>一个数在<code>prufer</code>编码中出现多少次，就说明其有几个儿子</p>
-<p><code>Step:</code></p>
-<blockquote>
-<p><code>void tree2prufer()</code>的操作是顺序遍历，然后从1开始遍历，当找到出度为0的点时，将其父节点加入<code>prufer</code>序列，然后递归其父节点，如果其父节点的出度为0且父节点小于当亲遍历到的j的值，父节点的父节点也加入<code>prufer</code>序列。</p>
-<p><code>void pruffer2tree()</code>的操作是顺序遍历<code>prufer</code>序列的同时遍历1~n，如果1~n遍历的时候有出度为0的点，则其父亲就是当前遍历到的<code>prufer</code>序列，然后<code>prufer</code>序列当前数的出度—，如果为0且小于当前遍历的树，则其父亲节点为下一个<code>prufer</code>序列中的树。</p>
-</blockquote>
-<p>一道板子，如果m=1，给出给定树的prufer编码，否则给出给定prufer编码的树</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> fa[N],p[N],d[N],idx=<span class="number">0</span>; <span class="comment">//d表示出度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree2prufer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) fa[i]=<span class="built_in">read</span>(),d[fa[i]]++;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;i&lt;n<span class="number">-2</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        p[i++]=fa[j];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-2</span>&amp;&amp;--d[p[i<span class="number">-1</span>]]==<span class="number">0</span>&amp;&amp;p[i<span class="number">-1</span>]&lt;j) p[i++]=fa[p[i<span class="number">-1</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-3</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]); <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prufer2tree</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-2</span>) p[i]=<span class="built_in">read</span>(),d[p[i]]++;</span><br><span class="line">    p[n<span class="number">-1</span>]=n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;n;++i,j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        fa[j]=p[i];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-1</span>&amp;&amp;--d[p[i]]==<span class="number">0</span>&amp;&amp;p[i]&lt;j) fa[p[i]]=p[i+<span class="number">1</span>],i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,fa[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">if</span>(m==<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">tree2prufer</span>();</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">prufer2tree</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h4><p><strong>Cayley定理</strong></p>
-<ul>
-<li>对于一个$n$个点的无向完全图，其生成树的个数为$n^{n-2}$  </li>
-</ul>
-<p>证明：由<code>prufer</code>编码一共n-2位，每一位有n个选择，因此为$n^{n-2}$</p>
-]]></content>
-      <categories>
-        <category>数据结构与算法</category>
-      </categories>
-      <tags>
-        <tag>图论</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ODT浅学</title>
     <url>/2022/11/08/ODT%E6%B5%85%E5%AD%A6/</url>
     <content><![CDATA[<h2 id="珂朵莉树ODT"><a href="#珂朵莉树ODT" class="headerlink" title="珂朵莉树ODT"></a>珂朵莉树ODT</h2><p>可以较快地实现：</p>
@@ -518,6 +485,39 @@ f(j)=(S+T_i)C_j+f(i)-T_iC_i-SC_n</script><p>因为要最小化f(i),对于本题�
       </categories>
       <tags>
         <tag>珂朵莉树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prufer编码</title>
+    <url>/2022/01/09/Prufer%E7%BC%96%E7%A0%81/</url>
+    <content><![CDATA[<h2 id="Prufer编码"><a href="#Prufer编码" class="headerlink" title="Prufer编码"></a><code>Prufer</code>编码</h2><p><strong><code>Prufer编码转树</code></strong>  <code>O(n)</code>时间复杂度</p>
+<p>可以把一棵无根树变成一个序列，也可以将一个序列变成一棵无根树。</p>
+<ul>
+<li>每次找到无根树编号最小的度数为1的点</li>
+<li>然后将此点的父节点加入序列</li>
+</ul>
+<p><code>O(n)</code>时间求<code>Prufer</code>编码</p>
+<p>对于一个有<code>n</code>个节点的树，其<code>prufer</code>编码只有<code>n-2</code>个数。</p>
+<p><strong>树转<code>Prufer编码</code></strong></p>
+<p>一个数在<code>prufer</code>编码中出现多少次，就说明其有几个儿子</p>
+<p><code>Step:</code></p>
+<blockquote>
+<p><code>void tree2prufer()</code>的操作是顺序遍历，然后从1开始遍历，当找到出度为0的点时，将其父节点加入<code>prufer</code>序列，然后递归其父节点，如果其父节点的出度为0且父节点小于当亲遍历到的j的值，父节点的父节点也加入<code>prufer</code>序列。</p>
+<p><code>void pruffer2tree()</code>的操作是顺序遍历<code>prufer</code>序列的同时遍历1~n，如果1~n遍历的时候有出度为0的点，则其父亲就是当前遍历到的<code>prufer</code>序列，然后<code>prufer</code>序列当前数的出度—，如果为0且小于当前遍历的树，则其父亲节点为下一个<code>prufer</code>序列中的树。</p>
+</blockquote>
+<p>一道板子，如果m=1，给出给定树的prufer编码，否则给出给定prufer编码的树</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> fa[N],p[N],d[N],idx=<span class="number">0</span>; <span class="comment">//d表示出度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree2prufer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) fa[i]=<span class="built_in">read</span>(),d[fa[i]]++;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;i&lt;n<span class="number">-2</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        p[i++]=fa[j];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-2</span>&amp;&amp;--d[p[i<span class="number">-1</span>]]==<span class="number">0</span>&amp;&amp;p[i<span class="number">-1</span>]&lt;j) p[i++]=fa[p[i<span class="number">-1</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-3</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]); <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prufer2tree</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-2</span>) p[i]=<span class="built_in">read</span>(),d[p[i]]++;</span><br><span class="line">    p[n<span class="number">-1</span>]=n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;n;++i,j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        fa[j]=p[i];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-1</span>&amp;&amp;--d[p[i]]==<span class="number">0</span>&amp;&amp;p[i]&lt;j) fa[p[i]]=p[i+<span class="number">1</span>],i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,fa[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">if</span>(m==<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">tree2prufer</span>();</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">prufer2tree</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h4><p><strong>Cayley定理</strong></p>
+<ul>
+<li>对于一个$n$个点的无向完全图，其生成树的个数为$n^{n-2}$  </li>
+</ul>
+<p>证明：由<code>prufer</code>编码一共n-2位，每一位有n个选择，因此为$n^{n-2}$</p>
+]]></content>
+      <categories>
+        <category>数据结构与算法</category>
+      </categories>
+      <tags>
+        <tag>图论</tag>
       </tags>
   </entry>
   <entry>
@@ -590,6 +590,44 @@ f(j)=(S+T_i)C_j+f(i)-T_iC_i-SC_n</script><p>因为要最小化f(i),对于本题�
       </categories>
       <tags>
         <tag>Python_搭建http服务器</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>R语言之数据可视化</title>
+    <url>/2021/04/11/R%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
+    <content><![CDATA[<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">#demo可以生成演示图像</span></span><br><span class="line"></span><br><span class="line">demo(graphics)</span><br><span class="line">demo(Hershey)</span><br><span class="line">demo(persp)</span><br><span class="line">demo(image)</span><br><span class="line">demo()</span><br></pre></td></tr></table></figure>
+<h2 id="简单绘图"><a href="#简单绘图" class="headerlink" title="简单绘图"></a>简单绘图</h2><h4 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">plot(x,y，main,xlab,ylab,xlim,ylim,axes)</span><br></pre></td></tr></table></figure>
+<p>x,y是水平数值坐标的数据集        main要是图形的图块</p>
+<p>xlab，ylab是水平轴,竖直轴的标签</p>
+<p>xlim,ylim是绘图用的        x,y值的极限</p>
+<p>axes只是是否要绘制两个轴</p>
+<h4 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">plot(v,type,col,xlab,ylab)</span><br></pre></td></tr></table></figure>
+<p>v是包含数值的向量    type有 ”p“仅绘制点 ”i“仅绘制线 ”o“绘制点和线</p>
+<h4 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">barplot(H,xlab,ylab,main,names.arg,col)</span><br><span class="line">H &lt;- <span class="built_in">c</span>(<span class="number">7</span>,<span class="number">12</span>,<span class="number">28</span>,<span class="number">3</span>,<span class="number">41</span>)</span><br><span class="line">barplot(H)</span><br></pre></td></tr></table></figure>
+<h4 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">pie(x,labels,radius,main,col,clockwise)</span><br></pre></td></tr></table></figure>
+<p>x包含饼图使用数值的向量        labels用于给出切片的描述</p>
+<p>radius表示饼图圆的半径        main表示图表的标题</p>
+<p>col表示调色板        clockwise是指示片段是顺时针还是逆时针的逻辑值</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">&#123;r&#125;x &lt;- <span class="built_in">c</span>(<span class="number">21</span>,<span class="number">62</span>,<span class="number">10</span>,<span class="number">53</span>)</span><br><span class="line">labels &lt;- <span class="built_in">c</span>(<span class="string">&quot;London&quot;</span>,<span class="string">&quot;New York&quot;</span>,<span class="string">&quot;Singapore&quot;</span>,<span class="string">&quot;Mumbai&quot;</span>)</span><br><span class="line">pie(x,labels)</span><br></pre></td></tr></table></figure>
+<h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">hist(v,main,col,<span class="keyword">break</span>)</span><br></pre></td></tr></table></figure>
+<p>v数据    mian标题    col颜色    break条宽度</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">v &lt;- <span class="built_in">c</span>(<span class="number">9</span>,<span class="number">13</span>,<span class="number">21</span>,<span class="number">8</span>,<span class="number">36</span>,<span class="number">22</span>,<span class="number">12</span>,<span class="number">41</span>,<span class="number">31</span>,<span class="number">33</span>,<span class="number">19</span>)</span><br><span class="line">hist(v,xlab = <span class="string">&quot;Weight&quot;</span>,col = <span class="string">&quot;green&quot;</span>,boarder = <span class="string">&quot;red&quot;</span>,xlim = <span class="built_in">c</span>(<span class="number">0</span>,<span class="number">40</span>),yli = <span class="built_in">c</span>(<span class="number">0</span>,<span class="number">5</span>),breaks = <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="核密度图"><a href="#核密度图" class="headerlink" title="核密度图"></a>核密度图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">plot(density(x))</span><br></pre></td></tr></table></figure>
+<h4 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">boxplot(x,data,notch)</span><br></pre></td></tr></table></figure>
+<p>notch是逻辑值。设置TRUE来绘制凹口</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">input &lt;- mtcars[,<span class="built_in">c</span>(<span class="string">&#x27;mpg&#x27;</span>,<span class="string">&#x27;cyl&#x27;</span>)]</span><br><span class="line">boxplot(mpg ~ cyl,data = mtcars,xlab = <span class="string">&quot;Number of Cylinders&quot;</span>,ylab = <span class="string">&quot;Miles Per Gallon&quot;</span>,main = <span class="string">&quot;Mileage Data&quot;</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="点图"><a href="#点图" class="headerlink" title="点图"></a>点图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">dotplot()</span><br></pre></td></tr></table></figure>
+<p>矩阵或者数据框各列之间的二元图</p>
+<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">pairs()</span><br></pre></td></tr></table></figure>
+<h4 id="正态分布图"><a href="#正态分布图" class="headerlink" title="正态分布图"></a>正态分布图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">qqnorm(ques3$month+ques3$variety,ques3$number)</span><br><span class="line">qqPlot()</span><br></pre></td></tr></table></figure>
+<h4 id="茎叶图"><a href="#茎叶图" class="headerlink" title="茎叶图"></a>茎叶图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">stem()</span><br></pre></td></tr></table></figure>
+<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">par()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>数据科学</category>
+      </categories>
+      <tags>
+        <tag>R语言之数据可视化</tag>
       </tags>
   </entry>
   <entry>
@@ -850,44 +888,6 @@ cout &lt;&lt; ptr.use_count() &lt;&lt; endl;  // 2
       </tags>
   </entry>
   <entry>
-    <title>R语言之数据可视化</title>
-    <url>/2021/04/11/R%E8%AF%AD%E8%A8%80%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/</url>
-    <content><![CDATA[<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><figure class="highlight r"><table><tr><td class="code"><pre><span class="line"><span class="comment">#demo可以生成演示图像</span></span><br><span class="line"></span><br><span class="line">demo(graphics)</span><br><span class="line">demo(Hershey)</span><br><span class="line">demo(persp)</span><br><span class="line">demo(image)</span><br><span class="line">demo()</span><br></pre></td></tr></table></figure>
-<h2 id="简单绘图"><a href="#简单绘图" class="headerlink" title="简单绘图"></a>简单绘图</h2><h4 id="散点图"><a href="#散点图" class="headerlink" title="散点图"></a>散点图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">plot(x,y，main,xlab,ylab,xlim,ylim,axes)</span><br></pre></td></tr></table></figure>
-<p>x,y是水平数值坐标的数据集        main要是图形的图块</p>
-<p>xlab，ylab是水平轴,竖直轴的标签</p>
-<p>xlim,ylim是绘图用的        x,y值的极限</p>
-<p>axes只是是否要绘制两个轴</p>
-<h4 id="折线图"><a href="#折线图" class="headerlink" title="折线图"></a>折线图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">plot(v,type,col,xlab,ylab)</span><br></pre></td></tr></table></figure>
-<p>v是包含数值的向量    type有 ”p“仅绘制点 ”i“仅绘制线 ”o“绘制点和线</p>
-<h4 id="条形图"><a href="#条形图" class="headerlink" title="条形图"></a>条形图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">barplot(H,xlab,ylab,main,names.arg,col)</span><br><span class="line">H &lt;- <span class="built_in">c</span>(<span class="number">7</span>,<span class="number">12</span>,<span class="number">28</span>,<span class="number">3</span>,<span class="number">41</span>)</span><br><span class="line">barplot(H)</span><br></pre></td></tr></table></figure>
-<h4 id="饼图"><a href="#饼图" class="headerlink" title="饼图"></a>饼图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">pie(x,labels,radius,main,col,clockwise)</span><br></pre></td></tr></table></figure>
-<p>x包含饼图使用数值的向量        labels用于给出切片的描述</p>
-<p>radius表示饼图圆的半径        main表示图表的标题</p>
-<p>col表示调色板        clockwise是指示片段是顺时针还是逆时针的逻辑值</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">&#123;r&#125;x &lt;- <span class="built_in">c</span>(<span class="number">21</span>,<span class="number">62</span>,<span class="number">10</span>,<span class="number">53</span>)</span><br><span class="line">labels &lt;- <span class="built_in">c</span>(<span class="string">&quot;London&quot;</span>,<span class="string">&quot;New York&quot;</span>,<span class="string">&quot;Singapore&quot;</span>,<span class="string">&quot;Mumbai&quot;</span>)</span><br><span class="line">pie(x,labels)</span><br></pre></td></tr></table></figure>
-<h4 id="直方图"><a href="#直方图" class="headerlink" title="直方图"></a>直方图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">hist(v,main,col,<span class="keyword">break</span>)</span><br></pre></td></tr></table></figure>
-<p>v数据    mian标题    col颜色    break条宽度</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">v &lt;- <span class="built_in">c</span>(<span class="number">9</span>,<span class="number">13</span>,<span class="number">21</span>,<span class="number">8</span>,<span class="number">36</span>,<span class="number">22</span>,<span class="number">12</span>,<span class="number">41</span>,<span class="number">31</span>,<span class="number">33</span>,<span class="number">19</span>)</span><br><span class="line">hist(v,xlab = <span class="string">&quot;Weight&quot;</span>,col = <span class="string">&quot;green&quot;</span>,boarder = <span class="string">&quot;red&quot;</span>,xlim = <span class="built_in">c</span>(<span class="number">0</span>,<span class="number">40</span>),yli = <span class="built_in">c</span>(<span class="number">0</span>,<span class="number">5</span>),breaks = <span class="number">4</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="核密度图"><a href="#核密度图" class="headerlink" title="核密度图"></a>核密度图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">plot(density(x))</span><br></pre></td></tr></table></figure>
-<h4 id="箱线图"><a href="#箱线图" class="headerlink" title="箱线图"></a>箱线图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">boxplot(x,data,notch)</span><br></pre></td></tr></table></figure>
-<p>notch是逻辑值。设置TRUE来绘制凹口</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">input &lt;- mtcars[,<span class="built_in">c</span>(<span class="string">&#x27;mpg&#x27;</span>,<span class="string">&#x27;cyl&#x27;</span>)]</span><br><span class="line">boxplot(mpg ~ cyl,data = mtcars,xlab = <span class="string">&quot;Number of Cylinders&quot;</span>,ylab = <span class="string">&quot;Miles Per Gallon&quot;</span>,main = <span class="string">&quot;Mileage Data&quot;</span>)</span><br></pre></td></tr></table></figure>
-<h4 id="点图"><a href="#点图" class="headerlink" title="点图"></a>点图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">dotplot()</span><br></pre></td></tr></table></figure>
-<p>矩阵或者数据框各列之间的二元图</p>
-<figure class="highlight r"><table><tr><td class="code"><pre><span class="line">pairs()</span><br></pre></td></tr></table></figure>
-<h4 id="正态分布图"><a href="#正态分布图" class="headerlink" title="正态分布图"></a>正态分布图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">qqnorm(ques3$month+ques3$variety,ques3$number)</span><br><span class="line">qqPlot()</span><br></pre></td></tr></table></figure>
-<h4 id="茎叶图"><a href="#茎叶图" class="headerlink" title="茎叶图"></a>茎叶图</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">stem()</span><br></pre></td></tr></table></figure>
-<h4 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h4><figure class="highlight r"><table><tr><td class="code"><pre><span class="line">par()</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>数据科学</category>
-      </categories>
-      <tags>
-        <tag>R语言之数据可视化</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>STL详解</title>
     <url>/2021/07/01/STL%E8%AF%A6%E8%A7%A3/</url>
     <content><![CDATA[<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*STL笔记部分*/</span></span><br><span class="line"></span><br><span class="line">vector动态数组&#123;</span><br><span class="line">    <span class="built_in">size</span>()</span><br><span class="line">    <span class="built_in">empty</span>()</span><br><span class="line">    <span class="built_in">claer</span>()...</span><br><span class="line">    <span class="comment">//系统位某一程序申请空间的所需时间与空间大小无关，与次数有关,因此需要倍增vector</span></span><br><span class="line">    <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(<span class="number">10</span>,<span class="number">3</span>)</span></span>; <span class="comment">//定义长度位10的vector每个数初始化为3</span></span><br><span class="line">    遍历方式：</span><br><span class="line">        vector&lt;<span class="keyword">int</span>&gt;::iterator it;<span class="comment">//迭代器遍历</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> x:a) ... <span class="comment">//C++11特性</span></span><br><span class="line">    支持比较运算，按字典序比较大小</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">pair&#123;</span><br><span class="line">    可以存储一个二元组pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;</span><br><span class="line">    p.first,p.second分别取第一个第二的元素</span><br><span class="line">    支持比较运算，按照字典序，以first为第一关键字，second为第二关键字</span><br><span class="line">    p=<span class="built_in">make_pair</span>(a,b) <span class="comment">//pair的构造</span></span><br><span class="line">    p=&#123;a,b&#125; <span class="comment">//c++11</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">string字符串&#123;</span><br><span class="line">    <span class="built_in">c_str</span>() <span class="comment">//返回string对应的字符数组的头指针</span></span><br><span class="line">    如果使用<span class="built_in">printf</span>(<span class="string">&quot;%s&quot;</span>,p.<span class="built_in">c_str</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">queue 队列</span><br><span class="line"><span class="built_in">priority_queue</span>(优先队列/堆)&#123;</span><br><span class="line">    <span class="comment">//默认是大根堆</span></span><br><span class="line">    改成小根堆：</span><br><span class="line">        <span class="number">1.</span>插入负数</span><br><span class="line">        <span class="number">2.</span>priority_queue&lt;<span class="keyword">int</span>,vector&lt;<span class="keyword">int</span>&gt;,greater&lt;<span class="keyword">int</span>&gt;&gt; heap;</span><br><span class="line">    <span class="built_in">push</span>(); 插入</span><br><span class="line">    <span class="built_in">top</span>();</span><br><span class="line">    <span class="built_in">pop</span>();</span><br><span class="line">&#125;</span><br><span class="line">stack 栈</span><br><span class="line"><span class="built_in">deque</span>(双端队列,效率低)</span><br><span class="line">set,multiset&#123;</span><br><span class="line">    <span class="comment">//set里面不能有重复元素，multiset里面可以有重复元素</span></span><br><span class="line">    set/multiset:</span><br><span class="line">        <span class="built_in">insert</span>()</span><br><span class="line">        <span class="built_in">find</span>() <span class="comment">//不存在返回end迭代器</span></span><br><span class="line">        count返回某个数的个数</span><br><span class="line">        <span class="built_in">erase</span>()</span><br><span class="line">            (<span class="number">1</span>)<span class="built_in">erase</span>(x),删除所有这个数</span><br><span class="line">            (<span class="number">2</span>)<span class="built_in">erase</span>(it)，删除此迭代器</span><br><span class="line">        <span class="built_in">lower_bound</span>(x)返回大于等于x的最小的数</span><br><span class="line">        <span class="built_in">upper_bound</span>(x)返回大于x的最小的数</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">map,multimap 基于平衡二叉树(红黑树)实现，动态维护有序序列&#123;</span><br><span class="line">    <span class="built_in">insert</span>();   插入的是<span class="function">pair</span></span><br><span class="line"><span class="function">    <span class="title">erase</span><span class="params">()</span></span>;    输入的参数是pair或者迭代器</span><br><span class="line">    [] 映射，<span class="built_in">O</span>(logn)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(哈希表)&#123;</span><br><span class="line">unordered_set</span><br><span class="line">unordered_map</span><br><span class="line">unordered_multiset</span><br><span class="line">unordered_multima</span><br><span class="line">    <span class="comment">//增删改查是O(1);</span></span><br><span class="line">    <span class="comment">//不支持upper_bound和lower_bound</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">bitset</span>(位存储，状态压缩)&#123;</span><br><span class="line">    <span class="keyword">bool</span> a[<span class="number">1024</span>]=<span class="number">1024B</span>,bitset&lt;<span class="number">1024</span>&gt;=<span class="number">128B</span></span><br><span class="line">    <span class="built_in">count</span>() 返回有多少个<span class="number">1</span></span><br><span class="line">    <span class="built_in">any</span>()  判断是否至少有一个<span class="number">1</span></span><br><span class="line">    <span class="built_in">none</span>()  是否全为<span class="number">0</span></span><br><span class="line">    <span class="built_in">set</span>()  把多有位置变成<span class="number">1</span></span><br><span class="line">    <span class="built_in">set</span>(k,v) 把第k位变成v</span><br><span class="line">    <span class="built_in">flip</span>()  等价于~</span><br><span class="line">    <span class="built_in">flip</span>(k) 等价于把第k位取反</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -1080,22 +1080,6 @@ cout &lt;&lt; ptr.use_count() &lt;&lt; endl;  // 2
       </tags>
   </entry>
   <entry>
-    <title>七夕小动画</title>
-    <url>/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/</url>
-    <content><![CDATA[<h3 id="马上七夕就要到了，是不是"><a href="#马上七夕就要到了，是不是" class="headerlink" title="马上七夕就要到了，是不是"></a>马上七夕就要到了，是不是</h3><p>今天浏览CSDN模仿了一个UP主码了一段小动画，当作一小段慰藉吧~</p>
-<p><strong><img src="/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/1.jpg" class title="This is an test image"></strong></p>
-<p>附上源码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> mainloop, hideturtle</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clear_all</span>():</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">    turtle.pensize(<span class="number">800</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">300</span>)</span><br><span class="line">    turtle.bk(<span class="number">600</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重定位画笔的位置</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">go_to</span>(<span class="params">x, y, state</span>):</span></span><br><span class="line">    turtle.pendown() <span class="keyword">if</span> state <span class="keyword">else</span> turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_heart</span>(<span class="params">size</span>):</span></span><br><span class="line">    turtle.color(<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.pensize(<span class="number">2</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.setheading(<span class="number">150</span>)</span><br><span class="line">    turtle.begin_fill()</span><br><span class="line">    turtle.fd(size)</span><br><span class="line">    turtle.circle(size * -<span class="number">3.745</span>, <span class="number">45</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">1.431</span>, <span class="number">165</span>)</span><br><span class="line">    turtle.left(<span class="number">120</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">1.431</span>, <span class="number">165</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">3.745</span>, <span class="number">45</span>)</span><br><span class="line">    turtle.fd(size)</span><br><span class="line">    turtle.end_fill()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画出发射爱心的小人</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_people</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.pensize(<span class="number">2</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.circle(<span class="number">60</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.setheading(<span class="number">90</span>)</span><br><span class="line">    turtle.fd(<span class="number">75</span>)</span><br><span class="line">    turtle.setheading(<span class="number">180</span>)</span><br><span class="line">    turtle.fd(<span class="number">20</span>)</span><br><span class="line">    turtle.pensize(<span class="number">4</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.circle(<span class="number">2</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.fd(<span class="number">40</span>)</span><br><span class="line">    turtle.pensize(<span class="number">4</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.circle(-<span class="number">2</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">20</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.setheading(<span class="number">60</span>)</span><br><span class="line">    turtle.fd(<span class="number">10</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">40</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">60</span>)</span><br><span class="line">    turtle.fd(<span class="number">10</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">60</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">135</span>)</span><br><span class="line">    turtle.fd(<span class="number">60</span>)</span><br><span class="line">    turtle.bk(<span class="number">60</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">45</span>)</span><br><span class="line">    turtle.fd(<span class="number">30</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">135</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制文字</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_text</span>(<span class="params">text, t_color, font_size, show_time</span>):</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">350</span>, <span class="number">0</span>)</span><br><span class="line">    turtle.color(t_color)</span><br><span class="line">    turtle.write(text, font=(<span class="string">&#x27;宋体&#x27;</span>, font_size, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    time.sleep(show_time)</span><br><span class="line">    clear_all()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 爱心发射</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_</span>():</span></span><br><span class="line">    turtle.speed(<span class="number">0</span>)</span><br><span class="line">    draw_people(-<span class="number">250</span>, <span class="number">20</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">150</span>, -<span class="number">30</span>)</span><br><span class="line">    draw_heart(<span class="number">14</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">200</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">20</span>, -<span class="number">60</span>)</span><br><span class="line">    draw_heart(<span class="number">25</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">70</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">200</span>, -<span class="number">100</span>)</span><br><span class="line">    draw_heart(<span class="number">45</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">150</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.hideturtle()</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment"># 隐藏海龟</span></span><br><span class="line">    hideturtle()</span><br><span class="line">    turtle.setup(<span class="number">900</span>, <span class="number">500</span>)</span><br><span class="line"></span><br><span class="line">    draw_text(<span class="string">&quot;我想给你看个东西&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;准备好了吗？&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;接下来&quot;</span>, <span class="string">&quot;blue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;3&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;2&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;七夕快乐！！！&quot;</span>, <span class="string">&quot;pink&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;发射爱心！！！&quot;</span>, <span class="string">&quot;pink&quot;</span>, <span class="number">60</span>, <span class="number">3</span>)</span><br><span class="line">    draw_()</span><br><span class="line">    <span class="comment"># 使用mainloop防止窗口卡死</span></span><br><span class="line">    mainloop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
-<p>​                                                借鉴自：<a href="https://blog.csdn.net/qq_35164554/article/details/119610642">https://blog.csdn.net/qq_35164554/article/details/119610642</a></p>
-]]></content>
-      <categories>
-        <category>一些小玩意er</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>test_my_site</title>
     <url>/2021/08/01/test-my-site/</url>
     <content><![CDATA[<h2 id="博客简述"><a href="#博客简述" class="headerlink" title="博客简述"></a>博客简述</h2><p>我是一位NUIST CS专业的大二学生。</p>
@@ -1109,6 +1093,53 @@ cout &lt;&lt; ptr.use_count() &lt;&lt; endl;  // 2
       </categories>
       <tags>
         <tag>First Page</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>xcpc生涯总结</title>
+    <url>/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="XCPC"><a href="#XCPC" class="headerlink" title="XCPC"></a>XCPC</h2><p>​       作为一名大二才接触算法竞赛，打了一年就退役的选手，我的XCPC生涯是如此短暂….</p>
+<p>​        由于一开始是大数据专业的，首先掌握的语言也是Python而不是C语言。因此在大一下学期我萌生了转专业的想法之后，我开始去自学C语言，看的是北大郭炜老师的课程：</p>
+<p><a href="https://www.icourse163.org/course/PKU-1001553023">程序设计与算法（一）C语言程序设计</a></p>
+<p><a href="https://www.icourse163.org/learn/PKU-1001894005?tid=1463180448">程序设计与算法（二）算法基础</a></p>
+<p><a href="https://www.icourse163.org/learn/PKU-1002029030?tid=1463187446#/learn/announce">程序设计与算法（三）C++面向对象程序设计</a></p>
+<p>同时,他配套的POJ(Peking University Online Judge)上面的习题我也带着写完了，同时我也上了郭炜老师的Python的相关课程。这也使得我从一位编程小白变成了一位会写简单分支循环语句的新生，同时也以优秀的等级通过了计算机二级考试。</p>
+<p>然后就到了五月，我感觉这个写编程题还蛮有意思的，我就去洛谷上买了一本《深入浅出程序设计竞赛》平时带着写一写，恰好五月底我校正好举办了NUISTCPC(校程序设计竞赛)，我当时报着刚学完C语言和刷完深基搜索后的去试一试的心态，结果在迅速签完到之后三个小时罚坐后搞出来了一道贪心题，打了一个二十多的好成绩，这也让身为菜鸟的我感到惊奇。也正好在之后一次偶然的讲座中我听到了来自SYF学长关于ACM-ICPC的介绍后，产生了浓厚的兴趣。</p>
+<p>在经历过一个多月的期末月，即2021.7.12考完最后一门后，我发现我已经把GPA刷到了足以使我成功转专业的分数，我尝试开始在网上找ACM-ICPC的入门路线。当然这过程中也走了很多弯弯绕绕的路，知道我在学习基础动态规划模型时在搜“背包九讲”时在Bilibili上面搜到了北大闫学灿老师的视频，我了解到了Acwing，并一口气报名了算法基础课和算法提高课。那个暑假我也留校开始学习。由于之前刷完过一本洛谷的《深基》,所以我很快就刷完了基础课(没记错的话好像是两周不到)，然后感觉蛮简单的，我就开始刷提高课了。</p>
+<p>刷提高课的收获还是非常多的，各种之前并没有真正掌握的算法随着刷题的进行，开始逐渐熟悉了起来。大概是刷了一个半月我把提高可百分之九十的算法都掌握了。刷提高课的同时，我还进入了Acwing比较有名的提高二群，在里面认识了来自各个学校的Acmer,有：</p>
+<blockquote>
+<p>现在在重邮的<a href="736237881@qq.com">光头哥</a>，<a href="979451229">Bsqaq</a>，安徽工程的<a href="736237881@qq.com">啾啾</a>，武昌理工的银牌佬<a href="1293391499@qq.com">Duck_沙烬</a>，新疆大学的<a href="1293391499@qq.com">临渊</a>，来自哥大，打进WF的<a href="979451229@qq.com">然然</a>，齐鲁工业大学的<a href="942845546@qq.com">L神</a>，来自广西的OI爷<a href="3342880042@qq.com">爽gai</a>，山东理工的那个队名巨长的队伍的ACMer<a href="3342880042@qq.com">凌乱之风</a>，还有<a href="766703001@qq.com">酸菜鱼佬</a>，湖南理工<a href="766703001@qq.com">长途</a>，河南大学的<a href="972937940@qq.com">程佬</a>，深圳大学<a href="766703001@qq.com">喵喵子</a>，湖南科技<a href="766703001@qq.com">黄宇轩</a>，南昌理工的<a href="766703001@qq.com">lqgg</a>，<a href="766703001@qq.com">lqmm</a>，吉林大学的<a href="1062708758@qq.com">速RitszZ</a>……</p>
+</blockquote>
+<p>虽然大家刚进群都是菜菜的(除了个别佬)，但是经过了一年的训练也都拿到了牌子。</p>
+<p>也是在暑假里我开始接触到了<a href="atcoder.com">Atcoder</a>和<a href="codeforces.com">Codeforces</a>这两个竞争性编程训练平台，加上之后接触到的出题偏构造和DP的<a href="codechef.com">Codechef</a>，我主要的线上比赛网站就是这些。</p>
+<p>我有一个非常不好的习惯，那就是喜欢开小号。一旦感觉自己状态有点不太对(比如有点困)，我就会去打小号，但事实证明这样子并不好，不仅严重拖慢了上分速度(以至于我现在只有紫名)，也会拖慢比赛适应能力。</p>
+<p><a href="https://codeforces.com/ratings/organization/35633">我的所有CF号</a></p>
+<p><strong><img src="/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/1.png" class title="This is an test image"></strong></p>
+<p>总之，对于掌握了知识点后如何快速得提升自己的代码运用水平并提升自己得思维能力，多多刷Atcoder和Codeforces是一个非常高效得做法。</p>
+<p>在大一升大二暑假之后，我发现常常自己CF只能做到C题，D难出。学的算法也并不足够满足所有的XCPC知识，于是九月份我接触到了牛客算法平台以及牛客的课程。因此大二上学期，还没有进队，没有比赛打的我的主要任务就是刷完牛客竞赛的课程和配套习题。这一段时间对于我处理常见模型，常规算法题的能力提升是最明显的，也多亏了雨巨的清晰的讲述，对于小白来说非常的友好。在这之后我就基本告别Acwing这个入门级平台，开始使用牛客这个更加专业的竞赛平台了。刷题量也随着陡增，大概是两个月600+的题目。主要集中在中档题。<a href="https://ac.nowcoder.com/acm/contest/profile/156290750">MyNowcoder</a>.在处理完这些常见算法模型之后我的CF到了蓝名1700左右的水平，能保证我在30~50分钟内快速出完CF的ABC题，偶尔能写出来CF的D题。紧接着就是寒假的CF训练，那段时间我也找到了我的队友<a href="https://codeforces.com/profile/Nuist_wzy">WZY</a>和<a href="https://codeforces.com/profile/Bamboowind">GRD</a>，寒假结束之后我们也开始逐渐合练区域赛。此时的我CF大概是1700-1800左右徘徊。反思了一下应该是我学习不够深入导致的。因为比别人晚一年接触XCPC，所以相应的知识点的学习我给自己设置的时间要短很多，这样才能保证快速覆盖一定量的面，但是深度还是不够的。因此大二下学期，在尽量满足课内需求的同时我还需要加深各个算法的应用——VP区域赛就是一个很好的方法，同时我也开始Virtual Participate CF之前的场次。终于到了快要放暑假的啥时候我的CF成功到达了紫名。紧接着就是更多紫名的小号了…（非常不建议开小号）</p>
+<p>大二下学期我也开始有比赛打了。一个是昆明区域赛，这个在我之前的<a href="https://wangyuhang-cmd.github.io/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/">博客中有提到</a>，也是之前多出来的名额，但是我打的并不好，最后我们队的模拟题没写出来也导致铁首。这让我感觉到之后的重重困难。紧接着就是JSCPC(CCPC 江苏省省赛)。江苏省省赛是我认为的全中国各个赛区难度相对最大的省赛了.还好上一场打铁并没有怎么影响我们，省赛打了一个银首，差一点金，也结束了这个赛季。</p>
+<p>紧接着就是期末月后的多校联赛。多校我们打的一般般，排名也在200左右。大致是保铜争银的定位。我暑假出现的一个失误点在于我去学习了一些字符串进阶算法和计算几何算法，但是实际上这些知识点对我们队伍来说用处并不大。不过就当作知识点学习了。</p>
+<p>2022-2023新赛季的时间特别短暂，我们队伍一共有三场比赛任务，队长特地选在了比较靠前，三周连续的，以便我们能够快速打完后准备期末。所以11.26号我就打完了所有比赛，比赛后的小作文我一律没写，因为大部分比赛都是差强人意，仅仅比预估的最坏结果要好一点。由于CCPC广州的卡题，到了三个小时我才把博弈论给想出来，因为我们又铁了。不过此时倒也没有什么心理压力了，因此紧接着下一周的ICPC合肥站我们还是比较轻松的，最终由于J题奇幻的错误勘误卡了我们半个多小时，最后没有调出来J，导致我们距离银牌线只有几名，遗憾拿铜。ICPC济南站也是同样的，做出来五题，但是因为罚时不占优势，在铜首区拿了一块铜牌。</p>
+<p>我觉得如果我大一就接触ACM的话应该通过两年的时间拿到银牌不成问题。但是也最后两场比赛没有抓住机会+运气不好只拿到了铜牌。不过也算是我曾经参加算法竞赛的凭证了吧！</p>
+]]></content>
+      <tags>
+        <tag>xcpclife</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>七夕小动画</title>
+    <url>/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/</url>
+    <content><![CDATA[<h3 id="马上七夕就要到了，是不是"><a href="#马上七夕就要到了，是不是" class="headerlink" title="马上七夕就要到了，是不是"></a>马上七夕就要到了，是不是</h3><p>今天浏览CSDN模仿了一个UP主码了一段小动画，当作一小段慰藉吧~</p>
+<p><strong><img src="/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/1.jpg" class title="This is an test image"></strong></p>
+<p>附上源码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> mainloop, hideturtle</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clear_all</span>():</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">    turtle.pensize(<span class="number">800</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">300</span>)</span><br><span class="line">    turtle.bk(<span class="number">600</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重定位画笔的位置</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">go_to</span>(<span class="params">x, y, state</span>):</span></span><br><span class="line">    turtle.pendown() <span class="keyword">if</span> state <span class="keyword">else</span> turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_heart</span>(<span class="params">size</span>):</span></span><br><span class="line">    turtle.color(<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.pensize(<span class="number">2</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.setheading(<span class="number">150</span>)</span><br><span class="line">    turtle.begin_fill()</span><br><span class="line">    turtle.fd(size)</span><br><span class="line">    turtle.circle(size * -<span class="number">3.745</span>, <span class="number">45</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">1.431</span>, <span class="number">165</span>)</span><br><span class="line">    turtle.left(<span class="number">120</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">1.431</span>, <span class="number">165</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">3.745</span>, <span class="number">45</span>)</span><br><span class="line">    turtle.fd(size)</span><br><span class="line">    turtle.end_fill()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画出发射爱心的小人</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_people</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.pensize(<span class="number">2</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.circle(<span class="number">60</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.setheading(<span class="number">90</span>)</span><br><span class="line">    turtle.fd(<span class="number">75</span>)</span><br><span class="line">    turtle.setheading(<span class="number">180</span>)</span><br><span class="line">    turtle.fd(<span class="number">20</span>)</span><br><span class="line">    turtle.pensize(<span class="number">4</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.circle(<span class="number">2</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.fd(<span class="number">40</span>)</span><br><span class="line">    turtle.pensize(<span class="number">4</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.circle(-<span class="number">2</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">20</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.setheading(<span class="number">60</span>)</span><br><span class="line">    turtle.fd(<span class="number">10</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">40</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">60</span>)</span><br><span class="line">    turtle.fd(<span class="number">10</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">60</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">135</span>)</span><br><span class="line">    turtle.fd(<span class="number">60</span>)</span><br><span class="line">    turtle.bk(<span class="number">60</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">45</span>)</span><br><span class="line">    turtle.fd(<span class="number">30</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">135</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制文字</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_text</span>(<span class="params">text, t_color, font_size, show_time</span>):</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">350</span>, <span class="number">0</span>)</span><br><span class="line">    turtle.color(t_color)</span><br><span class="line">    turtle.write(text, font=(<span class="string">&#x27;宋体&#x27;</span>, font_size, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    time.sleep(show_time)</span><br><span class="line">    clear_all()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 爱心发射</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_</span>():</span></span><br><span class="line">    turtle.speed(<span class="number">0</span>)</span><br><span class="line">    draw_people(-<span class="number">250</span>, <span class="number">20</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">150</span>, -<span class="number">30</span>)</span><br><span class="line">    draw_heart(<span class="number">14</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">200</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">20</span>, -<span class="number">60</span>)</span><br><span class="line">    draw_heart(<span class="number">25</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">70</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">200</span>, -<span class="number">100</span>)</span><br><span class="line">    draw_heart(<span class="number">45</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">150</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.hideturtle()</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment"># 隐藏海龟</span></span><br><span class="line">    hideturtle()</span><br><span class="line">    turtle.setup(<span class="number">900</span>, <span class="number">500</span>)</span><br><span class="line"></span><br><span class="line">    draw_text(<span class="string">&quot;我想给你看个东西&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;准备好了吗？&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;接下来&quot;</span>, <span class="string">&quot;blue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;3&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;2&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;七夕快乐！！！&quot;</span>, <span class="string">&quot;pink&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;发射爱心！！！&quot;</span>, <span class="string">&quot;pink&quot;</span>, <span class="number">60</span>, <span class="number">3</span>)</span><br><span class="line">    draw_()</span><br><span class="line">    <span class="comment"># 使用mainloop防止窗口卡死</span></span><br><span class="line">    mainloop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
+<p>​                                                借鉴自：<a href="https://blog.csdn.net/qq_35164554/article/details/119610642">https://blog.csdn.net/qq_35164554/article/details/119610642</a></p>
+]]></content>
+      <categories>
+        <category>一些小玩意er</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
       </tags>
   </entry>
   <entry>
@@ -1166,37 +1197,6 @@ cout &lt;&lt; ptr.use_count() &lt;&lt; endl;  // 2
       </categories>
       <tags>
         <tag>主席树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>xcpc生涯总结</title>
-    <url>/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h2 id="XCPC"><a href="#XCPC" class="headerlink" title="XCPC"></a>XCPC</h2><p>​       作为一名大二才接触算法竞赛，打了一年就退役的选手，我的XCPC生涯是如此短暂….</p>
-<p>​        由于一开始是大数据专业的，首先掌握的语言也是Python而不是C语言。因此在大一下学期我萌生了转专业的想法之后，我开始去自学C语言，看的是北大郭炜老师的课程：</p>
-<p><a href="https://www.icourse163.org/course/PKU-1001553023">程序设计与算法（一）C语言程序设计</a></p>
-<p><a href="https://www.icourse163.org/learn/PKU-1001894005?tid=1463180448">程序设计与算法（二）算法基础</a></p>
-<p><a href="https://www.icourse163.org/learn/PKU-1002029030?tid=1463187446#/learn/announce">程序设计与算法（三）C++面向对象程序设计</a></p>
-<p>同时,他配套的POJ(Peking University Online Judge)上面的习题我也带着写完了，同时我也上了郭炜老师的Python的相关课程。这也使得我从一位编程小白变成了一位会写简单分支循环语句的新生，同时也以优秀的等级通过了计算机二级考试。</p>
-<p>然后就到了五月，我感觉这个写编程题还蛮有意思的，我就去洛谷上买了一本《深入浅出程序设计竞赛》平时带着写一写，恰好五月底我校正好举办了NUISTCPC(校程序设计竞赛)，我当时报着刚学完C语言和刷完深基搜索后的去试一试的心态，结果在迅速签完到之后三个小时罚坐后搞出来了一道贪心题，打了一个二十多的好成绩，这也让身为菜鸟的我感到惊奇。也正好在之后一次偶然的讲座中我听到了来自SYF学长关于ACM-ICPC的介绍后，产生了浓厚的兴趣。</p>
-<p>在经历过一个多月的期末月，即2021.7.12考完最后一门后，我发现我已经把GPA刷到了足以使我成功转专业的分数，我尝试开始在网上找ACM-ICPC的入门路线。当然这过程中也走了很多弯弯绕绕的路，知道我在学习基础动态规划模型时在搜“背包九讲”时在Bilibili上面搜到了北大闫学灿老师的视频，我了解到了Acwing，并一口气报名了算法基础课和算法提高课。那个暑假我也留校开始学习。由于之前刷完过一本洛谷的《深基》,所以我很快就刷完了基础课(没记错的话好像是两周不到)，然后感觉蛮简单的，我就开始刷提高课了。</p>
-<p>刷提高课的收获还是非常多的，各种之前并没有真正掌握的算法随着刷题的进行，开始逐渐熟悉了起来。大概是刷了一个半月我把提高可百分之九十的算法都掌握了。刷提高课的同时，我还进入了Acwing比较有名的提高二群，在里面认识了来自各个学校的Acmer,有：</p>
-<blockquote>
-<p>现在在重邮的<a href="736237881@qq.com">光头哥</a>，<a href="979451229">Bsqaq</a>，安徽工程的<a href="736237881@qq.com">啾啾</a>，武昌理工的银牌佬<a href="1293391499@qq.com">Duck_沙烬</a>，新疆大学的<a href="1293391499@qq.com">临渊</a>，来自哥大，打进WF的<a href="979451229@qq.com">然然</a>，齐鲁工业大学的<a href="942845546@qq.com">L神</a>，来自广西的OI爷<a href="3342880042@qq.com">爽gai</a>，山东理工的那个队名巨长的队伍的ACMer<a href="3342880042@qq.com">凌乱之风</a>，还有<a href="766703001@qq.com">酸菜鱼佬</a>，湖南理工<a href="766703001@qq.com">长途</a>，河南大学的<a href="972937940@qq.com">程佬</a>，深圳大学<a href="766703001@qq.com">喵喵子</a>，湖南科技<a href="766703001@qq.com">黄宇轩</a>，南昌理工的<a href="766703001@qq.com">lqgg</a>，<a href="766703001@qq.com">lqmm</a>，吉林大学的<a href="1062708758@qq.com">速RitszZ</a>……</p>
-</blockquote>
-<p>虽然大家刚进群都是菜菜的(除了个别佬)，但是经过了一年的训练也都拿到了牌子。</p>
-<p>也是在暑假里我开始接触到了<a href="atcoder.com">Atcoder</a>和<a href="codeforces.com">Codeforces</a>这两个竞争性编程训练平台，加上之后接触到的出题偏构造和DP的<a href="codechef.com">Codechef</a>，我主要的线上比赛网站就是这些。</p>
-<p>我有一个非常不好的习惯，那就是喜欢开小号。一旦感觉自己状态有点不太对(比如有点困)，我就会去打小号，但事实证明这样子并不好，不仅严重拖慢了上分速度(以至于我现在只有紫名)，也会拖慢比赛适应能力。</p>
-<p><a href="https://codeforces.com/ratings/organization/35633">我的所有CF号</a></p>
-<p><strong><img src="/2022/12/03/xcpc%E7%94%9F%E6%B6%AF%E6%80%BB%E7%BB%93/1.png" class title="This is an test image"></strong></p>
-<p>总之，对于掌握了知识点后如何快速得提升自己的代码运用水平并提升自己得思维能力，多多刷Atcoder和Codeforces是一个非常高效得做法。</p>
-<p>在大一升大二暑假之后，我发现常常自己CF只能做到C题，D难出。学的算法也并不足够满足所有的XCPC知识，于是九月份我接触到了牛客算法平台以及牛客的课程。因此大二上学期，还没有进队，没有比赛打的我的主要任务就是刷完牛客竞赛的课程和配套习题。这一段时间对于我处理常见模型，常规算法题的能力提升是最明显的，也多亏了雨巨的清晰的讲述，对于小白来说非常的友好。在这之后我就基本告别Acwing这个入门级平台，开始使用牛客这个更加专业的竞赛平台了。刷题量也随着陡增，大概是两个月600+的题目。主要集中在中档题。<a href="https://ac.nowcoder.com/acm/contest/profile/156290750">MyNowcoder</a>.在处理完这些常见算法模型之后我的CF到了蓝名1700左右的水平，能保证我在30~50分钟内快速出完CF的ABC题，偶尔能写出来CF的D题。紧接着就是寒假的CF训练，那段时间我也找到了我的队友<a href="https://codeforces.com/profile/Nuist_wzy">WZY</a>和<a href="https://codeforces.com/profile/Bamboowind">GRD</a>，寒假结束之后我们也开始逐渐合练区域赛。此时的我CF大概是1700-1800左右徘徊。反思了一下应该是我学习不够深入导致的。因为比别人晚一年接触XCPC，所以相应的知识点的学习我给自己设置的时间要短很多，这样才能保证快速覆盖一定量的面，但是深度还是不够的。因此大二下学期，在尽量满足课内需求的同时我还需要加深各个算法的应用——VP区域赛就是一个很好的方法，同时我也开始Virtual Participate CF之前的场次。终于到了快要放暑假的啥时候我的CF成功到达了紫名。紧接着就是更多紫名的小号了…（非常不建议开小号）</p>
-<p>大二下学期我也开始有比赛打了。一个是昆明区域赛，这个在我之前的<a href="https://wangyuhang-cmd.github.io/2022/04/18/Kunming-%E6%89%93%E9%93%81%E6%80%BB%E7%BB%93/">博客中有提到</a>，也是之前多出来的名额，但是我打的并不好，最后我们队的模拟题没写出来也导致铁首。这让我感觉到之后的重重困难。紧接着就是JSCPC(CCPC 江苏省省赛)。江苏省省赛是我认为的全中国各个赛区难度相对最大的省赛了.还好上一场打铁并没有怎么影响我们，省赛打了一个银首，差一点金，也结束了这个赛季。</p>
-<p>紧接着就是期末月后的多校联赛。多校我们打的一般般，排名也在200左右。大致是保铜争银的定位。我暑假出现的一个失误点在于我去学习了一些字符串进阶算法和计算几何算法，但是实际上这些知识点对我们队伍来说用处并不大。不过就当作知识点学习了。</p>
-<p>2022-2023新赛季的时间特别短暂，我们队伍一共有三场比赛任务，队长特地选在了比较靠前，三周连续的，以便我们能够快速打完后准备期末。所以11.26号我就打完了所有比赛，比赛后的小作文我一律没写，因为大部分比赛都是差强人意，仅仅比预估的最坏结果要好一点。由于CCPC广州的卡题，到了三个小时我才把博弈论给想出来，因为我们又铁了。不过此时倒也没有什么心理压力了，因此紧接着下一周的ICPC合肥站我们还是比较轻松的，最终由于J题奇幻的错误勘误卡了我们半个多小时，最后没有调出来J，导致我们距离银牌线只有几名，遗憾拿铜。ICPC济南站也是同样的，做出来五题，但是因为罚时不占优势，在铜首区拿了一块铜牌。</p>
-<p>我觉得如果我大一就接触ACM的话应该通过两年的时间拿到银牌不成问题。但是也最后两场比赛没有抓住机会+运气不好只拿到了铜牌。不过也算是我曾经参加算法竞赛的凭证了吧！</p>
-]]></content>
-      <tags>
-        <tag>xcpclife</tag>
       </tags>
   </entry>
   <entry>
@@ -1669,18 +1669,6 @@ Q(m+mlogn+mlogm)</script><h5 id="基于SPFA求负环"><a href="#基于SPFA求负
       </tags>
   </entry>
   <entry>
-    <title>感悟_1_</title>
-    <url>/2021/08/17/%E6%84%9F%E6%82%9F/</url>
-    <content><![CDATA[<p>欲动天下者，当动天下之心，而不徒在显见之迹。动其心者，当具有大本大源。</p>
-]]></content>
-      <categories>
-        <category>随笔感悟</category>
-      </categories>
-      <tags>
-        <tag>感悟</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>平衡树</title>
     <url>/2021/08/16/%E5%B9%B3%E8%A1%A1%E6%A0%91/</url>
     <content><![CDATA[<h1 id="平衡树"><a href="#平衡树" class="headerlink" title="平衡树"></a>平衡树</h1><p>欢迎来到二叉搜索树的世界，在这里，你将会见到：treap,红黑树，splay，sbt，AVL….</p>
@@ -1743,6 +1731,18 @@ Treap=Tree+Heap</script><h4 id="前置知识："><a href="#前置知识：" clas
       </categories>
       <tags>
         <tag>平衡树__Treap</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>感悟_1_</title>
+    <url>/2021/08/17/%E6%84%9F%E6%82%9F/</url>
+    <content><![CDATA[<p>欲动天下者，当动天下之心，而不徒在显见之迹。动其心者，当具有大本大源。</p>
+]]></content>
+      <categories>
+        <category>随笔感悟</category>
+      </categories>
+      <tags>
+        <tag>感悟</tag>
       </tags>
   </entry>
   <entry>
