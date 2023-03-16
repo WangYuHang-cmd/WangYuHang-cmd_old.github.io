@@ -93,7 +93,7 @@
         <li class="menu-item menu-item-about"><a href="/abouts" rel="section">关于</a></li>
         <li class="menu-item menu-item-tags"><a href="/tags" rel="section">标签<span class="badge">37</span></a></li>
         <li class="menu-item menu-item-categories"><a href="/categories" rel="section">分类<span class="badge">16</span></a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">54</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives" rel="section">归档<span class="badge">55</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -166,7 +166,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -236,6 +236,124 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2022/01/09/Prufer%E7%BC%96%E7%A0%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/pipipapi.png">
+      <meta itemprop="name" content="Perf">
+      <meta itemprop="description" content="兴趣使然">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Perf">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/01/09/Prufer%E7%BC%96%E7%A0%81/" class="post-title-link" itemprop="url">Prufer编码</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-01-09 15:40:49 / 修改时间：15:42:58" itemprop="dateCreated datePublished" datetime="2022-01-09T15:40:49+08:00">2022-01-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">数据结构与算法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/01/09/Prufer%E7%BC%96%E7%A0%81/" class="post-meta-item leancloud_visitors" data-flag-title="Prufer编码" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Changyan：</span>
+    
+    
+      <a title="changyan" href="/2022/01/09/Prufer%E7%BC%96%E7%A0%81/#SOHUCS" itemprop="discussionUrl">
+        <span id="url::https://wangyuhang-cmd.github.io/2022/01/09/Prufer%E7%BC%96%E7%A0%81/" class="cy_cmt_count" data-xid="2022/01/09/Prufer编码/" itemprop="commentCount"></span>
+      </a>
+    
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Prufer编码"><a href="#Prufer编码" class="headerlink" title="Prufer编码"></a><code>Prufer</code>编码</h2><p><strong><code>Prufer编码转树</code></strong>  <code>O(n)</code>时间复杂度</p>
+<p>可以把一棵无根树变成一个序列，也可以将一个序列变成一棵无根树。</p>
+<ul>
+<li>每次找到无根树编号最小的度数为1的点</li>
+<li>然后将此点的父节点加入序列</li>
+</ul>
+<p><code>O(n)</code>时间求<code>Prufer</code>编码</p>
+<p>对于一个有<code>n</code>个节点的树，其<code>prufer</code>编码只有<code>n-2</code>个数。</p>
+<p><strong>树转<code>Prufer编码</code></strong></p>
+<p>一个数在<code>prufer</code>编码中出现多少次，就说明其有几个儿子</p>
+<p><code>Step:</code></p>
+<blockquote>
+<p><code>void tree2prufer()</code>的操作是顺序遍历，然后从1开始遍历，当找到出度为0的点时，将其父节点加入<code>prufer</code>序列，然后递归其父节点，如果其父节点的出度为0且父节点小于当亲遍历到的j的值，父节点的父节点也加入<code>prufer</code>序列。</p>
+<p><code>void pruffer2tree()</code>的操作是顺序遍历<code>prufer</code>序列的同时遍历1~n，如果1~n遍历的时候有出度为0的点，则其父亲就是当前遍历到的<code>prufer</code>序列，然后<code>prufer</code>序列当前数的出度—，如果为0且小于当前遍历的树，则其父亲节点为下一个<code>prufer</code>序列中的树。</p>
+</blockquote>
+<p>一道板子，如果m=1，给出给定树的prufer编码，否则给出给定prufer编码的树</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="keyword">int</span> fa[N],p[N],d[N],idx=<span class="number">0</span>; <span class="comment">//d表示出度</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">tree2prufer</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) fa[i]=<span class="built_in">read</span>(),d[fa[i]]++;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">1</span>;i&lt;n<span class="number">-2</span>;j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        p[i++]=fa[j];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-2</span>&amp;&amp;--d[p[i<span class="number">-1</span>]]==<span class="number">0</span>&amp;&amp;p[i<span class="number">-1</span>]&lt;j) p[i++]=fa[p[i<span class="number">-1</span>]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">0</span>,n<span class="number">-3</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,p[i]); <span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prufer2tree</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-2</span>) p[i]=<span class="built_in">read</span>(),d[p[i]]++;</span><br><span class="line">    p[n<span class="number">-1</span>]=n;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>,j=<span class="number">1</span>;i&lt;n;++i,j++)&#123;</span><br><span class="line">        <span class="keyword">while</span>(d[j]) j++;</span><br><span class="line">        fa[j]=p[i];</span><br><span class="line">        <span class="keyword">while</span>(i&lt;n<span class="number">-1</span>&amp;&amp;--d[p[i]]==<span class="number">0</span>&amp;&amp;p[i]&lt;j) fa[p[i]]=p[i+<span class="number">1</span>],i++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">rep</span>(i,<span class="number">1</span>,n<span class="number">-1</span>) <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>,fa[i]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    n=<span class="built_in">read</span>(),m=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">if</span>(m==<span class="number">1</span>)</span><br><span class="line">        <span class="built_in">tree2prufer</span>();</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">prufer2tree</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="应用："><a href="#应用：" class="headerlink" title="应用："></a>应用：</h4><p><strong>Cayley定理</strong></p>
+<ul>
+<li>对于一个$n$个点的无向完全图，其生成树的个数为$n^{n-2}$  </li>
+</ul>
+<p>证明：由<code>prufer</code>编码一共n-2位，每一位有n个选择，因此为$n^{n-2}$</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1425,113 +1543,6 @@ Treap=Tree+Heap</script><h4 id="前置知识："><a href="#前置知识：" clas
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> now,<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(l==r) <span class="keyword">return</span> tr[now].v; <span class="comment">//说明搜索到了叶子节点，直接返回当前节点的值</span></span><br><span class="line">    <span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(pos&lt;=mid) <span class="keyword">return</span> <span class="built_in">query</span>(l,mid,tr[now].l,pos);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">query</span>(mid+<span class="number">1</span>,r,tr[now].r,pos);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>板子题：洛谷P3919  <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P3919">https://www.luogu.com.cn/problem/P3919</a></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> M 1000010</span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std; </span><br><span class="line"></span><br><span class="line"><span class="comment">//read(x)</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">void</span> <span class="title">read</span><span class="params">(T &amp;x)</span></span>&#123;x=<span class="number">0</span>;<span class="keyword">int</span> f=<span class="number">1</span>;<span class="keyword">char</span> ch=<span class="built_in">getchar</span>();<span class="keyword">while</span>(!<span class="built_in">isdigit</span>(ch))&#123;<span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>)f=<span class="number">-1</span>;ch=<span class="built_in">getchar</span>();&#125;<span class="keyword">while</span>(<span class="built_in">isdigit</span>(ch))&#123;x=x*<span class="number">10</span>+(ch^<span class="number">48</span>);ch=<span class="built_in">getchar</span>();&#125;x*=f;<span class="keyword">return</span>;&#125;</span><br><span class="line"><span class="comment">//write(x)</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;<span class="function"><span class="keyword">void</span> <span class="title">write</span><span class="params">(T x)</span></span>&#123;<span class="keyword">if</span>(x&lt;<span class="number">0</span>)&#123;<span class="built_in">putchar</span>(<span class="string">&#x27;-&#x27;</span>);x=-x;&#125;<span class="keyword">if</span>(x&gt;<span class="number">9</span>)<span class="built_in">write</span>(x/<span class="number">10</span>);<span class="built_in">putchar</span>(x%<span class="number">10</span>+<span class="string">&#x27;0&#x27;</span>);<span class="keyword">return</span>;&#125;      </span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Node</span>&#123;</span></span><br><span class="line">	<span class="keyword">int</span> l,r;</span><br><span class="line">	<span class="keyword">int</span> v;</span><br><span class="line">&#125; tr[M*<span class="number">20</span>];</span><br><span class="line"><span class="keyword">int</span> root[M],idx=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,w[M];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">build</span><span class="params">(<span class="keyword">int</span> &amp;u,<span class="keyword">int</span> l,<span class="keyword">int</span> r)</span></span>&#123;</span><br><span class="line">	u=++idx;</span><br><span class="line">	<span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">		tr[u].v=w[r];</span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="built_in">build</span>(tr[u].l,l,mid),<span class="built_in">build</span>(tr[u].r,mid+<span class="number">1</span>,r);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">modify</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> pre,<span class="keyword">int</span> &amp;now,<span class="keyword">int</span> pos,<span class="keyword">int</span> x)</span></span>&#123;</span><br><span class="line">	now=++idx;  <span class="comment">//new一块空间</span></span><br><span class="line">	tr[now]=tr[pre]; <span class="comment">//复制上一个版本</span></span><br><span class="line">	<span class="keyword">if</span>(l==r)&#123;</span><br><span class="line">		tr[now].v=x;  <span class="comment">//修改此处</span></span><br><span class="line">		<span class="keyword">return</span> ;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(pos&lt;=mid) <span class="built_in">modify</span>(l,mid,tr[pre].l,tr[now].l,pos,x);</span><br><span class="line">	<span class="keyword">else</span> <span class="built_in">modify</span>(mid+<span class="number">1</span>,r,tr[pre].r,tr[now].r,pos,x);		</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> l,<span class="keyword">int</span> r,<span class="keyword">int</span> now,<span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(l==r) <span class="keyword">return</span> tr[now].v;</span><br><span class="line">	<span class="keyword">int</span> mid=l+r&gt;&gt;<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">if</span>(pos&lt;=mid) <span class="keyword">return</span> <span class="built_in">query</span>(l,mid,tr[now].l,pos);</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="built_in">query</span>(mid+<span class="number">1</span>,r,tr[now].r,pos);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">read</span>(n),<span class="built_in">read</span>(m);</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line">		<span class="built_in">read</span>(w[i]);</span><br><span class="line">		</span><br><span class="line">	<span class="built_in">build</span>(root[<span class="number">0</span>],<span class="number">1</span>,n);	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">		<span class="keyword">int</span> pre,op,pos,x; </span><br><span class="line">		<span class="comment">//pre版本，op操作，p位置，修改x</span></span><br><span class="line">		<span class="built_in">read</span>(pre),<span class="built_in">read</span>(op),<span class="built_in">read</span>(pos);</span><br><span class="line">		<span class="keyword">if</span>(op==<span class="number">1</span>)&#123;</span><br><span class="line">			<span class="built_in">read</span>(x);</span><br><span class="line">			<span class="built_in">modify</span>(<span class="number">1</span>,n,root[pre],root[i],pos,x);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="built_in">write</span>(<span class="built_in">query</span>(<span class="number">1</span>,n,root[pre],pos));</span><br><span class="line">			<span class="built_in">puts</span>(<span class="string">&quot;&quot;</span>);</span><br><span class="line">			root[i]=root[pre];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://wangyuhang-cmd.github.io/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/pipipapi.png">
-      <meta itemprop="name" content="Perf">
-      <meta itemprop="description" content="兴趣使然">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Perf">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/" class="post-title-link" itemprop="url">七夕小动画</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-08-13 16:08:41" itemprop="dateCreated datePublished" datetime="2021-08-13T16:08:41+08:00">2021-08-13</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-08-19 22:50:36" itemprop="dateModified" datetime="2021-08-19T22:50:36+08:00">2021-08-19</time>
-      </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%B8%80%E4%BA%9B%E5%B0%8F%E7%8E%A9%E6%84%8Fer/" itemprop="url" rel="index"><span itemprop="name">一些小玩意er</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/" class="post-meta-item leancloud_visitors" data-flag-title="七夕小动画" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Changyan：</span>
-    
-    
-      <a title="changyan" href="/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/#SOHUCS" itemprop="discussionUrl">
-        <span id="url::https://wangyuhang-cmd.github.io/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/" class="cy_cmt_count" data-xid="2021/08/13/七夕小动画/" itemprop="commentCount"></span>
-      </a>
-    
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h3 id="马上七夕就要到了，是不是"><a href="#马上七夕就要到了，是不是" class="headerlink" title="马上七夕就要到了，是不是"></a>马上七夕就要到了，是不是</h3><p>今天浏览CSDN模仿了一个UP主码了一段小动画，当作一小段慰藉吧~</p>
-<p><strong><img src="/2021/08/13/%E4%B8%83%E5%A4%95%E5%B0%8F%E5%8A%A8%E7%94%BB/1.jpg" class title="This is an test image"></strong></p>
-<p>附上源码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> turtle</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">from</span> turtle <span class="keyword">import</span> mainloop, hideturtle</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">clear_all</span>():</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">    turtle.pensize(<span class="number">800</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">300</span>)</span><br><span class="line">    turtle.bk(<span class="number">600</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 重定位画笔的位置</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">go_to</span>(<span class="params">x, y, state</span>):</span></span><br><span class="line">    turtle.pendown() <span class="keyword">if</span> state <span class="keyword">else</span> turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_heart</span>(<span class="params">size</span>):</span></span><br><span class="line">    turtle.color(<span class="string">&#x27;red&#x27;</span>, <span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.pensize(<span class="number">2</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.setheading(<span class="number">150</span>)</span><br><span class="line">    turtle.begin_fill()</span><br><span class="line">    turtle.fd(size)</span><br><span class="line">    turtle.circle(size * -<span class="number">3.745</span>, <span class="number">45</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">1.431</span>, <span class="number">165</span>)</span><br><span class="line">    turtle.left(<span class="number">120</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">1.431</span>, <span class="number">165</span>)</span><br><span class="line">    turtle.circle(size * -<span class="number">3.745</span>, <span class="number">45</span>)</span><br><span class="line">    turtle.fd(size)</span><br><span class="line">    turtle.end_fill()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 画出发射爱心的小人</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_people</span>(<span class="params">x, y</span>):</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.pensize(<span class="number">2</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;black&#x27;</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.circle(<span class="number">60</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.setheading(<span class="number">90</span>)</span><br><span class="line">    turtle.fd(<span class="number">75</span>)</span><br><span class="line">    turtle.setheading(<span class="number">180</span>)</span><br><span class="line">    turtle.fd(<span class="number">20</span>)</span><br><span class="line">    turtle.pensize(<span class="number">4</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.circle(<span class="number">2</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.fd(<span class="number">40</span>)</span><br><span class="line">    turtle.pensize(<span class="number">4</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.circle(-<span class="number">2</span>, <span class="number">360</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">20</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.setheading(<span class="number">60</span>)</span><br><span class="line">    turtle.fd(<span class="number">10</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">40</span>)</span><br><span class="line">    turtle.setheading(<span class="number">0</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">60</span>)</span><br><span class="line">    turtle.fd(<span class="number">10</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(x, y)</span><br><span class="line">    turtle.setheading(-<span class="number">90</span>)</span><br><span class="line">    turtle.pendown()</span><br><span class="line">    turtle.fd(<span class="number">60</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">135</span>)</span><br><span class="line">    turtle.fd(<span class="number">60</span>)</span><br><span class="line">    turtle.bk(<span class="number">60</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">45</span>)</span><br><span class="line">    turtle.fd(<span class="number">30</span>)</span><br><span class="line">    turtle.setheading(-<span class="number">135</span>)</span><br><span class="line">    turtle.fd(<span class="number">35</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绘制文字</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_text</span>(<span class="params">text, t_color, font_size, show_time</span>):</span></span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">350</span>, <span class="number">0</span>)</span><br><span class="line">    turtle.color(t_color)</span><br><span class="line">    turtle.write(text, font=(<span class="string">&#x27;宋体&#x27;</span>, font_size, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    time.sleep(show_time)</span><br><span class="line">    clear_all()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 爱心发射</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_</span>():</span></span><br><span class="line">    turtle.speed(<span class="number">0</span>)</span><br><span class="line">    draw_people(-<span class="number">250</span>, <span class="number">20</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">150</span>, -<span class="number">30</span>)</span><br><span class="line">    draw_heart(<span class="number">14</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">200</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">20</span>, -<span class="number">60</span>)</span><br><span class="line">    draw_heart(<span class="number">25</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(-<span class="number">70</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">200</span>, -<span class="number">100</span>)</span><br><span class="line">    draw_heart(<span class="number">45</span>)</span><br><span class="line">    turtle.penup()</span><br><span class="line">    turtle.goto(<span class="number">150</span>, -<span class="number">200</span>)</span><br><span class="line">    turtle.color(<span class="string">&#x27;pink&#x27;</span>)</span><br><span class="line">    turtle.write(<span class="string">&#x27;Biu~&#x27;</span>, font=(<span class="string">&#x27;宋体&#x27;</span>, <span class="number">60</span>, <span class="string">&#x27;normal&#x27;</span>))</span><br><span class="line">    turtle.hideturtle()</span><br><span class="line">    time.sleep(<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span>():</span></span><br><span class="line">    <span class="comment"># 隐藏海龟</span></span><br><span class="line">    hideturtle()</span><br><span class="line">    turtle.setup(<span class="number">900</span>, <span class="number">500</span>)</span><br><span class="line"></span><br><span class="line">    draw_text(<span class="string">&quot;我想给你看个东西&quot;</span>, <span class="string">&quot;black&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;准备好了吗？&quot;</span>, <span class="string">&quot;red&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;接下来&quot;</span>, <span class="string">&quot;blue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;3&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;2&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;1&quot;</span>, <span class="string">&quot;skyblue&quot;</span>, <span class="number">45</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;七夕快乐！！！&quot;</span>, <span class="string">&quot;pink&quot;</span>, <span class="number">60</span>, <span class="number">0</span>)</span><br><span class="line">    draw_text(<span class="string">&quot;发射爱心！！！&quot;</span>, <span class="string">&quot;pink&quot;</span>, <span class="number">60</span>, <span class="number">3</span>)</span><br><span class="line">    draw_()</span><br><span class="line">    <span class="comment"># 使用mainloop防止窗口卡死</span></span><br><span class="line">    mainloop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">main()</span><br></pre></td></tr></table></figure>
-<p>​                                                借鉴自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35164554/article/details/119610642">https://blog.csdn.net/qq_35164554/article/details/119610642</a></p>
 
       
     </div>
